@@ -37,6 +37,7 @@ jobs:
           binary: "mdbook"
           version: "0.4.12"
           download_url: "https://github.com/rust-lang/mdBook/releases/download/v0.4.12/mdbook-v0.4.12-x86_64-unknown-linux-gnu.tar.gz"  
+          tarball_binary_path: "${binary}"
           smoke_test: "${binary} --version"
       
       # Runs a set of commands using the runners shell
