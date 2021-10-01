@@ -136,12 +136,27 @@ impl MyRA {
     }
 }
 
+#[derive(Default)]
+struct MyConfig {
+    disabled_by_default: bool,
+}
+
 impl Preprocessor for Nop {
     fn name(&self) -> &str {
-        "nop-preprocessor"
+        "ra"
     }
 
-    fn run(&self, _ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
+    fn run(&self, ctx: &PreprocessorContext, mut book: Book) -> Result<Book, Error> {
+        let config = {
+            let mut c = MyConfig::default();
+            if let Some(m) = ctx.config.get_preprocessor(self.name()) {
+                if m.get("disabled_by_default") == Some(&true.into()) {
+                    c.disabled_by_default = true;
+                }
+            }
+            c
+        };
+
         let mut ra = MyRA::setup()?;
         book.for_each_mut(|book_item| {
             let chapter = if let mdbook::BookItem::Chapter(c) = book_item {
@@ -160,7 +175,7 @@ impl Preprocessor for Nop {
                     &main_added
                 };
                 eprintln!("{}", flags);
-                if !flags.contains("ra_enabled") {
+                if flags.contains("ra_disabled") || config.disabled_by_default && !flags.contains("ra_enabled") {
                     return original_code.to_string();
                 }
                 let mut result = String::new();
