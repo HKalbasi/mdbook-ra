@@ -103,6 +103,7 @@ checksum = "904dfeac50f3cdaba28fc6f57fdcddb75f49ed61346676a78c4ffe55877802fd"
 [[package]]
 name = "base_db"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cfg",
  "profile",
@@ -217,6 +218,7 @@ checksum = "d26a6ce4b6a484fa3edb70f7efa6fc430fd2b87285fe8b84304fd0936faa0dc0"
 [[package]]
 name = "cfg"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "rustc-hash",
  "tt",
@@ -556,6 +558,7 @@ dependencies = [
 [[package]]
 name = "flycheck"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cargo_metadata",
  "crossbeam-channel",
@@ -873,6 +876,7 @@ dependencies = [
 [[package]]
 name = "hir"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "arrayvec",
  "base_db",
@@ -894,6 +898,7 @@ dependencies = [
 [[package]]
 name = "hir_def"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "anymap",
  "base_db",
@@ -922,6 +927,7 @@ dependencies = [
 [[package]]
 name = "hir_expand"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "base_db",
  "cfg",
@@ -941,6 +947,7 @@ dependencies = [
 [[package]]
 name = "hir_ty"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "arrayvec",
  "base_db",
@@ -1057,6 +1064,7 @@ dependencies = [
 [[package]]
 name = "ide"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cfg",
  "cov-mark",
@@ -1085,6 +1093,7 @@ dependencies = [
 [[package]]
 name = "ide_assists"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cov-mark",
  "either",
@@ -1102,6 +1111,7 @@ dependencies = [
 [[package]]
 name = "ide_completion"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "base_db",
  "cov-mark",
@@ -1120,6 +1130,7 @@ dependencies = [
 [[package]]
 name = "ide_db"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "arrayvec",
  "base_db",
@@ -1142,6 +1153,7 @@ dependencies = [
 [[package]]
 name = "ide_diagnostics"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cfg",
  "cov-mark",
@@ -1159,6 +1171,7 @@ dependencies = [
 [[package]]
 name = "ide_ssr"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cov-mark",
  "hir",
@@ -1302,6 +1315,7 @@ dependencies = [
 [[package]]
 name = "la-arena"
 version = "0.2.1"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 
 [[package]]
 name = "lazy_static"
@@ -1334,6 +1348,7 @@ dependencies = [
 [[package]]
 name = "limit"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 
 [[package]]
 name = "line-wrap"
@@ -1449,6 +1464,7 @@ checksum = "a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f"
 [[package]]
 name = "mbe"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cov-mark",
  "expect-test",
@@ -1807,6 +1823,7 @@ dependencies = [
 [[package]]
 name = "parser"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "drop_bomb",
 ]
@@ -1820,6 +1837,7 @@ checksum = "8835116a5c179084a830efb3adc117ab007512b535bc1a21c991d3b32a6b44dd"
 [[package]]
 name = "paths"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 
 [[package]]
 name = "percent-encoding"
@@ -2025,6 +2043,7 @@ dependencies = [
 [[package]]
 name = "proc_macro_api"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "memmap2",
  "object",
@@ -2041,6 +2060,7 @@ dependencies = [
 [[package]]
 name = "proc_macro_srv"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "libloading",
  "mbe",
@@ -2054,6 +2074,7 @@ dependencies = [
 [[package]]
 name = "profile"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cfg-if 1.0.0",
  "countme",
@@ -2067,6 +2088,7 @@ dependencies = [
 [[package]]
 name = "project_model"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "anyhow",
  "base_db",
@@ -2314,6 +2336,7 @@ dependencies = [
 [[package]]
 name = "rust-analyzer"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "always-assert",
  "anyhow",
@@ -2586,6 +2609,7 @@ dependencies = [
 [[package]]
 name = "stdx"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "always-assert",
  "libc",
@@ -2668,6 +2692,7 @@ dependencies = [
 [[package]]
 name = "syntax"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "cov-mark",
  "indexmap",
@@ -2742,6 +2767,7 @@ dependencies = [
 [[package]]
 name = "test_utils"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "dissimilar",
  "profile",
@@ -2759,6 +2785,7 @@ checksum = "288cb548dbe72b652243ea797201f3d481a0609a967980fcc5b2315ea811560a"
 [[package]]
 name = "text_edit"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "text-size",
 ]
@@ -2893,6 +2920,7 @@ dependencies = [
 [[package]]
 name = "toolchain"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "home",
 ]
@@ -2986,6 +3014,7 @@ checksum = "59547bce71d9c38b83d9c0e92b6066c4253371f15005def0c30d9657f50c7642"
 [[package]]
 name = "tt"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "smol_str",
  "stdx",
@@ -3126,6 +3155,7 @@ checksum = "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
 [[package]]
 name = "vfs"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "fst",
  "indexmap",
@@ -3136,6 +3166,7 @@ dependencies = [
 [[package]]
 name = "vfs-notify"
 version = "0.0.0"
+source = "git+https://github.com/HKalbasi/rust-analyzer#73a12b59a24bfcd668f85de82f45b34efdd908e7"
 dependencies = [
  "crossbeam-channel",
  "jod-thread",
