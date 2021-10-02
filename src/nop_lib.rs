@@ -53,7 +53,7 @@ fn run_on_codes<F: FnMut(&str) -> String>(text: &str, mut run_on_code: F) -> Str
 fn raw_code(code: &str) -> String {
     let mut result = "".to_string();
     for l in code.lines() {
-        if let Some(x) = l.strip_prefix("#") {
+        if let Some(x) = l.strip_prefix("# ") {
             result += x;
         } else {
             result += l;
