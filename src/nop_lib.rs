@@ -238,7 +238,7 @@ impl Preprocessor for Nop {
                 let mut i = 0;
                 for l in code.lines() {
                     if let Some(x) = l.strip_prefix("# ") {
-                        i += x.len() + 3;
+                        i += x.len() + 1;
                         result += r#"<span class="boring">"#;
                         result += x;
                         result += "\n";
