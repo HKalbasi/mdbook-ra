@@ -32,6 +32,7 @@ fn run_on_codes<F: FnMut(&str) -> String>(text: &str, mut run_on_code: F) -> Str
     }
     .inlay-hint {
         font-size: 0.8em;
+        user-select: none;
     }
     .hover-holder {
         max-height: 40vh;
