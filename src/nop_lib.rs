@@ -120,7 +120,7 @@ impl MyRA {
             with_proc_macro: true,
             prefill_caches: false,
         };
-        let (host, vfs, _) = load_workspace_at(&p, &load_config, no_progress)?;
+        let (host, vfs, _) = load_workspace_at(&p, &Default::default(), &load_config, no_progress)?;
         Ok(MyRA {
             host,
             file_id: vfs
