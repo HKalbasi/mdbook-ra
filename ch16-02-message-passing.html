@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Using Message Passing to Transfer Data Between Threads - The Rust Programming Language</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="ferris.css">
+                <link rel="stylesheet" href="theme/2018-edition.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Common Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Functions</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Comments</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Control Flow</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Understanding Ownership</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> What is Ownership?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> References and Borrowing</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> The Slice Type</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Using Structs to Structure Related Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Defining and Instantiating Structs</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> An Example Program Using Structs</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Method Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Enums and Pattern Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Defining an Enum</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> The match Control Flow Operator</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Concise Control Flow with if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Managing Growing Projects with Packages, Crates, and Modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Packages and Crates</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Defining Modules to Control Scope and Privacy</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Paths for Referring to an Item in the Module Tree</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Bringing Paths Into Scope with the use Keyword</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Separating Modules into Different Files</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Storing Lists of Values with Vectors</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Storing UTF-8 Encoded Text with Strings</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Storing Keys with Associated Values in Hash Maps</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Unrecoverable Errors with panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Recoverable Errors with Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> To panic! or Not To panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Generic Types, Traits, and Lifetimes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Generic Data Types</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Traits: Defining Shared Behavior</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Validating References with Lifetimes</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Writing Automated Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> How to Write Tests</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Controlling How Tests Are Run</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Test Organization</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> An I/O Project: Building a Command Line Program</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Accepting Command Line Arguments</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Reading a File</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Refactoring to Improve Modularity and Error Handling</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Developing the Library’s Functionality with Test Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Working with Environment Variables</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Writing Error Messages to Standard Error Instead of Standard Output</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Functional Language Features: Iterators and Closures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Closures: Anonymous Functions that Can Capture Their Environment</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Processing a Series of Items with Iterators</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Improving Our I/O Project</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Comparing Performance: Loops vs. Iterators</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> More about Cargo and Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Customizing Builds with Release Profiles</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Publishing a Crate to Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo Workspaces</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Installing Binaries from Crates.io with cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Extending Cargo with Custom Commands</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Smart Pointers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Using Box&lt;T&gt; to Point to Data on the Heap</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Treating Smart Pointers Like Regular References with the Deref Trait</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Running Code on Cleanup with the Drop Trait</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, the Reference Counted Smart Pointer</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; and the Interior Mutability Pattern</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Reference Cycles Can Leak Memory</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Fearless Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Using Threads to Run Code Simultaneously</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html" class="active"><strong aria-hidden="true">16.2.</strong> Using Message Passing to Transfer Data Between Threads</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Shared-State Concurrency</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Extensible Concurrency with the Sync and Send Traits</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Object Oriented Programming Features of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Characteristics of Object-Oriented Languages</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Using Trait Objects That Allow for Values of Different Types</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Implementing an Object-Oriented Design Pattern</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Patterns and Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> All the Places Patterns Can Be Used</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability: Whether a Pattern Might Fail to Match</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Pattern Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Advanced Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Macros</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Final Project: Building a Multithreaded Web Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> Building a Single-Threaded Web Server</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Turning Our Single-Threaded Server into a Multithreaded Server</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Graceful Shutdown and Cleanup</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Keywords</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Operators and Symbols</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Derivable Traits</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Useful Development Tools</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Editions</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Translations of the Book</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - How Rust is Made and “Nightly Rust”</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Rust Programming Language</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.inlay-hint, .inlay-hint * {
+    border-radius: .4em;
+}
+
+.light .inlay-hint, .rust .inlay-hint {
+    background-color: #dcc;
+    color: #777;
+}
+
+.ayu .inlay-hint, .navy .inlay-hint, .coal .inlay-hint {
+    background-color: #444;
+    color: #999;
+}
+
+.inlay-hint {
+    font-size: 0.8em;
+    user-select: none;
+}
+.hover-holder {
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.tippy-content {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+</style>## Using Message Passing to Transfer Data Between Threads
+<p>One increasingly popular approach to ensuring safe concurrency is <em>message
+passing</em>, where threads or actors communicate by sending each other messages
+containing data. Here’s the idea in a slogan from <a href="https://golang.org/doc/effective_go.html#concurrency">the Go language
+documentation</a>:
+“Do not communicate by sharing memory; instead, share memory by communicating.”</p>
+<p>One major tool Rust has for accomplishing message-sending concurrency is the
+<em>channel</em>, a programming concept that Rust’s standard library provides an
+implementation of. You can imagine a channel in programming as being like a
+channel of water, such as a stream or a river. If you put something like a
+rubber duck or boat into a stream, it will travel downstream to the end of the
+waterway.</p>
+<p>A channel in programming has two halves: a transmitter and a receiver. The
+transmitter half is the upstream location where you put rubber ducks into the
+river, and the receiver half is where the rubber duck ends up downstream. One
+part of your code calls methods on the transmitter with the data you want to
+send, and another part checks the receiving end for arriving messages. A
+channel is said to be <em>closed</em> if either the transmitter or receiver half is
+dropped.</p>
+<p>Here, we’ll work up to a program that has one thread to generate values and
+send them down a channel, and another thread that will receive the values and
+print them out. We’ll be sending simple values between threads using a channel
+to illustrate the feature. Once you’re familiar with the technique, you could
+use channels to implement a chat system or a system where many threads perform
+parts of a calculation and send the parts to one thread that aggregates the
+results.</p>
+<p>First, in Listing 16-6, we’ll create a channel but not do anything with it.
+Note that this won’t compile yet because Rust can’t tell what type of values we
+want to send over the channel.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">sync</span>::<span class="ra" data-hover="2">mpsc</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let (<span class="ra" data-hover="4">tx</span><span class="inlay-hint">: Sender&lt;{unknown}&gt;</span>, <span class="ra" data-hover="5">rx</span><span class="inlay-hint">: Receiver&lt;{unknown}&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 16-6: Creating a channel and assigning the two
+halves to <code>tx</code> and <code>rx</code></span></p>
+<p>We create a new channel using the <code>mpsc::channel</code> function; <code>mpsc</code> stands for
+<em>multiple producer, single consumer</em>. In short, the way Rust’s standard library
+implements channels means a channel can have multiple <em>sending</em> ends that
+produce values but only one <em>receiving</em> end that consumes those values. Imagine
+multiple streams flowing together into one big river: everything sent down any
+of the streams will end up in one river at the end. We’ll start with a single
+producer for now, but we’ll add multiple producers when we get this example
+working.</p>
+<p>The <code>mpsc::channel</code> function returns a tuple, the first element of which is the
+sending end and the second element is the receiving end. The abbreviations <code>tx</code>
+and <code>rx</code> are traditionally used in many fields for <em>transmitter</em> and <em>receiver</em>
+respectively, so we name our variables as such to indicate each end. We’re
+using a <code>let</code> statement with a pattern that destructures the tuples; we’ll
+discuss the use of patterns in <code>let</code> statements and destructuring in Chapter
+18. Using a <code>let</code> statement this way is a convenient approach to extract the
+pieces of the tuple returned by <code>mpsc::channel</code>.</p>
+<p>Let’s move the transmitting end into a spawned thread and have it send one
+string so the spawned thread is communicating with the main thread, as shown in
+Listing 16-7. This is like putting a rubber duck in the river upstream or
+sending a chat message from one thread to another.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">sync</span>::<span class="ra" data-hover="2">mpsc</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="7">thread</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let (<span class="ra" data-hover="8">tx</span><span class="inlay-hint">: Sender&lt;String&gt;</span>, <span class="ra" data-hover="9">rx</span><span class="inlay-hint">: Receiver&lt;String&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="11">val</span> = <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("hi");
+        <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="11">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+    });
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 16-7: Moving <code>tx</code> to a spawned thread and sending
+“hi”</span></p>
+<p>Again, we’re using <code>thread::spawn</code> to create a new thread and then using <code>move</code>
+to move <code>tx</code> into the closure so the spawned thread owns <code>tx</code>. The spawned
+thread needs to own the transmitting end of the channel to be able to send
+messages through the channel.</p>
+<p>The transmitting end has a <code>send</code> method that takes the value we want to send.
+The <code>send</code> method returns a <code>Result&lt;T, E&gt;</code> type, so if the receiving end has
+already been dropped and there’s nowhere to send a value, the send operation
+will return an error. In this example, we’re calling <code>unwrap</code> to panic in case
+of an error. But in a real application, we would handle it properly: return to
+Chapter 9 to review strategies for proper error handling.</p>
+<p>In Listing 16-8, we’ll get the value from the receiving end of the channel in
+the main thread. This is like retrieving the rubber duck from the water at the
+end of the river or like getting a chat message.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">sync</span>::<span class="ra" data-hover="2">mpsc</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="7">thread</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let (<span class="ra" data-hover="8">tx</span><span class="inlay-hint">: Sender&lt;String&gt;</span>, <span class="ra" data-hover="9">rx</span><span class="inlay-hint">: Receiver&lt;String&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="11">val</span> = <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("hi");
+        <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="11">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+    });
+
+    let <span class="ra" data-hover="16">received</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="9">rx</span>.<span class="ra" data-hover="17">recv</span>().<span class="ra" data-hover="15">unwrap</span>();
+    <span class="ra" data-hover="18">println</span>!("Got: {}", <span class="ra" data-hover="16">received</span>);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 16-8: Receiving the value “hi” in the main thread
+and printing it</span></p>
+<p>The receiving end of a channel has two useful methods: <code>recv</code> and <code>try_recv</code>.
+We’re using <code>recv</code>, short for <em>receive</em>, which will block the main thread’s
+execution and wait until a value is sent down the channel. Once a value is
+sent, <code>recv</code> will return it in a <code>Result&lt;T, E&gt;</code>. When the sending end of the
+channel closes, <code>recv</code> will return an error to signal that no more values will
+be coming.</p>
+<p>The <code>try_recv</code> method doesn’t block, but will instead return a <code>Result&lt;T, E&gt;</code>
+immediately: an <code>Ok</code> value holding a message if one is available and an <code>Err</code>
+value if there aren’t any messages this time. Using <code>try_recv</code> is useful if
+this thread has other work to do while waiting for messages: we could write a
+loop that calls <code>try_recv</code> every so often, handles a message if one is
+available, and otherwise does other work for a little while until checking
+again.</p>
+<p>We’ve used <code>recv</code> in this example for simplicity; we don’t have any other work
+for the main thread to do other than wait for messages, so blocking the main
+thread is appropriate.</p>
+<p>When we run the code in Listing 16-8, we’ll see the value printed from the main
+thread:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+</code></pre>
+<p>Perfect!</p>
+<h3 id="channels-and-ownership-transference"><a class="header" href="#channels-and-ownership-transference">Channels and Ownership Transference</a></h3>
+<p>The ownership rules play a vital role in message sending because they help you
+write safe, concurrent code. Preventing errors in concurrent programming is the
+advantage of thinking about ownership throughout your Rust programs. Let’s do
+an experiment to show how channels and ownership work together to prevent
+problems: we’ll try to use a <code>val</code> value in the spawned thread <em>after</em> we’ve
+sent it down the channel. Try compiling the code in Listing 16-9 to see why
+this code isn’t allowed:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">sync</span>::<span class="ra" data-hover="2">mpsc</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="7">thread</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let (<span class="ra" data-hover="8">tx</span><span class="inlay-hint">: Sender&lt;String&gt;</span>, <span class="ra" data-hover="9">rx</span><span class="inlay-hint">: Receiver&lt;String&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="11">val</span> = <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("hi");
+        <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="11">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+        <span class="ra" data-hover="18">println</span>!("val is {}", <span class="ra" data-hover="11">val</span>);
+    });
+
+    let <span class="ra" data-hover="16">received</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="9">rx</span>.<span class="ra" data-hover="17">recv</span>().<span class="ra" data-hover="15">unwrap</span>();
+    <span class="ra" data-hover="18">println</span>!("Got: {}", <span class="ra" data-hover="16">received</span>);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 16-9: Attempting to use <code>val</code> after we’ve sent it
+down the channel</span></p>
+<p>Here, we try to print <code>val</code> after we’ve sent it down the channel via <code>tx.send</code>.
+Allowing this would be a bad idea: once the value has been sent to another
+thread, that thread could modify or drop it before we try to use the value
+again. Potentially, the other thread’s modifications could cause errors or
+unexpected results due to inconsistent or nonexistent data. However, Rust gives
+us an error if we try to compile the code in Listing 16-9:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling message-passing v0.1.0 (file:///projects/message-passing)
+error[E0382]: borrow of moved value: `val`
+  --&gt; src/main.rs:10:31
+   |
+8  |         let val = String::from(&quot;hi&quot;);
+   |             --- move occurs because `val` has type `String`, which does not implement the `Copy` trait
+9  |         tx.send(val).unwrap();
+   |                 --- value moved here
+10 |         println!(&quot;val is {}&quot;, val);
+   |                               ^^^ value borrowed here after move
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `message-passing` due to previous error
+</code></pre>
+<p>Our concurrency mistake has caused a compile time error. The <code>send</code> function
+takes ownership of its parameter, and when the value is moved, the receiver
+takes ownership of it. This stops us from accidentally using the value again
+after sending it; the ownership system checks that everything is okay.</p>
+<h3 id="sending-multiple-values-and-seeing-the-receiver-waiting"><a class="header" href="#sending-multiple-values-and-seeing-the-receiver-waiting">Sending Multiple Values and Seeing the Receiver Waiting</a></h3>
+<p>The code in Listing 16-8 compiled and ran, but it didn’t clearly show us that
+two separate threads were talking to each other over the channel. In Listing
+16-10 we’ve made some modifications that will prove the code in Listing 16-8 is
+running concurrently: the spawned thread will now send multiple messages and
+pause for a second between each message.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">sync</span>::<span class="ra" data-hover="2">mpsc</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="7">thread</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="19">time</span>::<span class="ra" data-hover="20">Duration</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let (<span class="ra" data-hover="8">tx</span><span class="inlay-hint">: Sender&lt;String&gt;</span>, <span class="ra" data-hover="9">rx</span><span class="inlay-hint">: Receiver&lt;String&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="21">vals</span><span class="inlay-hint">: Vec&lt;String&gt;</span> = <span class="ra" data-hover="22">vec</span>![
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("hi"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("from"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("the"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("thread"),
+        ];
+
+        for <span class="ra" data-hover="23">val</span><span class="inlay-hint">: String</span> in <span class="ra" data-hover="21">vals</span> {
+            <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="23">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+            <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="24">sleep</span>(<span class="ra" data-hover="20"><span class="inlay-hint">dur: </span>Duration</span>::<span class="ra" data-hover="25">from_secs</span>(1));
+        }
+    });
+
+    for <span class="ra" data-hover="26">received</span><span class="inlay-hint">: String</span> in <span class="ra" data-hover="9">rx</span> {
+        <span class="ra" data-hover="18">println</span>!("Got: {}", <span class="ra" data-hover="26">received</span>);
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 16-10: Sending multiple messages and pausing
+between each</span></p>
+<p>This time, the spawned thread has a vector of strings that we want to send to
+the main thread. We iterate over them, sending each individually, and pause
+between each by calling the <code>thread::sleep</code> function with a <code>Duration</code> value of
+1 second.</p>
+<p>In the main thread, we’re not calling the <code>recv</code> function explicitly anymore:
+instead, we’re treating <code>rx</code> as an iterator. For each value received, we’re
+printing it. When the channel is closed, iteration will end.</p>
+<p>When running the code in Listing 16-10, you should see the following output
+with a 1-second pause in between each line:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+Got: from
+Got: the
+Got: thread
+</code></pre>
+<p>Because we don’t have any code that pauses or delays in the <code>for</code> loop in the
+main thread, we can tell that the main thread is waiting to receive values from
+the spawned thread.</p>
+<h3 id="creating-multiple-producers-by-cloning-the-transmitter"><a class="header" href="#creating-multiple-producers-by-cloning-the-transmitter">Creating Multiple Producers by Cloning the Transmitter</a></h3>
+<p>Earlier we mentioned that <code>mpsc</code> was an acronym for <em>multiple producer,
+single consumer</em>. Let’s put <code>mpsc</code> to use and expand the code in Listing 16-10
+to create multiple threads that all send values to the same receiver. We can do
+so by cloning the transmitting half of the channel, as shown in Listing 16-11:</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use std::sync::mpsc;
+</span><span class="boring">use std::thread;
+</span><span class="boring">use std::time::Duration;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span>    // --snip--
+
+    let (<span class="ra" data-hover="8">tx</span><span class="inlay-hint">: Sender&lt;String&gt;</span>, <span class="ra" data-hover="9">rx</span><span class="inlay-hint">: Receiver&lt;String&gt;</span>) = <span class="ra" data-hover="2">mpsc</span>::<span class="ra" data-hover="6">channel</span>();
+
+    let <span class="ra" data-hover="27">tx1</span><span class="inlay-hint">: Sender&lt;String&gt;</span> = <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="28">clone</span>();
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="21">vals</span><span class="inlay-hint">: Vec&lt;String&gt;</span> = <span class="ra" data-hover="22">vec</span>![
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("hi"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("from"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("the"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("thread"),
+        ];
+
+        for <span class="ra" data-hover="23">val</span><span class="inlay-hint">: String</span> in <span class="ra" data-hover="21">vals</span> {
+            <span class="ra" data-hover="27">tx1</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="23">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+            <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="24">sleep</span>(<span class="ra" data-hover="20"><span class="inlay-hint">dur: </span>Duration</span>::<span class="ra" data-hover="25">from_secs</span>(1));
+        }
+    });
+
+    <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="10">spawn</span>(move || {
+        let <span class="ra" data-hover="21">vals</span><span class="inlay-hint">: Vec&lt;String&gt;</span> = <span class="ra" data-hover="22">vec</span>![
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("more"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("messages"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("for"),
+            <span class="ra" data-hover="12">String</span>::<span class="ra" data-hover="13">from</span>("you"),
+        ];
+
+        for <span class="ra" data-hover="23">val</span><span class="inlay-hint">: String</span> in <span class="ra" data-hover="21">vals</span> {
+            <span class="ra" data-hover="8">tx</span>.<span class="ra" data-hover="14">send</span>(<span class="ra" data-hover="23">val</span>).<span class="ra" data-hover="15">unwrap</span>();
+            <span class="ra" data-hover="7">thread</span>::<span class="ra" data-hover="24">sleep</span>(<span class="ra" data-hover="20"><span class="inlay-hint">dur: </span>Duration</span>::<span class="ra" data-hover="25">from_secs</span>(1));
+        }
+    });
+
+    for <span class="ra" data-hover="26">received</span><span class="inlay-hint">: String</span> in <span class="ra" data-hover="9">rx</span> {
+        <span class="ra" data-hover="18">println</span>!("Got: {}", <span class="ra" data-hover="26">received</span>);
+    }
+
+    // --snip--
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 16-11: Sending multiple messages from multiple
+producers</span></p>
+<p>This time, before we create the first spawned thread, we call <code>clone</code> on the
+sending end of the channel. This will give us a new sending handle we can pass
+to the first spawned thread. We pass the original sending end of the channel to
+a second spawned thread. This gives us two threads, each sending different
+messages to the receiving end of the channel.</p>
+<p>When you run the code, your output should look something like this:</p>
+<!-- Not extracting output because changes to this output aren't significant;
+the changes are likely to be due to the threads running differently rather than
+changes in the compiler -->
+<pre><code class="language-text">Got: hi
+Got: more
+Got: from
+Got: messages
+Got: for
+Got: the
+Got: thread
+Got: you
+</code></pre>
+<p>You might see the values in another order; it depends on your system. This is
+what makes concurrency interesting as well as difficult. If you experiment with
+<code>thread::sleep</code>, giving it various values in the different threads, each run
+will be more nondeterministic and create different output each time.</p>
+<p>Now that we’ve looked at how channels work, let’s look at a different method of
+concurrency.</p>
+<script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.2/dist/tippy-bundle.umd.min.js" integrity="sha384-vApKv6LkBdPwmt/fNiQrBCVCZvuniXpG0b5UZhVrGAq1zXdZRSsPcWjGdVxkZJtX" crossorigin="anonymous"></script>
+<script>
+    const hoverData = ['<per><cide class="language-rust">extern crate std\n</code></pre>\n<hr />\n<h1 id="the-rust-standard-library"><a class="header" href="#the-rust-standard-library">The Rust Standard Library</a></h1>\n<p>The Rust Standard Library is the foundation of portable Rust software, a\nset of minimal and battle-tested shared abstractions for the <a href="https://crates.io">broader Rust\necosystem</a>. It offers core types, like <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> and\n<a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a>, library-defined <a href="https://docs.rs/std/*/std/index.html#primitives">operations on language\nprimitives</a>, <a href="https://docs.rs/std/*/std/index.html#macros">standard macros</a>, <a href="https://docs.rs/std/*/std/io/index.html">I/O</a> and\n<a href="https://docs.rs/std/*/std/thread/index.html">multithreading</a>, among <a href="https://docs.rs/std/*/std/index.html#what-is-in-the-standard-library-documentation">many other things</a>.</p>\n<p><cide>std</code> is available to all Rust crates by default. Therefore, the\nstandard library can be accessed in <a href="https://docs.rs/std/*/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"><cide>use</code></a> statements through the path\n<cide>std</code>, as in <a href="https://docs.rs/std/*/std/env/index.html"><cide>use std::env</code></a>.</p>\n<h1 id="how-to-read-this-documentation"><a class="header" href="#how-to-read-this-documentation">How to read this documentation</a></h1>\n<p>If you already know the name of what you are looking for, the fastest way to\nfind it is to use the <!-- raw HTML omitted -->search\nbar<!-- raw HTML omitted --> at the top of the page.</p>\n<p>Otherwise, you may want to jump to one of these useful sections:</p>\n<ul>\n<li><a href="https://docs.rs/std/*/std/index.html#modules"><cide>std::*</code> modules</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#primitives">Primitive types</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#macros">Standard macros</a></li>\n<li><a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a></li>\n</ul>\n<p>If this is your first time, the documentation for the standard library is\nwritten to be casually perused. Clicking on interesting things should\ngenerally lead you to interesting places. Still, there are important bits\nyou don#$%t want to miss, so read on for a tour of the standard library and\nits documentation!</p>\n<p>Once you are familiar with the contents of the standard library you may\nbegin to find the verbosity of the prose distracting. At this stage in your\ndevelopment you may want to press the <cide>[-]</code> button near the top of the\npage to collapse it into a more skimmable view.</p>\n<p>While you are looking at that <cide>[-]</code> button also notice the <cide>[src]</code>\nbutton. Rust#$%s API documentation comes with the source code and you are\nencouraged to read it. The standard library source is generally high\nquality and a peek behind the curtains is often enlightening.</p>\n<h1 id="what-is-in-the-standard-library-documentation"><a class="header" href="#what-is-in-the-standard-library-documentation">What is in the standard library documentation?</a></h1>\n<p>First of all, The Rust Standard Library is divided into a number of focused\nmodules, <a href="https://docs.rs/std/*/std/index.html#modules">all listed further down this page</a>. These modules are\nthe bedrock upon which all of Rust is forged, and they have mighty names\nlike <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>std::slice</code></a> and <a href="https://docs.rs/core/*/core/cmp/index.html"><cide>std::cmp</code></a>. Modules#$% documentation typically\nincludes an overview of the module along with examples, and are a smart\nplace to start familiarizing yourself with the library.</p>\n<p>Second, implicit methods on <a href="https://docs.rs/std/*/book/ch03-02-data-types.html">primitive types</a> are documented here. This can\nbe a source of confusion for two reasons:</p>\n<ol>\n<li>While primitives are implemented by the compiler, the standard library\nimplements methods directly on the primitive types (and it is the only\nlibrary that does so), which are <a href="https://docs.rs/std/*/std/index.html#primitives">documented in the section on\nprimitives</a>.</li>\n<li>The standard library exports many modules <em>with the same name as\nprimitive types</em>. These define additional items related to the primitive\ntype, but not the all-important methods.</li>\n</ol>\n<p>So for example there is a <a href="primitive::i32">page for the primitive type\n<cide>i32</code></a> that lists all the methods that can be called on\n32-bit integers (very useful), and there is a <a href="https://docs.rs/core/*/core/i32/index.html">page for the module\n<cide>std::i32</code></a> that documents the constant values <a href="https://docs.rs/core/*/core/i32/const.MIN.html"><cide>MIN</code></a> and <a href="https://docs.rs/core/*/core/i32/const.MAX.html"><cide>MAX</code></a> (rarely\nuseful).</p>\n<p>Note the documentation for the primitives <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> (also\ncalled #$%slice#$%). Many method calls on <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> and <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> are actually\ncalls to methods on <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> respectively, via <a href="https://docs.rs/std/*/book/ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">deref\ncoercions</a>.</p>\n<p>Third, the standard library defines <a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a>, a small collection\nof items - mostly traits - that are imported into every module of every\ncrate. The traits in the prelude are pervasive, making the prelude\ndocumentation a good entry point to learning about the library.</p>\n<p>And finally, the standard library exports a number of standard macros, and\n<a href="https://docs.rs/std/*/std/index.html#macros">lists them on this page</a> (technically, not all of the standard\nmacros are defined by the standard library - some are defined by the\ncompiler - but they are documented here the same). Like the prelude, the\nstandard macros are imported by default into all crates.</p>\n<h1 id="contributing-changes-to-the-documentation"><a class="header" href="#contributing-changes-to-the-documentation">Contributing changes to the documentation</a></h1>\n<p>Check out the rust contribution guidelines <a href="https://rustc-dev-guide.rust-lang.org/contributing.html#writing-documentation">here</a>.\nThe source for this documentation can be found on\n<a href="https://github.com/rust-lang/rust">GitHub</a>.\nTo contribute changes, make sure you read the guidelines first, then submit\npull-requests for your suggested changes.</p>\n<p>Contributions are appreciated! If you see a part of the docs that can be\nimproved, submit a PR, or chat with us first on <a href="https://discord.gg/rust-lang">Discord</a>\n#docs.</p>\n<h1 id="a-tour-of-the-rust-standard-library"><a class="header" href="#a-tour-of-the-rust-standard-library">A Tour of The Rust Standard Library</a></h1>\n<p>The rest of this crate documentation is dedicated to pointing out notable\nfeatures of The Rust Standard Library.</p>\n<h2 id="containers-and-collections"><a class="header" href="#containers-and-collections">Containers and collections</a></h2>\n<p>The <a href="https://docs.rs/core/*/core/option/index.html"><cide>option</code></a> and <a href="https://docs.rs/core/*/core/result/index.html"><cide>result</code></a> modules define optional and error-handling\ntypes, <a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a> and <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>. The <a href="https://docs.rs/core/*/core/iter/index.html"><cide>iter</code></a> module defines\nRust#$%s iterator trait, <a href="https://docs.rs/core/*/core/iter/traits/iterator/trait.Iterator.html"><cide>Iterator</code></a>, which works with the <a href="https://docs.rs/std/*/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> loop to\naccess collections.</p>\n<p>The standard library exposes three common ways to deal with contiguous\nregions of memory:</p>\n<ul>\n<li><a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> - A heap-allocated <em>vector</em> that is resizable at runtime.</li>\n<li><a href="https://docs.rs/core/*/core/array/index.html"><cide>[T; N]</code></a> - An inline <em>array</em> with a fixed size at compile time.</li>\n<li><a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> - A dynamically sized <em>slice</em> into any other kind of contiguous\nstorage, whether heap-allocated or not.</li>\n</ul>\n<p>Slices can only be handled through some kind of <em>pointer</em>, and as such come\nin many flavors such as:</p>\n<ul>\n<li><cide>&amp;[T]</code> - <em>shared slice</em></li>\n<li><cide>&amp;mut [T]</code> - <em>mutable slice</em></li>\n<li><a href="https://docs.rs/alloc/*/alloc/boxed/index.html"><cide>Box&lt;[T]&gt;</code></a> - <em>owned slice</em></li>\n</ul>\n<p><a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, a UTF-8 string slice, is a primitive type, and the standard library\ndefines many methods for it. Rust <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>s are typically accessed as\nimmutable references: <cide>&amp;str</code>. Use the owned <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> for building and\nmutating strings.</p>\n<p>For converting to strings use the <a href="https://docs.rs/alloc/*/alloc/macro.format.html"><cide>format</code></a> macro, and for converting from\nstrings use the <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html"><cide>FromStr</code></a> trait.</p>\n<p>Data may be shared by placing it in a reference-counted box or the <a href="https://docs.rs/alloc/*/alloc/rc/struct.Rc.html"><cide>Rc</code></a>\ntype, and if further contained in a <a href="https://docs.rs/core/*/core/cell/struct.Cell.html"><cide>Cell</code></a> or <a href="https://docs.rs/core/*/core/cell/struct.RefCell.html"><cide>RefCell</code></a>, may be mutated\nas well as shared. Likewise, in a concurrent setting it is common to pair an\natomically-reference-counted box, <a href="https://docs.rs/alloc/*/alloc/sync/struct.Arc.html"><cide>Arc</code></a>, with a <a href="https://docs.rs/std/*/std/sync/mutex/struct.Mutex.html"><cide>Mutex</code></a> to get the same\neffect.</p>\n<p>The <a href="https://docs.rs/std/*/std/collections/index.html"><cide>collections</code></a> module defines maps, sets, linked lists and other\ntypical collection types, including the common <a href="https://docs.rs/std/*/std/collections/hash/map/struct.HashMap.html"><cide>HashMap&lt;K, V&gt;</code></a>.</p>\n<h2 id="platform-abstractions-and-io"><a class="header" href="#platform-abstractions-and-io">Platform abstractions and I/O</a></h2>\n<p>Besides basic data types, the standard library is largely concerned with\nabstracting over differences in common platforms, most notably Windows and\nUnix derivatives.</p>\n<p>Common types of I/O, including <a href="https://docs.rs/std/*/std/fs/struct.File.html">files</a>, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html">TCP</a>, <a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html">UDP</a>, are defined in the\n<a href="https://docs.rs/std/*/std/io/index.html"><cide>io</code></a>, <a href="https://docs.rs/std/*/std/fs/index.html"><cide>fs</code></a>, and <a href="https://docs.rs/std/*/std/net/index.html"><cide>net</code></a> modules.</p>\n<p>The <a href="https://docs.rs/std/*/std/thread/index.html"><cide>thread</code></a> module contains Rust#$%s threading abstractions. <a href="https://docs.rs/std/*/std/sync/index.html"><cide>sync</code></a>\ncontains further primitive shared memory types, including <a href="https://docs.rs/core/*/core/sync/atomic/index.html"><cide>atomic</code></a> and\n<a href="https://docs.rs/std/*/std/sync/mpsc/index.html"><cide>mpsc</code></a>, which contains the channel types for message passing.</p>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod sync\n</code></pre>\n<hr />\n<p>Useful synchronization primitives.</p>\n<h2 id="the-need-for-synchronization"><a class="header" href="#the-need-for-synchronization">The need for synchronization</a></h2>\n<p>Conceptually, a Rust program is a series of operations which will\nbe executed on a computer. The timeline of events happening in the\nprogram is consistent with the order of the operations in the code.</p>\n<p>Consider the following code, operating on some global static variables:</p>\n<per><cide class="language-rust">static mut A: u32 = 0;\nstatic mut B: u32 = 0;\nstatic mut C: u32 = 0;\n\nfn main() {\n    unsafe {\n        A = 3;\n        B = 4;\n        A = A + B;\n        C = B;\n        println!(&quot;{} {} {}&quot;, A, B, C);\n        C = A;\n    }\n}\n</code></pre>\n<p>It appears as if some variables stored in memory are changed, an addition\nis performed, result is stored in <cide>A</code> and the variable <cide>C</code> is\nmodified twice.</p>\n<p>When only a single thread is involved, the results are as expected:\nthe line <cide>7 4 4</code> gets printed.</p>\n<p>As for what happens behind the scenes, when optimizations are enabled the\nfinal generated machine code might look very different from the code:</p>\n<ul>\n<li>\n<p>The first store to <cide>C</code> might be moved before the store to <cide>A</code> or <cide>B</code>,\n<em>as if</em> we had written <cide>C = 4; A = 3; B = 4</code>.</p>\n</li>\n<li>\n<p>Assignment of <cide>A + B</code> to <cide>A</code> might be removed, since the sum can be stored\nin a temporary location until it gets printed, with the global variable\nnever getting updated.</p>\n</li>\n<li>\n<p>The final result could be determined just by looking at the code\nat compile time, so <a href="https://en.wikipedia.org/wiki/Constant_folding">constant folding</a> might turn the whole\nblock into a simple <cide>println!(&quot;7 4 4&quot;)</code>.</p>\n</li>\n</ul>\n<p>The compiler is allowed to perform any combination of these\noptimizations, as long as the final optimized code, when executed,\nproduces the same results as the one without optimizations.</p>\n<p>Due to the <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">concurrency</a> involved in modern computers, assumptions\nabout the program#$%s execution order are often wrong. Access to\nglobal variables can lead to nondeterministic results, <strong>even if</strong>\ncompiler optimizations are disabled, and it is <strong>still possible</strong>\nto introduce synchronization bugs.</p>\n<p>Note that thanks to Rust#$%s safety guarantees, accessing global (static)\nvariables requires <cide>unsafe</code> code, assuming we don#$%t use any of the\nsynchronization primitives in this module.</p>\n<h2 id="out-of-order-execution"><a class="header" href="#out-of-order-execution">Out-of-order execution</a></h2>\n<p>Instructions can execute in a different order from the one we define, due to\nvarious reasons:</p>\n<ul>\n<li>\n<p>The <strong>compiler</strong> reordering instructions: If the compiler can issue an\ninstruction at an earlier point, it will try to do so. For example, it\nmight hoist memory loads at the top of a code block, so that the CPU can\nstart <a href="https://en.wikipedia.org/wiki/Cache_prefetching">prefetching</a> the values from memory.</p>\n<p>In single-threaded scenarios, this can cause issues when writing\nsignal handlers or certain kinds of low-level code.\nUse <a href="https://docs.rs/core/*/core/sync/atomic/fn.compiler_fence.html">compiler fences</a> to prevent this reordering.</p>\n</li>\n<li>\n<p>A <strong>single processor</strong> executing instructions <a href="https://en.wikipedia.org/wiki/Out-of-order_execution">out-of-order</a>:\nModern CPUs are capable of <a href="https://en.wikipedia.org/wiki/Superscalar_processor">superscalar</a> execution,\ni.e., multiple instructions might be executing at the same time,\neven though the machine code describes a sequential process.</p>\n<p>This kind of reordering is handled transparently by the CPU.</p>\n</li>\n<li>\n<p>A <strong>multiprocessor</strong> system executing multiple hardware threads\nat the same time: In multi-threaded scenarios, you can use two\nkinds of primitives to deal with synchronization:</p>\n<ul>\n<li><a href="https://docs.rs/core/*/core/sync/atomic/fn.fence.html">memory fences</a> to ensure memory accesses are made visible to\nother CPUs in the right order.</li>\n<li><a href="https://docs.rs/core/*/core/sync/atomic/index.html">atomic operations</a> to ensure simultaneous access to the same\nmemory location doesn#$%t lead to undefined behavior.</li>\n</ul>\n</li>\n</ul>\n<h2 id="higher-level-synchronization-objects"><a class="header" href="#higher-level-synchronization-objects">Higher-level synchronization objects</a></h2>\n<p>Most of the low-level synchronization primitives are quite error-prone and\ninconvenient to use, which is why the standard library also exposes some\nhigher-level synchronization objects.</p>\n<p>These abstractions can be built out of lower-level primitives.\nFor efficiency, the sync objects in the standard library are usually\nimplemented with help from the operating system#$%s kernel, which is\nable to reschedule the threads while they are blocked on acquiring\na lock.</p>\n<p>The following is an overview of the available synchronization\nobjects:</p>\n<ul>\n<li>\n<p><a href="https://docs.rs/alloc/*/alloc/sync/struct.Arc.html"><cide>Arc</code></a>: Atomically Reference-Counted pointer, which can be used\nin multithreaded environments to prolong the lifetime of some\ndata until all the threads have finished using it.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/barrier/struct.Barrier.html"><cide>Barrier</code></a>: Ensures multiple threads will wait for each other\nto reach a point in the program, before continuing execution all\ntogether.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/condvar/struct.Condvar.html"><cide>Condvar</code></a>: Condition Variable, providing the ability to block\na thread while waiting for an event to occur.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/mpsc/index.html"><cide>mpsc</code></a>: Multi-producer, single-consumer queues, used for\nmessage-based communication. Can provide a lightweight\ninter-thread synchronisation mechanism, at the cost of some\nextra memory.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/mutex/struct.Mutex.html"><cide>Mutex</code></a>: Mutual Exclusion mechanism, which ensures that at\nmost one thread at a time is able to access some data.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/once/struct.Once.html"><cide>Once</code></a>: Used for thread-safe, one-time initialization of a\nglobal variable.</p>\n</li>\n<li>\n<p><a href="https://docs.rs/std/*/std/sync/rwlock/struct.RwLock.html"><cide>RwLock</code></a>: Provides a mutual exclusion mechanism which allows\nmultiple readers at the same time, while allowing only one\nwriter at a time. In some cases, this can be more efficient than\na mutex.</p>\n</li>\n</ul>\n','<per><cide class="language-rust">std::sync\n</code></pre>\n<per><cide class="language-rust">mod mpsc\n</code></pre>\n<hr />\n<p>Multi-producer, single-consumer FIFO queue communication primitives.</p>\n<p>This module provides message-based communication over channels, concretely\ndefined among three types:</p>\n<ul>\n<li><a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a></li>\n<li><a href="https://docs.rs/std/*/std/sync/mpsc/struct.SyncSender.html"><cide>SyncSender</code></a></li>\n<li><a href="https://docs.rs/std/*/std/sync/mpsc/struct.Receiver.html"><cide>Receiver</code></a></li>\n</ul>\n<p>A <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> or <a href="https://docs.rs/std/*/std/sync/mpsc/struct.SyncSender.html"><cide>SyncSender</code></a> is used to send data to a <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Receiver.html"><cide>Receiver</code></a>. Both\nsenders are clone-able (multi-producer) such that many threads can send\nsimultaneously to one receiver (single-consumer).</p>\n<p>These channels come in two flavors:</p>\n<ol>\n<li>\n<p>An asynchronous, infinitely buffered channel. The <a href="https://docs.rs/std/*/std/sync/mpsc/fn.channel.html"><cide>channel</code></a> function\nwill return a <cide>(Sender, Receiver)</code> tuple where all sends will be\n<strong>asynchronous</strong> (they never block). The channel conceptually has an\ninfinite buffer.</p>\n</li>\n<li>\n<p>A synchronous, bounded channel. The <a href="https://docs.rs/std/*/std/sync/mpsc/fn.sync_channel.html"><cide>sync_channel</code></a> function will\nreturn a <cide>(SyncSender, Receiver)</code> tuple where the storage for pending\nmessages is a pre-allocated buffer of a fixed size. All sends will be\n<strong>synchronous</strong> by blocking until there is buffer space available. Note\nthat a bound of 0 is allowed, causing the channel to become a &quot;rendezvous&quot;\nchannel where each sender atomically hands off a message to a receiver.</p>\n</li>\n</ol>\n<h2 id="disconnection"><a class="header" href="#disconnection">Disconnection</a></h2>\n<p>The send and receive operations on channels will all return a <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result</code></a>\nindicating whether the operation succeeded or not. An unsuccessful operation\nis normally indicative of the other half of a channel having &quot;hung up&quot; by\nbeing dropped in its corresponding thread.</p>\n<p>Once half of a channel has been deallocated, most operations can no longer\ncontinue to make progress, so <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> will be returned. Many applications\nwill continue to <a href="Result::unwrap"><cide>unwrap</code></a> the results returned from this module,\ninstigating a propagation of failure among threads if one unexpectedly dies.</p>\n<h1 id="examples"><a class="header" href="#examples">Examples</a></h1>\n<p>Simple usage:</p>\n<per><cide>use std::thread;\nuse std::sync::mpsc::channel;\n\n// Create a simple streaming channel\nlet (tx, rx) = channel();\nthread::spawn(move|| {\n    tx.send(10).unwrap();\n});\nassert_eq!(rx.recv().unwrap(), 10);\n</code></pre>\n<p>Shared usage:</p>\n<per><cide>use std::thread;\nuse std::sync::mpsc::channel;\n\n// Create a shared channel that can be sent along from many threads\n// where tx is the sending half (tx for transmission), and rx is the receiving\n// half (rx for receiving).\nlet (tx, rx) = channel();\nfor i in 0..10 {\n    let tx = tx.clone();\n    thread::spawn(move|| {\n        tx.send(i).unwrap();\n    });\n}\n\nfor _ in 0..10 {\n    let j = rx.recv().unwrap();\n    assert!(0 &lt;= j &amp;&amp; j &lt; 10);\n}\n</code></pre>\n<p>Propagating panics:</p>\n<per><cide>use std::sync::mpsc::channel;\n\n// The call to recv() will return an error because the channel has already\n// hung up (or been deallocated)\nlet (tx, rx) = channel::&lt;i32&gt;();\ndrop(tx);\nassert!(rx.recv().is_err());\n</code></pre>\n<p>Synchronous channels:</p>\n<per><cide>use std::thread;\nuse std::sync::mpsc::sync_channel;\n\nlet (tx, rx) = sync_channel::&lt;i32&gt;(0);\nthread::spawn(move|| {\n    // This will wait for the parent thread to start receiving\n    tx.send(53).unwrap();\n});\nrx.recv().unwrap();\n</code></pre>\n<p>Unbounded receive loop:</p>\n<per><cide>use std::sync::mpsc::sync_channel;\nuse std::thread;\n\nlet (tx, rx) = sync_channel(3);\n\nfor _ in 0..3 {\n    // It would be the same without thread and clone here\n    // since there will still be one `tx` left.\n    let tx = tx.clone();\n    // cloned tx dropped within thread\n    thread::spawn(move || tx.send(&quot;ok&quot;).unwrap());\n}\n\n// Drop the last sender to stop `rx` waiting for message.\n// The program will not complete if we comment this out.\n// **All** `tx` needs to be dropped for `rx` to have `Err`.\ndrop(tx);\n\n// Unbounded receiver waiting for all senders to complete.\nwhile let Ok(msg) = rx.recv() {\n    println!(&quot;{}&quot;, msg);\n}\n\nprintln!(&quot;completed&quot;);\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn main()\n</code></pre>\n','<per><cide class="language-rust">tx: Sender&lt;{unknown}&gt;\n</code></pre>\n','<per><cide class="language-rust">rx: Receiver&lt;{unknown}&gt;\n</code></pre>\n','<per><cide class="language-rust">std::sync::mpsc\n</code></pre>\n<per><cide class="language-rust">pub fn channel&lt;T&gt;() -&gt; (Sender&lt;T&gt;, Receiver&lt;T&gt;)\n</code></pre>\n<hr />\n<p>Creates a new asynchronous channel, returning the sender/receiver halves.\nAll data sent on the <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> will become available on the <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Receiver.html"><cide>Receiver</code></a> in\nthe same order as it was sent, and no <a href="Sender::send"><cide>send</code></a> will block the calling thread\n(this channel has an &quot;infinite buffer&quot;, unlike <a href="https://docs.rs/std/*/std/sync/mpsc/fn.sync_channel.html"><cide>sync_channel</code></a>, which will\nblock after its buffer limit is reached). <a href="Receiver::recv"><cide>recv</code></a> will block until a message\nis available while there is at least one <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> alive (including clones).</p>\n<p>The <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> can be cloned to <a href="Sender::send"><cide>send</code></a> to the same channel multiple times, but\nonly one <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Receiver.html"><cide>Receiver</code></a> is supported.</p>\n<p>If the <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Receiver.html"><cide>Receiver</code></a> is disconnected while trying to <a href="Sender::send"><cide>send</code></a> with the\n<a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a>, the <a href="Sender::send"><cide>send</code></a> method will return a <a href="https://docs.rs/std/*/std/sync/mpsc/struct.SendError.html"><cide>SendError</code></a>. Similarly, if the\n<a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> is disconnected while trying to <a href="Receiver::recv"><cide>recv</code></a>, the <a href="Receiver::recv"><cide>recv</code></a> method will\nreturn a <a href="https://docs.rs/std/*/std/sync/mpsc/struct.RecvError.html"><cide>RecvError</code></a>.</p>\n<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>\n<per><cide>use std::sync::mpsc::channel;\nuse std::thread;\n\nlet (sender, receiver) = channel();\n\n// Spawn off an expensive computation\nthread::spawn(move|| {\n#   fn expensive_computation() {}\n    sender.send(expensive_computation()).unwrap();\n});\n\n// Do some useful work for awhile\n\n// Let#$%s see what that answer was\nprintln!(&quot;{:?}&quot;, receiver.recv().unwrap());\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod thread\n</code></pre>\n<hr />\n<p>Native threads.</p>\n<h2 id="the-threading-model"><a class="header" href="#the-threading-model">The threading model</a></h2>\n<p>An executing Rust program consists of a collection of native OS threads,\neach with their own stack and local state. Threads can be named, and\nprovide some built-in support for low-level synchronization.</p>\n<p>Communication between threads can be done through\n<a href="https://docs.rs/std/*/std/sync/mpsc/index.html">channels</a>, Rust#$%s message-passing types, along with <a href="https://docs.rs/std/*/std/sync/index.html">other forms of thread\nsynchronization</a> and shared-memory data\nstructures. In particular, types that are guaranteed to be\nthreadsafe are easily shared between threads using the\natomically-reference-counted container, <a href="https://docs.rs/alloc/*/alloc/sync/struct.Arc.html"><cide>Arc</code></a>.</p>\n<p>Fatal logic errors in Rust cause <em>thread panic</em>, during which\na thread will unwind the stack, running destructors and freeing\nowned resources. While not meant as a #$%try/catch#$% mechanism, panics\nin Rust can nonetheless be caught (unless compiling with <cide>panic=abort</code>) with\n<a href="https://docs.rs/std/*/std/panic/fn.catch_unwind.html"><cide>catch_unwind</code></a> and recovered\nfrom, or alternatively be resumed with\n<a href="https://docs.rs/std/*/std/panic/fn.resume_unwind.html"><cide>resume_unwind</code></a>. If the panic\nis not caught the thread will exit, but the panic may optionally be\ndetected from a different thread with <a href="JoinHandle::join"><cide>join</code></a>. If the main thread panics\nwithout the panic being caught, the application will exit with a\nnon-zero exit code.</p>\n<p>When the main thread of a Rust program terminates, the entire program shuts\ndown, even if other threads are still running. However, this module provides\nconvenient facilities for automatically waiting for the termination of a\nchild thread (i.e., join).</p>\n<h2 id="spawning-a-thread"><a class="header" href="#spawning-a-thread">Spawning a thread</a></h2>\n<p>A new thread can be spawned using the <a href="https://docs.rs/std/*/std/thread/fn.spawn.html"><cide>thread::spawn</code></a> function:</p>\n<per><cide class="language-rust">use std::thread;\n\nthread::spawn(move || {\n    // some work here\n});\n</code></pre>\n<p>In this example, the spawned thread is &quot;detached&quot; from the current\nthread. This means that it can outlive its parent (the thread that spawned\nit), unless this parent is the main thread.</p>\n<p>The parent thread can also wait on the completion of the child\nthread; a call to <a href="https://docs.rs/std/*/std/thread/fn.spawn.html"><cide>spawn</code></a> produces a <a href="https://docs.rs/std/*/std/thread/struct.JoinHandle.html"><cide>JoinHandle</code></a>, which provides\na <cide>join</code> method for waiting:</p>\n<per><cide class="language-rust">use std::thread;\n\nlet child = thread::spawn(move || {\n    // some work here\n});\n// some work here\nlet res = child.join();\n</code></pre>\n<p>The <a href="JoinHandle::join"><cide>join</code></a> method returns a <a href="https://docs.rs/std/*/std/thread/type.Result.html"><cide>thread::Result</code></a> containing <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> of the final\nvalue produced by the child thread, or <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> of the value given to\na call to <a href="https://docs.rs/core/*/core/macro.panic.html"><cide>panic</code></a> if the child panicked.</p>\n<h2 id="configuring-threads"><a class="header" href="#configuring-threads">Configuring threads</a></h2>\n<p>A new thread can be configured before it is spawned via the <a href="https://docs.rs/std/*/std/thread/struct.Builder.html"><cide>Builder</code></a> type,\nwhich currently allows you to set the name and stack size for the child thread:</p>\n<per><cide class="language-rust"># #![allow(unused_must_use)]\nuse std::thread;\n\nthread::Builder::new().name(&quot;child1&quot;.to_string()).spawn(move || {\n    println!(&quot;Hello, world!&quot;);\n});\n</code></pre>\n<h2 id="the-cidethread-type"><a class="header" href="#the-cidethread-type">The <cide>Thread</code> type</a></h2>\n<p>Threads are represented via the <a href="https://docs.rs/std/*/std/thread/struct.Thread.html"><cide>Thread</code></a> type, which you can get in one of\ntwo ways:</p>\n<ul>\n<li>By spawning a new thread, e.g., using the <a href="https://docs.rs/std/*/std/thread/fn.spawn.html"><cide>thread::spawn</code></a>\nfunction, and calling <a href="%60JoinHandle::thread%60"><cide>thread</code></a> on the <a href="https://docs.rs/std/*/std/thread/struct.JoinHandle.html"><cide>JoinHandle</code></a>.</li>\n<li>By requesting the current thread, using the <a href="https://docs.rs/std/*/std/thread/fn.current.html"><cide>thread::current</code></a> function.</li>\n</ul>\n<p>The <a href="https://docs.rs/std/*/std/thread/fn.current.html"><cide>thread::current</code></a> function is available even for threads not spawned\nby the APIs of this module.</p>\n<h2 id="thread-local-storage"><a class="header" href="#thread-local-storage">Thread-local storage</a></h2>\n<p>This module also provides an implementation of thread-local storage for Rust\nprograms. Thread-local storage is a method of storing data into a global\nvariable that each thread in the program will have its own copy of.\nThreads do not share this data, so accesses do not need to be synchronized.</p>\n<p>A thread-local key owns the value it contains and will destroy the value when the\nthread exits. It is created with the <a href="https://docs.rs/std/*/std/macro.thread_local.html"><cide>thread_local</code></a> macro and can contain any\nvalue that is <cide>#$%static</code> (no borrowed pointers). It provides an accessor function,\n<a href="LocalKey::with"><cide>with</code></a>, that yields a shared reference to the value to the specified\nclosure. Thread-local keys allow only shared access to values, as there would be no\nway to guarantee uniqueness if mutable borrows were allowed. Most values\nwill want to make use of some form of <strong>interior mutability</strong> through the\n<a href="https://docs.rs/core/*/core/cell/struct.Cell.html"><cide>Cell</code></a> or <a href="https://docs.rs/core/*/core/cell/struct.RefCell.html"><cide>RefCell</code></a> types.</p>\n<h2 id="naming-threads"><a class="header" href="#naming-threads">Naming threads</a></h2>\n<p>Threads are able to have associated names for identification purposes. By default, spawned\nthreads are unnamed. To specify a name for a thread, build the thread with <a href="https://docs.rs/std/*/std/thread/struct.Builder.html"><cide>Builder</code></a> and pass\nthe desired thread name to <a href="%60Builder::name%60"><cide>Builder::name</code></a>. To retrieve the thread name from within the\nthread, use <a href="%60Thread::name%60"><cide>Thread::name</code></a>. A couple examples of where the name of a thread gets used:</p>\n<ul>\n<li>If a panic occurs in a named thread, the thread name will be printed in the panic message.</li>\n<li>The thread name is provided to the OS where applicable (e.g., <cide>pthread_setname_np</code> in\nunix-like platforms).</li>\n</ul>\n<h2 id="stack-size"><a class="header" href="#stack-size">Stack size</a></h2>\n<p>The default stack size for spawned threads is 2 MiB, though this particular stack size is\nsubject to change in the future. There are two ways to manually specify the stack size for\nspawned threads:</p>\n<ul>\n<li>Build the thread with <a href="https://docs.rs/std/*/std/thread/struct.Builder.html"><cide>Builder</code></a> and pass the desired stack size to <a href="%60Builder::stack_size%60"><cide>Builder::stack_size</code></a>.</li>\n<li>Set the <cide>RUST_MIN_STACK</code> environment variable to an integer representing the desired stack\nsize (in bytes). Note that setting <a href="%60Builder::stack_size%60"><cide>Builder::stack_size</code></a> will override this.</li>\n</ul>\n<p>Note that the stack size of the main thread is <em>not</em> determined by Rust.</p>\n','<per><cide class="language-rust">tx: Sender&lt;String&gt;\n</code></pre>\n','<per><cide class="language-rust">rx: Receiver&lt;String&gt;\n</code></pre>\n','<per><cide class="language-rust">std::thread\n</code></pre>\n<per><cide class="language-rust">pub fn spawn&lt;F, T&gt;(f: F) -&gt; JoinHandle&lt;T&gt;\nwhere\n    F: FnOnce&lt;(), Output = T&gt; + Send + #$%static,\n    T: Send + #$%static,\n</code></pre>\n<hr />\n<p>Spawns a new thread, returning a <a href="https://docs.rs/std/*/std/thread/struct.JoinHandle.html"><cide>JoinHandle</code></a> for it.</p>\n<p>The join handle will implicitly <em>detach</em> the child thread upon being\ndropped. In this case, the child thread may outlive the parent (unless\nthe parent thread is the main thread; the whole process is terminated when\nthe main thread finishes). Additionally, the join handle provides a <a href="JoinHandle::join"><cide>join</code></a>\nmethod that can be used to join the child thread. If the child thread\npanics, <a href="JoinHandle::join"><cide>join</code></a> will return an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> containing the argument given to\n<a href="https://docs.rs/core/*/core/macro.panic.html"><cide>panic</code></a>.</p>\n<p>This will create a thread using default parameters of <a href="https://docs.rs/std/*/std/thread/struct.Builder.html"><cide>Builder</code></a>, if you\nwant to specify the stack size or the name of the thread, use this API\ninstead.</p>\n<p>As you can see in the signature of <cide>spawn</code> there are two constraints on\nboth the closure given to <cide>spawn</code> and its return value, let#$%s explain them:</p>\n<ul>\n<li>The <cide>#$%static</code> constraint means that the closure and its return value\nmust have a lifetime of the whole program execution. The reason for this\nis that threads can <cide>detach</code> and outlive the lifetime they have been\ncreated in.\nIndeed if the thread, and by extension its return value, can outlive their\ncaller, we need to make sure that they will be valid afterwards, and since\nwe <em>can#$%t</em> know when it will return we need to have them valid as long as\npossible, that is until the end of the program, hence the <cide>#$%static</code>\nlifetime.</li>\n<li>The <a href="https://docs.rs/core/*/core/marker/trait.Send.html"><cide>Send</code></a> constraint is because the closure will need to be passed\n<em>by value</em> from the thread where it is spawned to the new thread. Its\nreturn value will need to be passed from the new thread to the thread\nwhere it is <cide>join</code>ed.\nAs a reminder, the <a href="https://docs.rs/core/*/core/marker/trait.Send.html"><cide>Send</code></a> marker trait expresses that it is safe to be\npassed from thread to thread. <a href="https://docs.rs/core/*/core/marker/trait.Sync.html"><cide>Sync</code></a> expresses that it is safe to have a\nreference be passed from thread to thread.</li>\n</ul>\n<h1 id="panics"><a class="header" href="#panics">Panics</a></h1>\n<p>Panics if the OS fails to create a thread; use <a href="%60Builder::spawn%60"><cide>Builder::spawn</code></a>\nto recover from such errors.</p>\n<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>\n<p>Creating a thread.</p>\n<per><cide>use std::thread;\n\nlet handler = thread::spawn(|| {\n    // thread code\n});\n\nhandler.join().unwrap();\n</code></pre>\n<p>As mentioned in the module documentation, threads are usually made to\ncommunicate using <a href="https://docs.rs/std/*/std/sync/mpsc/index.html"><cide>channels</code></a>, here is how it usually looks.</p>\n<p>This example also shows how to use <cide>move</code>, in order to give ownership\nof values to a thread.</p>\n<per><cide>use std::thread;\nuse std::sync::mpsc::channel;\n\nlet (tx, rx) = channel();\n\nlet sender = thread::spawn(move || {\n    tx.send(&quot;Hello, thread&quot;.to_owned())\n        .expect(&quot;Unable to send on channel&quot;);\n});\n\nlet receiver = thread::spawn(move || {\n    let value = rx.recv().expect(&quot;Unable to receive from channel&quot;);\n    println!(&quot;{}&quot;, value);\n});\n\nsender.join().expect(&quot;The sender thread has panicked&quot;);\nreceiver.join().expect(&quot;The receiver thread has panicked&quot;);\n</code></pre>\n<p>A thread can also return a value through its <a href="https://docs.rs/std/*/std/thread/struct.JoinHandle.html"><cide>JoinHandle</code></a>, you can use\nthis to make asynchronous computations (futures might be more appropriate\nthough).</p>\n<per><cide>use std::thread;\n\nlet computation = thread::spawn(|| {\n    // Some expensive computation.\n    42\n});\n\nlet result = computation.join().unwrap();\nprintln!(&quot;{}&quot;, result);\n</code></pre>\n','<per><cide class="language-rust">let val: String\n</code></pre>\n','<per><cide class="language-rust">alloc::string\n</code></pre>\n<per><cide class="language-rust">pub struct String\n</code></pre>\n<hr />\n<p>A UTF-8–encoded, growable string.</p>\n<p>The <cide>String</code> type is the most common string type that has ownership over the\ncontents of the string. It has a close relationship with its borrowed\ncounterpart, the primitive <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>.</p>\n<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>\n<p>You can create a <cide>String</code> from <a href="https://docs.rs/alloc/*/alloc/str/index.html">a literal string</a> with <a href="https://docs.rs/core/*/core/convert/trait.From.html#tymethod.from"><cide>String::from</code></a>:</p>\n<per><cide>let hello = String::from(&quot;Hello, world!&quot;);\n</code></pre>\n<p>You can append a <a href="%60char%60"><cide>char</code></a> to a <cide>String</code> with the <a href="String::push"><cide>push</code></a> method, and\nappend a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> with the <a href="String::push_str"><cide>push_str</code></a> method:</p>\n<per><cide>let mut hello = String::from(&quot;Hello, &quot;);\n\nhello.push(#$%w#$%);\nhello.push_str(&quot;orld!&quot;);\n</code></pre>\n<p>If you have a vector of UTF-8 bytes, you can create a <cide>String</code> from it with\nthe <a href="String::from_utf8"><cide>from_utf8</code></a> method:</p>\n<per><cide>// some bytes, in a vector\nlet sparkle_heart = vec![240, 159, 146, 150];\n\n// We know these bytes are valid, so we#$%ll use `unwrap()`.\nlet sparkle_heart = String::from_utf8(sparkle_heart).unwrap();\n\nassert_eq!(&quot;💖&quot;, sparkle_heart);\n</code></pre>\n<h1 id="utf-8"><a class="header" href="#utf-8">UTF-8</a></h1>\n<p><cide>String</code>s are always valid UTF-8. This has a few implications, the first of\nwhich is that if you need a non-UTF-8 string, consider <a href="https://docs.rs/alloc/*/std/ffi/struct.OsString.html"><cide>OsString</code></a>. It is\nsimilar, but without the UTF-8 constraint. The second implication is that\nyou cannot index into a <cide>String</code>:</p>\n<per><cide class="language-compile_fail,E0277">let s = &quot;hello&quot;;\n\nprintln!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!\n</code></pre>\n<p>Indexing is intended to be a constant-time operation, but UTF-8 encoding\ndoes not allow us to do this. Furthermore, it#$%s not clear what sort of\nthing the index should return: a byte, a codepoint, or a grapheme cluster.\nThe <a href="str::bytes"><cide>bytes</code></a> and <a href="str::chars"><cide>chars</code></a> methods return iterators over the first\ntwo, respectively.</p>\n<h1 id="deref"><a class="header" href="#deref">Deref</a></h1>\n<p><cide>String</code>s implement <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a><cide>&lt;Target=str&gt;</code>, and so inherit all of <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>#$%s\nmethods. In addition, this means that you can pass a <cide>String</code> to a\nfunction which takes a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> by using an ampersand (<cide>&amp;</code>):</p>\n<per><cide>fn takes_str(s: &amp;str) { }\n\nlet s = String::from(&quot;Hello&quot;);\n\ntakes_str(&amp;s);\n</code></pre>\n<p>This will create a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> from the <cide>String</code> and pass it in. This\nconversion is very inexpensive, and so generally, functions will accept\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>s as arguments unless they need a <cide>String</code> for some specific\nreason.</p>\n<p>In certain cases Rust doesn#$%t have enough information to make this\nconversion, known as <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a> coercion. In the following example a string\nslice <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;#$%a str</code></a> implements the trait <cide>TraitExample</code>, and the function\n<cide>example_func</code> takes anything that implements the trait. In this case Rust\nwould need to make two implicit conversions, which Rust doesn#$%t have the\nmeans to do. For that reason, the following example will not compile.</p>\n<per><cide class="language-compile_fail,E0277">trait TraitExample {}\n\nimpl&lt;#$%a&gt; TraitExample for &amp;#$%a str {}\n\nfn example_func&lt;A: TraitExample&gt;(example_arg: A) {}\n\nlet example_string = String::from(&quot;example_string&quot;);\nexample_func(&amp;example_string);\n</code></pre>\n<p>There are two options that would work instead. The first would be to\nchange the line <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(example_string.as_str());</code>, using the method <a href="String::as_str"><cide>as_str()</code></a>\nto explicitly extract the string slice containing the string. The second\nway changes <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(&amp;*example_string);</code>. In this case we are dereferencing a\n<cide>String</code> to a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, then referencing the <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> back to\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>. The second way is more idiomatic, however both work to do the\nconversion explicitly rather than relying on the implicit conversion.</p>\n<h1 id="representation"><a class="header" href="#representation">Representation</a></h1>\n<p>A <cide>String</code> is made up of three components: a pointer to some bytes, a\nlength, and a capacity. The pointer points to an internal buffer <cide>String</code>\nuses to store its data. The length is the number of bytes currently stored\nin the buffer, and the capacity is the size of the buffer in bytes. As such,\nthe length will always be less than or equal to the capacity.</p>\n<p>This buffer is always stored on the heap.</p>\n<p>You can look at these with the <a href="str::as_ptr"><cide>as_ptr</code></a>, <a href="String::len"><cide>len</code></a>, and <a href="String::capacity"><cide>capacity</code></a>\nmethods:</p>\n<per><cide>use std::mem;\n\nlet story = String::from(&quot;Once upon a time...&quot;);\n\n// Prevent automatically dropping the String#$%s data\nlet mut story = mem::ManuallyDrop::new(story);\n\nlet ptr = story.as_mut_ptr();\nlet len = story.len();\nlet capacity = story.capacity();\n\n// story has nineteen bytes\nassert_eq!(19, len);\n\n// We can re-build a String out of ptr, len, and capacity. This is all\n// unsafe because we are responsible for making sure the components are\n// valid:\nlet s = unsafe { String::from_raw_parts(ptr, len, capacity) } ;\n\nassert_eq!(String::from(&quot;Once upon a time...&quot;), s);\n</code></pre>\n<p>If a <cide>String</code> has enough capacity, adding elements to it will not\nre-allocate. For example, consider this program:</p>\n<per><cide>let mut s = String::new();\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>This will output the following:</p>\n<per><cide class="language-text">0\n5\n10\n20\n20\n40\n</code></pre>\n<p>At first, we have no memory allocated at all, but as we append to the\nstring, it increases its capacity appropriately. If we instead use the\n<a href="String::with_capacity"><cide>with_capacity</code></a> method to allocate the correct capacity initially:</p>\n<per><cide>let mut s = String::with_capacity(25);\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>We end up with a different output:</p>\n<per><cide class="language-text">25\n25\n25\n25\n25\n25\n</code></pre>\n<p>Here, there#$%s no need to allocate more memory inside the loop.</p>\n','<per><cide class="language-rust">core::convert::From\n</code></pre>\n<per><cide class="language-rust">pub fn from(_: T) -&gt; Self\n</code></pre>\n<hr />\n<p>Performs the conversion.</p>\n','<per><cide class="language-rust">std::sync::mpsc::Sender\n</code></pre>\n<per><cide class="language-rust">pub fn send(&amp;self, t: T) -&gt; Result&lt;(), SendError&lt;T&gt;&gt;\n</code></pre>\n<hr />\n<p>Attempts to send a value on this channel, returning it back if it could\nnot be sent.</p>\n<p>A successful send occurs when it is determined that the other end of\nthe channel has not hung up already. An unsuccessful send would be one\nwhere the corresponding receiver has already been deallocated. Note\nthat a return value of <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> means that the data will never be\nreceived, but a return value of <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> does <em>not</em> mean that the data\nwill be received. It is possible for the corresponding receiver to\nhang up immediately after this function returns <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a>.</p>\n<p>This method will never block the current thread.</p>\n<h1 id="examples-4"><a class="header" href="#examples-4">Examples</a></h1>\n<per><cide>use std::sync::mpsc::channel;\n\nlet (tx, rx) = channel();\n\n// This send is always successful\ntx.send(1).unwrap();\n\n// This send will fail because the receiver is gone\ndrop(rx);\nassert_eq!(tx.send(1).unwrap_err().0, 1);\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">pub fn unwrap(self) -&gt; T\n</code></pre>\n<hr />\n<p>Returns the contained <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> value, consuming the <cide>self</code> value.</p>\n<p>Because this function may panic, its use is generally discouraged.\nInstead, prefer to use pattern matching and handle the <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>\ncase explicitly, or call <a href="Result::unwrap_or"><cide>unwrap_or</code></a>, <a href="Result::unwrap_or_else"><cide>unwrap_or_else</code></a>, or\n<a href="Result::unwrap_or_default"><cide>unwrap_or_default</code></a>.</p>\n<h1 id="panics-1"><a class="header" href="#panics-1">Panics</a></h1>\n<p>Panics if the value is an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>, with a panic message provided by the\n<a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>#$%s value.</p>\n<h1 id="examples-5"><a class="header" href="#examples-5">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let x: Result&lt;u32, &amp;str&gt; = Ok(2);\nassert_eq!(x.unwrap(), 2);\n</code></pre>\n<per><cide class="language-should_panic">let x: Result&lt;u32, &amp;str&gt; = Err(&quot;emergency failure&quot;);\nx.unwrap(); // panics with `emergency failure`\n</code></pre>\n','<per><cide class="language-rust">let received: String\n</code></pre>\n','<per><cide class="language-rust">std::sync::mpsc::Receiver\n</code></pre>\n<per><cide class="language-rust">pub fn recv(&amp;self) -&gt; Result&lt;T, RecvError&gt;\n</code></pre>\n<hr />\n<p>Attempts to wait for a value on this receiver, returning an error if the\ncorresponding channel has hung up.</p>\n<p>This function will always block the current thread if there is no data\navailable and it#$%s possible for more data to be sent (at least one sender\nstill exists). Once a message is sent to the corresponding <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a>\n(or <a href="https://docs.rs/std/*/std/sync/mpsc/struct.SyncSender.html"><cide>SyncSender</code></a>), this receiver will wake up and return that\nmessage.</p>\n<p>If the corresponding <a href="https://docs.rs/std/*/std/sync/mpsc/struct.Sender.html"><cide>Sender</code></a> has disconnected, or it disconnects while\nthis call is blocking, this call will wake up and return <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> to\nindicate that no more messages can ever be received on this channel.\nHowever, since channels are buffered, messages sent before the disconnect\nwill still be properly received.</p>\n<h1 id="examples-6"><a class="header" href="#examples-6">Examples</a></h1>\n<per><cide>use std::sync::mpsc;\nuse std::thread;\n\nlet (send, recv) = mpsc::channel();\nlet handle = thread::spawn(move || {\n    send.send(1u8).unwrap();\n});\n\nhandle.join().unwrap();\n\nassert_eq!(Ok(1), recv.recv());\n</code></pre>\n<p>Buffering behavior:</p>\n<per><cide>use std::sync::mpsc;\nuse std::thread;\nuse std::sync::mpsc::RecvError;\n\nlet (send, recv) = mpsc::channel();\nlet handle = thread::spawn(move || {\n    send.send(1u8).unwrap();\n    send.send(2).unwrap();\n    send.send(3).unwrap();\n    drop(send);\n});\n\n// wait for the thread to join so we ensure the sender is dropped\nhandle.join().unwrap();\n\nassert_eq!(Ok(1), recv.recv());\nassert_eq!(Ok(2), recv.recv());\nassert_eq!(Ok(3), recv.recv());\nassert_eq!(Err(RecvError), recv.recv());\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! println\n</code></pre>\n<hr />\n<p>Prints to the standard output, with a newline.</p>\n<p>On all platforms, the newline is the LINE FEED character (<cide>\n</code>/<cide>U+000A</code>) alone\n(no additional CARRIAGE RETURN (<cide>\r</code>/<cide>U+000D</code>)).</p>\n<p>Use the <a href="%60format!%60"><cide>format!</code></a> syntax to write data to the standard output.\nSee <a href="crate::fmt"><cide>std::fmt</code></a> for more information.</p>\n<p>Use <cide>println!</code> only for the primary output of your program. Use\n<a href="%60eprintln!%60"><cide>eprintln!</code></a> instead to print error and progress messages.</p>\n<h1 id="panics-2"><a class="header" href="#panics-2">Panics</a></h1>\n<p>Panics if writing to <a href="crate::io::stdout"><cide>io::stdout</code></a> fails.</p>\n<h1 id="examples-7"><a class="header" href="#examples-7">Examples</a></h1>\n<per><cide>println!(); // prints just a newline\nprintln!(&quot;hello there!&quot;);\nprintln!(&quot;format {} arguments&quot;, &quot;some&quot;);\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod time\n</code></pre>\n<hr />\n<p>Temporal quantification.</p>\n<p>Example:</p>\n<per><cide>use std::time::Duration;\n\nlet five_seconds = Duration::new(5, 0);\n// both declarations are equivalent\nassert_eq!(Duration::new(5, 0), Duration::from_secs(5));\n</code></pre>\n','<per><cide class="language-rust">core::time\n</code></pre>\n<per><cide class="language-rust">pub struct Duration\n</code></pre>\n<hr />\n<p>A <cide>Duration</code> type to represent a span of time, typically used for system\ntimeouts.</p>\n<p>Each <cide>Duration</code> is composed of a whole number of seconds and a fractional part\nrepresented in nanoseconds. If the underlying system does not support\nnanosecond-level precision, APIs binding a system timeout will typically round up\nthe number of nanoseconds.</p>\n<p><a href="https://docs.rs/core/*/core/time/struct.Duration.html"><cide>Duration</code></a>s implement many common traits, including <a href="https://docs.rs/core/*/core/ops/arith/trait.Add.html"><cide>Add</code></a>, <a href="https://docs.rs/core/*/core/ops/arith/trait.Sub.html"><cide>Sub</code></a>, and other\n<a href="https://docs.rs/core/*/core/ops/index.html"><cide>ops</code></a> traits. It implements <a href="https://docs.rs/core/*/core/default/trait.Default.html"><cide>Default</code></a> by returning a zero-length <cide>Duration</code>.</p>\n<h1 id="examples-8"><a class="header" href="#examples-8">Examples</a></h1>\n<per><cide>use std::time::Duration;\n\nlet five_seconds = Duration::new(5, 0);\nlet five_seconds_and_five_nanos = five_seconds + Duration::new(0, 5);\n\nassert_eq!(five_seconds_and_five_nanos.as_secs(), 5);\nassert_eq!(five_seconds_and_five_nanos.subsec_nanos(), 5);\n\nlet ten_millis = Duration::from_millis(10);\n</code></pre>\n<h1 id="formatting-cideduration-values"><a class="header" href="#formatting-cideduration-values">Formatting <cide>Duration</code> values</a></h1>\n<p><cide>Duration</code> intentionally does not have a <cide>Display</code> impl, as there are a\nvariety of ways to format spans of time for human readability. <cide>Duration</code>\nprovides a <cide>Debug</code> impl that shows the full precision of the value.</p>\n<p>The <cide>Debug</code> output uses the non-ASCII &quot;µs&quot; suffix for microseconds. If your\nprogram output may appear in contexts that cannot rely on full Unicode\ncompatibility, you may wish to format <cide>Duration</code> objects yourself or use a\ncrate to do so.</p>\n','<per><cide class="language-rust">let vals: Vec&lt;String, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! vec\n</code></pre>\n<hr />\n<p>Creates a <a href="crate::vec::Vec"><cide>Vec</code></a> containing the arguments.</p>\n<p><cide>vec!</code> allows <cide>Vec</code>s to be defined with the same syntax as array expressions.\nThere are two forms of this macro:</p>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> containing a given list of elements:</li>\n</ul>\n<per><cide>let v = vec![1, 2, 3];\nassert_eq!(v[0], 1);\nassert_eq!(v[1], 2);\nassert_eq!(v[2], 3);\n</code></pre>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> from a given element and size:</li>\n</ul>\n<per><cide>let v = vec![1; 3];\nassert_eq!(v, [1, 1, 1]);\n</code></pre>\n<p>Note that unlike array expressions this syntax supports all elements\nwhich implement <a href="%60Clone%60"><cide>Clone</code></a> and the number of elements doesn#$%t have to be\na constant.</p>\n<p>This will use <cide>clone</code> to duplicate an expression, so one should be careful\nusing this with types having a nonstandard <cide>Clone</code> implementation. For\nexample, <cide>vec![Rc::new(1); 5]</code> will create a vector of five references\nto the same boxed integer value, not five references pointing to independently\nboxed integers.</p>\n<p>Also, note that <cide>vec![expr; 0]</code> is allowed, and produces an empty vector.\nThis will still evaluate <cide>expr</code>, however, and immediately drop the resulting value, so\nbe mindful of side effects.</p>\n','<per><cide class="language-rust">val: String\n</code></pre>\n','<per><cide class="language-rust">std::thread\n</code></pre>\n<per><cide class="language-rust">pub fn sleep(dur: Duration)\n</code></pre>\n<hr />\n<p>Puts the current thread to sleep for at least the specified amount of time.</p>\n<p>The thread may sleep longer than the duration specified due to scheduling\nspecifics or platform-dependent functionality. It will never sleep less.</p>\n<p>This function is blocking, and should not be used in <cide>async</code> functions.</p>\n<h1 id="platform-specific-behavior"><a class="header" href="#platform-specific-behavior">Platform-specific behavior</a></h1>\n<p>On Unix platforms, the underlying syscall may be interrupted by a\nspurious wakeup or signal handler. To ensure the sleep occurs for at least\nthe specified duration, this function may invoke that system call multiple\ntimes.\nPlatforms which do not support nanosecond precision for sleeping will\nhave <cide>dur</code> rounded up to the nearest granularity of time they can sleep for.</p>\n<p>Currently, specifying a zero duration on Unix platforms returns immediately\nwithout invoking the underlying <a href="https://linux.die.net/man/2/nanosleep"><cide>nanosleep</code></a> syscall, whereas on Windows\nplatforms the underlying <a href="https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep"><cide>Sleep</code></a> syscall is always invoked.\nIf the intention is to yield the current time-slice you may want to use\n<a href="https://docs.rs/std/*/std/thread/fn.yield_now.html"><cide>yield_now</code></a> instead.</p>\n<h1 id="examples-9"><a class="header" href="#examples-9">Examples</a></h1>\n<per><cide class="language-no_run">use std::{thread, time};\n\nlet ten_millis = time::Duration::from_millis(10);\nlet now = time::Instant::now();\n\nthread::sleep(ten_millis);\n\nassert!(now.elapsed() &gt;= ten_millis);\n</code></pre>\n','<per><cide class="language-rust">core::time::Duration\n</code></pre>\n<per><cide class="language-rust">pub const fn from_secs(secs: u64) -&gt; Duration\n</code></pre>\n<hr />\n<p>Creates a new <cide>Duration</code> from the specified number of whole seconds.</p>\n<h1 id="examples-10"><a class="header" href="#examples-10">Examples</a></h1>\n<per><cide>use std::time::Duration;\n\nlet duration = Duration::from_secs(5);\n\nassert_eq!(5, duration.as_secs());\nassert_eq!(0, duration.subsec_nanos());\n</code></pre>\n','<per><cide class="language-rust">received: String\n</code></pre>\n','<per><cide class="language-rust">let tx1: Sender&lt;String&gt;\n</code></pre>\n','<per><cide class="language-rust">core::clone::Clone\n</code></pre>\n<per><cide class="language-rust">pub fn clone(&amp;self) -&gt; Self\n</code></pre>\n<hr />\n<p>Returns a copy of the value.</p>\n<h1 id="examples-11"><a class="header" href="#examples-11">Examples</a></h1>\n<per><cide># #![allow(noop_method_call)]\nlet hello = &quot;Hello&quot;; // &amp;str implements Clone\n\nassert_eq!(&quot;Hello&quot;, hello.clone());\n</code></pre>\n',].map((x)=>x.replaceAll('#$%', "'").replaceAll('<per', '<pre').replaceAll('<cide', '<code'));
+    window.onload = () => {
+        console.log("hello");
+        tippy('.ra', {
+            content: (x) => {
+                const div = document.createElement('div');
+                div.innerHTML = hoverData[x.dataset.hover];
+                div.className = 'hover-holder';
+                div.querySelectorAll('code').forEach((y) => y.innerHTML = hljs.highlight('rust', y.innerText).value);
+                return div;
+            },
+            allowHTML: true,
+            delay: [200, 0],
+            interactive: true,
+            maxWidth: '80vw',
+            appendTo: document.querySelector('.content'),
+        });
+    };
+</script>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="ch16-01-threads.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ch16-03-shared-state.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="ch16-01-threads.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ch16-03-shared-state.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="ferris.js"></script>
+        
+        
+    </body>
+</html>

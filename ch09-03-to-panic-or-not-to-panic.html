@@ -1,0 +1,494 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>To panic! or Not To panic! - The Rust Programming Language</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="ferris.css">
+                <link rel="stylesheet" href="theme/2018-edition.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Common Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Functions</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Comments</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Control Flow</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Understanding Ownership</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> What is Ownership?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> References and Borrowing</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> The Slice Type</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Using Structs to Structure Related Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Defining and Instantiating Structs</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> An Example Program Using Structs</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Method Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Enums and Pattern Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Defining an Enum</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> The match Control Flow Operator</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Concise Control Flow with if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Managing Growing Projects with Packages, Crates, and Modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Packages and Crates</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Defining Modules to Control Scope and Privacy</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Paths for Referring to an Item in the Module Tree</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Bringing Paths Into Scope with the use Keyword</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Separating Modules into Different Files</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Storing Lists of Values with Vectors</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Storing UTF-8 Encoded Text with Strings</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Storing Keys with Associated Values in Hash Maps</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Unrecoverable Errors with panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Recoverable Errors with Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html" class="active"><strong aria-hidden="true">9.3.</strong> To panic! or Not To panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Generic Types, Traits, and Lifetimes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Generic Data Types</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Traits: Defining Shared Behavior</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Validating References with Lifetimes</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Writing Automated Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> How to Write Tests</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Controlling How Tests Are Run</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Test Organization</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> An I/O Project: Building a Command Line Program</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Accepting Command Line Arguments</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Reading a File</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Refactoring to Improve Modularity and Error Handling</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Developing the Library’s Functionality with Test Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Working with Environment Variables</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Writing Error Messages to Standard Error Instead of Standard Output</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Functional Language Features: Iterators and Closures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Closures: Anonymous Functions that Can Capture Their Environment</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Processing a Series of Items with Iterators</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Improving Our I/O Project</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Comparing Performance: Loops vs. Iterators</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> More about Cargo and Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Customizing Builds with Release Profiles</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Publishing a Crate to Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo Workspaces</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Installing Binaries from Crates.io with cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Extending Cargo with Custom Commands</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Smart Pointers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Using Box&lt;T&gt; to Point to Data on the Heap</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Treating Smart Pointers Like Regular References with the Deref Trait</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Running Code on Cleanup with the Drop Trait</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, the Reference Counted Smart Pointer</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; and the Interior Mutability Pattern</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Reference Cycles Can Leak Memory</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Fearless Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Using Threads to Run Code Simultaneously</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> Using Message Passing to Transfer Data Between Threads</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Shared-State Concurrency</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Extensible Concurrency with the Sync and Send Traits</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Object Oriented Programming Features of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Characteristics of Object-Oriented Languages</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Using Trait Objects That Allow for Values of Different Types</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Implementing an Object-Oriented Design Pattern</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Patterns and Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> All the Places Patterns Can Be Used</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability: Whether a Pattern Might Fail to Match</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Pattern Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Advanced Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Macros</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Final Project: Building a Multithreaded Web Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> Building a Single-Threaded Web Server</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Turning Our Single-Threaded Server into a Multithreaded Server</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Graceful Shutdown and Cleanup</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Keywords</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Operators and Symbols</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Derivable Traits</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Useful Development Tools</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Editions</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Translations of the Book</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - How Rust is Made and “Nightly Rust”</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Rust Programming Language</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.inlay-hint, .inlay-hint * {
+    border-radius: .4em;
+}
+
+.light .inlay-hint, .rust .inlay-hint {
+    background-color: #dcc;
+    color: #777;
+}
+
+.ayu .inlay-hint, .navy .inlay-hint, .coal .inlay-hint {
+    background-color: #444;
+    color: #999;
+}
+
+.inlay-hint {
+    font-size: 0.8em;
+    user-select: none;
+}
+.hover-holder {
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.tippy-content {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+</style>## To `panic!` or Not to `panic!`
+<p>So how do you decide when you should call <code>panic!</code> and when you should return
+<code>Result</code>? When code panics, there’s no way to recover. You could call <code>panic!</code>
+for any error situation, whether there’s a possible way to recover or not, but
+then you’re making the decision on behalf of the code calling your code that a
+situation is unrecoverable. When you choose to return a <code>Result</code> value, you
+give the calling code options rather than making the decision for it. The
+calling code could choose to attempt to recover in a way that’s appropriate for
+its situation, or it could decide that an <code>Err</code> value in this case is
+unrecoverable, so it can call <code>panic!</code> and turn your recoverable error into an
+unrecoverable one. Therefore, returning <code>Result</code> is a good default choice when
+you’re defining a function that might fail.</p>
+<p>In rare situations, it’s more appropriate to write code that panics instead of
+returning a <code>Result</code>. Let’s explore why it’s appropriate to panic in examples,
+prototype code, and tests. Then we’ll discuss situations in which the compiler
+can’t tell that failure is impossible, but you as a human can. The chapter will
+conclude with some general guidelines on how to decide whether to panic in
+library code.</p>
+<h3 id="examples-prototype-code-and-tests"><a class="header" href="#examples-prototype-code-and-tests">Examples, Prototype Code, and Tests</a></h3>
+<p>When you’re writing an example to illustrate some concept, having robust
+error-handling code in the example as well can make the example less clear. In
+examples, it’s understood that a call to a method like <code>unwrap</code> that could
+panic is meant as a placeholder for the way you’d want your application to
+handle errors, which can differ based on what the rest of your code is doing.</p>
+<p>Similarly, the <code>unwrap</code> and <code>expect</code> methods are very handy when prototyping,
+before you’re ready to decide how to handle errors. They leave clear markers in
+your code for when you’re ready to make your program more robust.</p>
+<p>If a method call fails in a test, you’d want the whole test to fail, even if
+that method isn’t the functionality under test. Because <code>panic!</code> is how a test
+is marked as a failure, calling <code>unwrap</code> or <code>expect</code> is exactly what should
+happen.</p>
+<h3 id="cases-in-which-you-have-more-information-than-the-compiler"><a class="header" href="#cases-in-which-you-have-more-information-than-the-compiler">Cases in Which You Have More Information Than the Compiler</a></h3>
+<p>It would also be appropriate to call <code>unwrap</code> when you have some other logic
+that ensures the <code>Result</code> will have an <code>Ok</code> value, but the logic isn’t
+something the compiler understands. You’ll still have a <code>Result</code> value that you
+need to handle: whatever operation you’re calling still has the possibility of
+failing in general, even though it’s logically impossible in your particular
+situation. If you can ensure by manually inspecting the code that you’ll never
+have an <code>Err</code> variant, it’s perfectly acceptable to call <code>unwrap</code>. Here’s an
+example:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    use <span class="ra" data-hover="1">std</span>::<span class="ra" data-hover="2">net</span>::<span class="ra" data-hover="3">IpAddr</span>;
+
+    let <span class="ra" data-hover="4">home</span>: <span class="ra" data-hover="3">IpAddr</span> = "127.0.0.1".<span class="ra" data-hover="5">parse</span>().<span class="ra" data-hover="6">unwrap</span>();
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>We’re creating an <code>IpAddr</code> instance by parsing a hardcoded string. We can see
+that <code>127.0.0.1</code> is a valid IP address, so it’s acceptable to use <code>unwrap</code>
+here. However, having a hardcoded, valid string doesn’t change the return type
+of the <code>parse</code> method: we still get a <code>Result</code> value, and the compiler will
+still make us handle the <code>Result</code> as if the <code>Err</code> variant is a possibility
+because the compiler isn’t smart enough to see that this string is always a
+valid IP address. If the IP address string came from a user rather than being
+hardcoded into the program and therefore <em>did</em> have a possibility of failure,
+we’d definitely want to handle the <code>Result</code> in a more robust way instead.</p>
+<h3 id="guidelines-for-error-handling"><a class="header" href="#guidelines-for-error-handling">Guidelines for Error Handling</a></h3>
+<p>It’s advisable to have your code panic when it’s possible that your code
+could end up in a bad state. In this context, a <em>bad state</em> is when some
+assumption, guarantee, contract, or invariant has been broken, such as when
+invalid values, contradictory values, or missing values are passed to your
+code—plus one or more of the following:</p>
+<ul>
+<li>The bad state is not something that’s <em>expected</em> to happen occasionally.</li>
+<li>Your code after this point needs to rely on not being in this bad state.</li>
+<li>There’s not a good way to encode this information in the types you use.</li>
+</ul>
+<p>If someone calls your code and passes in values that don’t make sense, the best
+choice might be to call <code>panic!</code> and alert the person using your library to the
+bug in their code so they can fix it during development. Similarly, <code>panic!</code> is
+often appropriate if you’re calling external code that is out of your control
+and it returns an invalid state that you have no way of fixing.</p>
+<p>However, when failure is expected, it’s more appropriate to return a <code>Result</code>
+than to make a <code>panic!</code> call. Examples include a parser being given malformed
+data or an HTTP request returning a status that indicates you have hit a rate
+limit. In these cases, returning a <code>Result</code> indicates that failure is an
+expected possibility that the calling code must decide how to handle.</p>
+<p>When your code performs operations on values, your code should verify the
+values are valid first and panic if the values aren’t valid. This is mostly for
+safety reasons: attempting to operate on invalid data can expose your code to
+vulnerabilities. This is the main reason the standard library will call
+<code>panic!</code> if you attempt an out-of-bounds memory access: trying to access memory
+that doesn’t belong to the current data structure is a common security problem.
+Functions often have <em>contracts</em>: their behavior is only guaranteed if the
+inputs meet particular requirements. Panicking when the contract is violated
+makes sense because a contract violation always indicates a caller-side bug and
+it’s not a kind of error you want the calling code to have to explicitly
+handle. In fact, there’s no reasonable way for calling code to recover; the
+calling <em>programmers</em> need to fix the code. Contracts for a function,
+especially when a violation will cause a panic, should be explained in the API
+documentation for the function.</p>
+<p>However, having lots of error checks in all of your functions would be verbose
+and annoying. Fortunately, you can use Rust’s type system (and thus the type
+checking the compiler does) to do many of the checks for you. If your function
+has a particular type as a parameter, you can proceed with your code’s logic
+knowing that the compiler has already ensured you have a valid value. For
+example, if you have a type rather than an <code>Option</code>, your program expects to
+have <em>something</em> rather than <em>nothing</em>. Your code then doesn’t have to handle
+two cases for the <code>Some</code> and <code>None</code> variants: it will only have one case for
+definitely having a value. Code trying to pass nothing to your function won’t
+even compile, so your function doesn’t have to check for that case at runtime.
+Another example is using an unsigned integer type such as <code>u32</code>, which ensures
+the parameter is never negative.</p>
+<h3 id="creating-custom-types-for-validation"><a class="header" href="#creating-custom-types-for-validation">Creating Custom Types for Validation</a></h3>
+<p>Let’s take the idea of using Rust’s type system to ensure we have a valid value
+one step further and look at creating a custom type for validation. Recall the
+guessing game in Chapter 2 in which our code asked the user to guess a number
+between 1 and 100. We never validated that the user’s guess was between those
+numbers before checking it against our secret number; we only validated that
+the guess was positive. In this case, the consequences were not very dire: our
+output of “Too high” or “Too low” would still be correct. But it would be a
+useful enhancement to guide the user toward valid guesses and have different
+behavior when a user guesses a number that’s out of range versus when a user
+types, for example, letters instead.</p>
+<p>One way to do this would be to parse the guess as an <code>i32</code> instead of only a
+<code>u32</code> to allow potentially negative numbers, and then add a check for the
+number being in range, like so:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use rand::Rng;
+</span><span class="boring">use std::cmp::Ordering;
+</span><span class="boring">use std::io;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    println!("Guess the number!");
+</span><span class="boring">
+</span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..101);
+</span><span class="boring">
+</span>    loop {
+        // --snip--
+
+<span class="boring">        println!("Please input your guess.");
+</span><span class="boring">
+</span><span class="boring">        let mut guess = String::new();
+</span><span class="boring">
+</span><span class="boring">        io::stdin()
+</span><span class="boring">            .read_line(&mut guess)
+</span><span class="boring">            .expect("Failed to read line");
+</span><span class="boring">
+</span>        let <span class="ra" data-hover="18">guess</span>: <span class="ra" data-hover="19">i32</span> = match <span class="ra" data-hover="12">guess</span>.<span class="ra" data-hover="20">trim</span>().<span class="ra" data-hover="5">parse</span>() {
+            <span class="ra" data-hover="21">Ok</span>(<span class="ra" data-hover="22">num</span><span class="inlay-hint">: i32</span>) =&gt; <span class="ra" data-hover="22">num</span>,
+            <span class="ra" data-hover="23">Err</span>(_) =&gt; continue,
+        };
+
+        if <span class="ra" data-hover="18">guess</span> &lt; 1 || <span class="ra" data-hover="18">guess</span> &gt; 100 {
+            <span class="ra" data-hover="10">println</span>!("The secret number will be between 1 and 100.");
+            continue;
+        }
+
+        match <span class="ra" data-hover="18">guess</span>.<span class="ra" data-hover="24">cmp</span>(&amp;<span class="ra" data-hover="11">secret_number</span>) {
+            // --snip--
+<span class="boring">            Ordering::Less => println!("Too small!"),
+</span><span class="boring">            Ordering::Greater => println!("Too big!"),
+</span><span class="boring">            Ordering::Equal => {
+</span><span class="boring">                println!("You win!");
+</span><span class="boring">                break;
+</span><span class="boring">            }
+</span><span class="boring">        }
+</span>    }
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>The <code>if</code> expression checks whether our value is out of range, tells the user
+about the problem, and calls <code>continue</code> to start the next iteration of the loop
+and ask for another guess. After the <code>if</code> expression, we can proceed with the
+comparisons between <code>guess</code> and the secret number knowing that <code>guess</code> is
+between 1 and 100.</p>
+<p>However, this is not an ideal solution: if it was absolutely critical that the
+program only operated on values between 1 and 100, and it had many functions
+with this requirement, having a check like this in every function would be
+tedious (and might impact performance).</p>
+<p>Instead, we can make a new type and put the validations in a function to create
+an instance of the type rather than repeating the validations everywhere. That
+way, it’s safe for functions to use the new type in their signatures and
+confidently use the values they receive. Listing 9-10 shows one way to define a
+<code>Guess</code> type that will only create an instance of <code>Guess</code> if the <code>new</code> function
+receives a value between 1 and 100.</p>
+<!-- Deliberately not using rustdoc_include here; the `main` function in the
+file requires the `rand` crate. We do want to include it for reader
+experimentation purposes, but don't want to include it for rustdoc testing
+purposes. -->
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct <span class="ra" data-hover="28">Guess</span> {
+    <span class="ra" data-hover="29">value</span>: <span class="ra" data-hover="19">i32</span>,
+}
+
+impl <span class="ra" data-hover="28">Guess</span> {
+    pub fn <span class="ra" data-hover="30">new</span>(<span class="ra" data-hover="31">value</span>: <span class="ra" data-hover="19">i32</span>) -&gt; <span class="ra" data-hover="28">Guess</span> {
+        if <span class="ra" data-hover="31">value</span> &lt; 1 || <span class="ra" data-hover="31">value</span> &gt; 100 {
+            <span class="ra" data-hover="32">panic</span>!("Guess value must be between 1 and 100, got {}.", <span class="ra" data-hover="31">value</span>);
+        }
+
+        <span class="ra" data-hover="28">Guess</span> { value }
+    }
+
+    pub fn <span class="ra" data-hover="33">value</span>(&amp;<span class="ra" data-hover="34">self</span>) -&gt; <span class="ra" data-hover="19">i32</span> {
+        <span class="ra" data-hover="34">self</span>.<span class="ra" data-hover="29">value
+    }
+}
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 9-10: A <code>Guess</code> type that will only continue with
+values between 1 and 100</span></p>
+<p>First, we define a struct named <code>Guess</code> that has a field named <code>value</code> that
+holds an <code>i32</code>. This is where the number will be stored.</p>
+<p>Then we implement an associated function named <code>new</code> on <code>Guess</code> that creates
+instances of <code>Guess</code> values. The <code>new</code> function is defined to have one
+parameter named <code>value</code> of type <code>i32</code> and to return a <code>Guess</code>. The code in the
+body of the <code>new</code> function tests <code>value</code> to make sure it’s between 1 and 100.
+If <code>value</code> doesn’t pass this test, we make a <code>panic!</code> call, which will alert
+the programmer who is writing the calling code that they have a bug they need
+to fix, because creating a <code>Guess</code> with a <code>value</code> outside this range would
+violate the contract that <code>Guess::new</code> is relying on. The conditions in which
+<code>Guess::new</code> might panic should be discussed in its public-facing API
+documentation; we’ll cover documentation conventions indicating the possibility
+of a <code>panic!</code> in the API documentation that you create in Chapter 14. If
+<code>value</code> does pass the test, we create a new <code>Guess</code> with its <code>value</code> field set
+to the <code>value</code> parameter and return the <code>Guess</code>.</p>
+<p>Next, we implement a method named <code>value</code> that borrows <code>self</code>, doesn’t have any
+other parameters, and returns an <code>i32</code>. This kind of method is sometimes called
+a <em>getter</em>, because its purpose is to get some data from its fields and return
+it. This public method is necessary because the <code>value</code> field of the <code>Guess</code>
+struct is private. It’s important that the <code>value</code> field be private so code
+using the <code>Guess</code> struct is not allowed to set <code>value</code> directly: code outside
+the module <em>must</em> use the <code>Guess::new</code> function to create an instance of
+<code>Guess</code>, thereby ensuring there’s no way for a <code>Guess</code> to have a <code>value</code> that
+hasn’t been checked by the conditions in the <code>Guess::new</code> function.</p>
+<p>A function that has a parameter or returns only numbers between 1 and 100 could
+then declare in its signature that it takes or returns a <code>Guess</code> rather than an
+<code>i32</code> and wouldn’t need to do any additional checks in its body.</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Rust’s error handling features are designed to help you write more robust code.
+The <code>panic!</code> macro signals that your program is in a state it can’t handle and
+lets you tell the process to stop instead of trying to proceed with invalid or
+incorrect values. The <code>Result</code> enum uses Rust’s type system to indicate that
+operations might fail in a way that your code could recover from. You can use
+<code>Result</code> to tell code that calls your code that it needs to handle potential
+success or failure as well. Using <code>panic!</code> and <code>Result</code> in the appropriate
+situations will make your code more reliable in the face of inevitable problems.</p>
+<p>Now that you’ve seen useful ways that the standard library uses generics with
+the <code>Option</code> and <code>Result</code> enums, we’ll talk about how generics work and how you
+can use them in your code.</p>
+<script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.2/dist/tippy-bundle.umd.min.js" integrity="sha384-vApKv6LkBdPwmt/fNiQrBCVCZvuniXpG0b5UZhVrGAq1zXdZRSsPcWjGdVxkZJtX" crossorigin="anonymous"></script>
+<script>
+    const hoverData = ['<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn main()\n</code></pre>\n','<per><cide class="language-rust">extern crate std\n</code></pre>\n<hr />\n<h1 id="the-rust-standard-library"><a class="header" href="#the-rust-standard-library">The Rust Standard Library</a></h1>\n<p>The Rust Standard Library is the foundation of portable Rust software, a\nset of minimal and battle-tested shared abstractions for the <a href="https://crates.io">broader Rust\necosystem</a>. It offers core types, like <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> and\n<a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a>, library-defined <a href="https://docs.rs/std/*/std/index.html#primitives">operations on language\nprimitives</a>, <a href="https://docs.rs/std/*/std/index.html#macros">standard macros</a>, <a href="https://docs.rs/std/*/std/io/index.html">I/O</a> and\n<a href="https://docs.rs/std/*/std/thread/index.html">multithreading</a>, among <a href="https://docs.rs/std/*/std/index.html#what-is-in-the-standard-library-documentation">many other things</a>.</p>\n<p><cide>std</code> is available to all Rust crates by default. Therefore, the\nstandard library can be accessed in <a href="https://docs.rs/std/*/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"><cide>use</code></a> statements through the path\n<cide>std</code>, as in <a href="https://docs.rs/std/*/std/env/index.html"><cide>use std::env</code></a>.</p>\n<h1 id="how-to-read-this-documentation"><a class="header" href="#how-to-read-this-documentation">How to read this documentation</a></h1>\n<p>If you already know the name of what you are looking for, the fastest way to\nfind it is to use the <!-- raw HTML omitted -->search\nbar<!-- raw HTML omitted --> at the top of the page.</p>\n<p>Otherwise, you may want to jump to one of these useful sections:</p>\n<ul>\n<li><a href="https://docs.rs/std/*/std/index.html#modules"><cide>std::*</code> modules</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#primitives">Primitive types</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#macros">Standard macros</a></li>\n<li><a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a></li>\n</ul>\n<p>If this is your first time, the documentation for the standard library is\nwritten to be casually perused. Clicking on interesting things should\ngenerally lead you to interesting places. Still, there are important bits\nyou don#$%t want to miss, so read on for a tour of the standard library and\nits documentation!</p>\n<p>Once you are familiar with the contents of the standard library you may\nbegin to find the verbosity of the prose distracting. At this stage in your\ndevelopment you may want to press the <cide>[-]</code> button near the top of the\npage to collapse it into a more skimmable view.</p>\n<p>While you are looking at that <cide>[-]</code> button also notice the <cide>[src]</code>\nbutton. Rust#$%s API documentation comes with the source code and you are\nencouraged to read it. The standard library source is generally high\nquality and a peek behind the curtains is often enlightening.</p>\n<h1 id="what-is-in-the-standard-library-documentation"><a class="header" href="#what-is-in-the-standard-library-documentation">What is in the standard library documentation?</a></h1>\n<p>First of all, The Rust Standard Library is divided into a number of focused\nmodules, <a href="https://docs.rs/std/*/std/index.html#modules">all listed further down this page</a>. These modules are\nthe bedrock upon which all of Rust is forged, and they have mighty names\nlike <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>std::slice</code></a> and <a href="https://docs.rs/core/*/core/cmp/index.html"><cide>std::cmp</code></a>. Modules#$% documentation typically\nincludes an overview of the module along with examples, and are a smart\nplace to start familiarizing yourself with the library.</p>\n<p>Second, implicit methods on <a href="https://docs.rs/std/*/book/ch03-02-data-types.html">primitive types</a> are documented here. This can\nbe a source of confusion for two reasons:</p>\n<ol>\n<li>While primitives are implemented by the compiler, the standard library\nimplements methods directly on the primitive types (and it is the only\nlibrary that does so), which are <a href="https://docs.rs/std/*/std/index.html#primitives">documented in the section on\nprimitives</a>.</li>\n<li>The standard library exports many modules <em>with the same name as\nprimitive types</em>. These define additional items related to the primitive\ntype, but not the all-important methods.</li>\n</ol>\n<p>So for example there is a <a href="primitive::i32">page for the primitive type\n<cide>i32</code></a> that lists all the methods that can be called on\n32-bit integers (very useful), and there is a <a href="https://docs.rs/core/*/core/i32/index.html">page for the module\n<cide>std::i32</code></a> that documents the constant values <a href="https://docs.rs/core/*/core/i32/const.MIN.html"><cide>MIN</code></a> and <a href="https://docs.rs/core/*/core/i32/const.MAX.html"><cide>MAX</code></a> (rarely\nuseful).</p>\n<p>Note the documentation for the primitives <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> (also\ncalled #$%slice#$%). Many method calls on <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> and <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> are actually\ncalls to methods on <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> respectively, via <a href="https://docs.rs/std/*/book/ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">deref\ncoercions</a>.</p>\n<p>Third, the standard library defines <a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a>, a small collection\nof items - mostly traits - that are imported into every module of every\ncrate. The traits in the prelude are pervasive, making the prelude\ndocumentation a good entry point to learning about the library.</p>\n<p>And finally, the standard library exports a number of standard macros, and\n<a href="https://docs.rs/std/*/std/index.html#macros">lists them on this page</a> (technically, not all of the standard\nmacros are defined by the standard library - some are defined by the\ncompiler - but they are documented here the same). Like the prelude, the\nstandard macros are imported by default into all crates.</p>\n<h1 id="contributing-changes-to-the-documentation"><a class="header" href="#contributing-changes-to-the-documentation">Contributing changes to the documentation</a></h1>\n<p>Check out the rust contribution guidelines <a href="https://rustc-dev-guide.rust-lang.org/contributing.html#writing-documentation">here</a>.\nThe source for this documentation can be found on\n<a href="https://github.com/rust-lang/rust">GitHub</a>.\nTo contribute changes, make sure you read the guidelines first, then submit\npull-requests for your suggested changes.</p>\n<p>Contributions are appreciated! If you see a part of the docs that can be\nimproved, submit a PR, or chat with us first on <a href="https://discord.gg/rust-lang">Discord</a>\n#docs.</p>\n<h1 id="a-tour-of-the-rust-standard-library"><a class="header" href="#a-tour-of-the-rust-standard-library">A Tour of The Rust Standard Library</a></h1>\n<p>The rest of this crate documentation is dedicated to pointing out notable\nfeatures of The Rust Standard Library.</p>\n<h2 id="containers-and-collections"><a class="header" href="#containers-and-collections">Containers and collections</a></h2>\n<p>The <a href="https://docs.rs/core/*/core/option/index.html"><cide>option</code></a> and <a href="https://docs.rs/core/*/core/result/index.html"><cide>result</code></a> modules define optional and error-handling\ntypes, <a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a> and <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>. The <a href="https://docs.rs/core/*/core/iter/index.html"><cide>iter</code></a> module defines\nRust#$%s iterator trait, <a href="https://docs.rs/core/*/core/iter/traits/iterator/trait.Iterator.html"><cide>Iterator</code></a>, which works with the <a href="https://docs.rs/std/*/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> loop to\naccess collections.</p>\n<p>The standard library exposes three common ways to deal with contiguous\nregions of memory:</p>\n<ul>\n<li><a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> - A heap-allocated <em>vector</em> that is resizable at runtime.</li>\n<li><a href="https://docs.rs/core/*/core/array/index.html"><cide>[T; N]</code></a> - An inline <em>array</em> with a fixed size at compile time.</li>\n<li><a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> - A dynamically sized <em>slice</em> into any other kind of contiguous\nstorage, whether heap-allocated or not.</li>\n</ul>\n<p>Slices can only be handled through some kind of <em>pointer</em>, and as such come\nin many flavors such as:</p>\n<ul>\n<li><cide>&amp;[T]</code> - <em>shared slice</em></li>\n<li><cide>&amp;mut [T]</code> - <em>mutable slice</em></li>\n<li><a href="https://docs.rs/alloc/*/alloc/boxed/index.html"><cide>Box&lt;[T]&gt;</code></a> - <em>owned slice</em></li>\n</ul>\n<p><a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, a UTF-8 string slice, is a primitive type, and the standard library\ndefines many methods for it. Rust <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>s are typically accessed as\nimmutable references: <cide>&amp;str</code>. Use the owned <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> for building and\nmutating strings.</p>\n<p>For converting to strings use the <a href="https://docs.rs/alloc/*/alloc/macro.format.html"><cide>format</code></a> macro, and for converting from\nstrings use the <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html"><cide>FromStr</code></a> trait.</p>\n<p>Data may be shared by placing it in a reference-counted box or the <a href="https://docs.rs/alloc/*/alloc/rc/struct.Rc.html"><cide>Rc</code></a>\ntype, and if further contained in a <a href="https://docs.rs/core/*/core/cell/struct.Cell.html"><cide>Cell</code></a> or <a href="https://docs.rs/core/*/core/cell/struct.RefCell.html"><cide>RefCell</code></a>, may be mutated\nas well as shared. Likewise, in a concurrent setting it is common to pair an\natomically-reference-counted box, <a href="https://docs.rs/alloc/*/alloc/sync/struct.Arc.html"><cide>Arc</code></a>, with a <a href="https://docs.rs/std/*/std/sync/mutex/struct.Mutex.html"><cide>Mutex</code></a> to get the same\neffect.</p>\n<p>The <a href="https://docs.rs/std/*/std/collections/index.html"><cide>collections</code></a> module defines maps, sets, linked lists and other\ntypical collection types, including the common <a href="https://docs.rs/std/*/std/collections/hash/map/struct.HashMap.html"><cide>HashMap&lt;K, V&gt;</code></a>.</p>\n<h2 id="platform-abstractions-and-io"><a class="header" href="#platform-abstractions-and-io">Platform abstractions and I/O</a></h2>\n<p>Besides basic data types, the standard library is largely concerned with\nabstracting over differences in common platforms, most notably Windows and\nUnix derivatives.</p>\n<p>Common types of I/O, including <a href="https://docs.rs/std/*/std/fs/struct.File.html">files</a>, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html">TCP</a>, <a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html">UDP</a>, are defined in the\n<a href="https://docs.rs/std/*/std/io/index.html"><cide>io</code></a>, <a href="https://docs.rs/std/*/std/fs/index.html"><cide>fs</code></a>, and <a href="https://docs.rs/std/*/std/net/index.html"><cide>net</code></a> modules.</p>\n<p>The <a href="https://docs.rs/std/*/std/thread/index.html"><cide>thread</code></a> module contains Rust#$%s threading abstractions. <a href="https://docs.rs/std/*/std/sync/index.html"><cide>sync</code></a>\ncontains further primitive shared memory types, including <a href="https://docs.rs/core/*/core/sync/atomic/index.html"><cide>atomic</code></a> and\n<a href="https://docs.rs/std/*/std/sync/mpsc/index.html"><cide>mpsc</code></a>, which contains the channel types for message passing.</p>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod net\n</code></pre>\n<hr />\n<p>Networking primitives for TCP/UDP communication.</p>\n<p>This module provides networking functionality for the Transmission Control and User\nDatagram Protocols, as well as types for IP and socket addresses.</p>\n<h1 id="organization"><a class="header" href="#organization">Organization</a></h1>\n<ul>\n<li><a href="https://docs.rs/std/*/std/net/tcp/struct.TcpListener.html"><cide>TcpListener</code></a> and <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a> provide functionality for communication over TCP</li>\n<li><a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html"><cide>UdpSocket</code></a> provides functionality for communication over UDP</li>\n<li><a href="https://docs.rs/std/*/std/net/ip/enum.IpAddr.html"><cide>IpAddr</code></a> represents IP addresses of either IPv4 or IPv6; <a href="https://docs.rs/std/*/std/net/ip/struct.Ipv4Addr.html"><cide>Ipv4Addr</code></a> and\n<a href="https://docs.rs/std/*/std/net/ip/struct.Ipv6Addr.html"><cide>Ipv6Addr</code></a> are respectively IPv4 and IPv6 addresses</li>\n<li><a href="https://docs.rs/std/*/std/net/addr/enum.SocketAddr.html"><cide>SocketAddr</code></a> represents socket addresses of either IPv4 or IPv6; <a href="https://docs.rs/std/*/std/net/addr/struct.SocketAddrV4.html"><cide>SocketAddrV4</code></a>\nand <a href="https://docs.rs/std/*/std/net/addr/struct.SocketAddrV6.html"><cide>SocketAddrV6</code></a> are respectively IPv4 and IPv6 socket addresses</li>\n<li><a href="https://docs.rs/std/*/std/net/addr/trait.ToSocketAddrs.html"><cide>ToSocketAddrs</code></a> is a trait that used for generic address resolution when interacting\nwith networking objects like <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpListener.html"><cide>TcpListener</code></a>, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a> or <a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html"><cide>UdpSocket</code></a></li>\n<li>Other types are return or parameter types for various methods in this module</li>\n</ul>\n','<per><cide class="language-rust">std::net::ip\n</code></pre>\n<per><cide class="language-rust">pub enum IpAddr\n</code></pre>\n<hr />\n<p>An IP address, either IPv4 or IPv6.</p>\n<p>This enum can contain either an <a href="https://docs.rs/std/*/std/net/ip/struct.Ipv4Addr.html"><cide>Ipv4Addr</code></a> or an <a href="https://docs.rs/std/*/std/net/ip/struct.Ipv6Addr.html"><cide>Ipv6Addr</code></a>, see their\nrespective documentation for more details.</p>\n<p>The size of an <cide>IpAddr</code> instance may vary depending on the target operating\nsystem.</p>\n<h1 id="examples"><a class="header" href="#examples">Examples</a></h1>\n<per><cide>use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};\n\nlet localhost_v4 = IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1));\nlet localhost_v6 = IpAddr::V6(Ipv6Addr::new(0, 0, 0, 0, 0, 0, 0, 1));\n\nassert_eq!(&quot;127.0.0.1&quot;.parse(), Ok(localhost_v4));\nassert_eq!(&quot;::1&quot;.parse(), Ok(localhost_v6));\n\nassert_eq!(localhost_v4.is_ipv6(), false);\nassert_eq!(localhost_v4.is_ipv4(), true);\n</code></pre>\n','<per><cide class="language-rust">let home: IpAddr\n</code></pre>\n','<per><cide class="language-rust">core::str\n</code></pre>\n<per><cide class="language-rust">pub fn parse&lt;F&gt;(&amp;self) -&gt; Result&lt;F, F::Err&gt;\nwhere\n    F: FromStr,\n</code></pre>\n<hr />\n<p>Parses this string slice into another type.</p>\n<p>Because <cide>parse</code> is so general, it can cause problems with type\ninference. As such, <cide>parse</code> is one of the few times you#$%ll see\nthe syntax affectionately known as the #$%turbofish#$%: <cide>::&lt;&gt;</code>. This\nhelps the inference algorithm understand specifically which type\nyou#$%re trying to parse into.</p>\n<p><cide>parse</code> can parse into any type that implements the <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html"><cide>FromStr</code></a> trait.</p>\n<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>\n<p>Will return <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html#associatedtype.Err"><cide>Err</code></a> if it#$%s not possible to parse this string slice into\nthe desired type.</p>\n<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>\n<p>Basic usage</p>\n<per><cide>let four: u32 = &quot;4&quot;.parse().unwrap();\n\nassert_eq!(4, four);\n</code></pre>\n<p>Using the #$%turbofish#$% instead of annotating <cide>four</code>:</p>\n<per><cide>let four = &quot;4&quot;.parse::&lt;u32&gt;();\n\nassert_eq!(Ok(4), four);\n</code></pre>\n<p>Failing to parse:</p>\n<per><cide>let nope = &quot;j&quot;.parse::&lt;u32&gt;();\n\nassert!(nope.is_err());\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">pub fn unwrap(self) -&gt; T\n</code></pre>\n<hr />\n<p>Returns the contained <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> value, consuming the <cide>self</code> value.</p>\n<p>Because this function may panic, its use is generally discouraged.\nInstead, prefer to use pattern matching and handle the <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>\ncase explicitly, or call <a href="Result::unwrap_or"><cide>unwrap_or</code></a>, <a href="Result::unwrap_or_else"><cide>unwrap_or_else</code></a>, or\n<a href="Result::unwrap_or_default"><cide>unwrap_or_default</code></a>.</p>\n<h1 id="panics"><a class="header" href="#panics">Panics</a></h1>\n<p>Panics if the value is an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>, with a panic message provided by the\n<a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>#$%s value.</p>\n<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let x: Result&lt;u32, &amp;str&gt; = Ok(2);\nassert_eq!(x.unwrap(), 2);\n</code></pre>\n<per><cide class="language-should_panic">let x: Result&lt;u32, &amp;str&gt; = Err(&quot;emergency failure&quot;);\nx.unwrap(); // panics with `emergency failure`\n</code></pre>\n','<per><cide class="language-rust">core\n</code></pre>\n<per><cide class="language-rust">mod cmp\n</code></pre>\n<hr />\n<p>Functionality for ordering and comparison.</p>\n<p>This module contains various tools for ordering and comparing values. In\nsummary:</p>\n<ul>\n<li><a href="https://docs.rs/core/*/core/cmp/trait.Eq.html"><cide>Eq</code></a> and <a href="https://docs.rs/core/*/core/cmp/trait.PartialEq.html"><cide>PartialEq</code></a> are traits that allow you to define total and\npartial equality between values, respectively. Implementing them overloads\nthe <cide>==</code> and <cide>!=</code> operators.</li>\n<li><a href="https://docs.rs/core/*/core/cmp/trait.Ord.html"><cide>Ord</code></a> and <a href="https://docs.rs/core/*/core/cmp/trait.PartialOrd.html"><cide>PartialOrd</code></a> are traits that allow you to define total and\npartial orderings between values, respectively. Implementing them overloads\nthe <cide>&lt;</code>, <cide>&lt;=</code>, <cide>&gt;</code>, and <cide>&gt;=</code> operators.</li>\n<li><a href="https://docs.rs/core/*/core/cmp/enum.Ordering.html"><cide>Ordering</code></a> is an enum returned by the main functions of <a href="https://docs.rs/core/*/core/cmp/trait.Ord.html"><cide>Ord</code></a> and\n<a href="https://docs.rs/core/*/core/cmp/trait.PartialOrd.html"><cide>PartialOrd</code></a>, and describes an ordering.</li>\n<li><a href="https://docs.rs/core/*/core/cmp/struct.Reverse.html"><cide>Reverse</code></a> is a struct that allows you to easily reverse an ordering.</li>\n<li><a href="https://docs.rs/core/*/core/cmp/trait.Ord.html#method.max"><cide>max</code></a> and <a href="https://docs.rs/core/*/core/cmp/trait.Ord.html#method.min"><cide>min</code></a> are functions that build off of <a href="https://docs.rs/core/*/core/cmp/trait.Ord.html"><cide>Ord</code></a> and allow you\nto find the maximum or minimum of two values.</li>\n</ul>\n<p>For more details, see the respective documentation of each item in the list.</p>\n','<per><cide class="language-rust">core::cmp\n</code></pre>\n<per><cide class="language-rust">pub enum Ordering\n</code></pre>\n<hr />\n<p>An <cide>Ordering</code> is the result of a comparison between two values.</p>\n<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>\n<per><cide>use std::cmp::Ordering;\n\nlet result = 1.cmp(&amp;2);\nassert_eq!(Ordering::Less, result);\n\nlet result = 1.cmp(&amp;1);\nassert_eq!(Ordering::Equal, result);\n\nlet result = 2.cmp(&amp;1);\nassert_eq!(Ordering::Greater, result);\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod io\n</code></pre>\n<hr />\n<p>Traits, helpers, and type definitions for core I/O functionality.</p>\n<p>The <cide>std::io</code> module contains a number of common things you#$%ll need\nwhen doing input and output. The most core part of this module is\nthe <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> traits, which provide the\nmost general interface for reading and writing input and output.</p>\n<h1 id="read-and-write"><a class="header" href="#read-and-write">Read and Write</a></h1>\n<p>Because they are traits, <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> are implemented by a number\nof other types, and you can implement them for your types too. As such,\nyou#$%ll see a few different types of I/O throughout the documentation in\nthis module: <a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>s, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a>s, and sometimes even <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a>s. For\nexample, <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> adds a <a href="https://docs.rs/std/*/std/io/trait.Read.html#tymethod.read"><cide>read</code></a> method, which we can use on\n<a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>s:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut f = File::open(&quot;foo.txt&quot;)?;\n    let mut buffer = [0; 10];\n\n    // read up to 10 bytes\n    let n = f.read(&amp;mut buffer)?;\n\n    println!(&quot;The bytes: {:?}&quot;, &amp;buffer[..n]);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> are so important, implementors of the two traits have a\nnickname: readers and writers. So you#$%ll sometimes see #$%a reader#$% instead\nof #$%a type that implements the <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> trait#$%. Much easier!</p>\n<h2 id="seek-and-bufread"><a class="header" href="#seek-and-bufread">Seek and BufRead</a></h2>\n<p>Beyond that, there are two important traits that are provided: <a href="https://docs.rs/std/*/std/io/trait.Seek.html"><cide>Seek</code></a>\nand <a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a>. Both of these build on top of a reader to control\nhow the reading happens. <a href="https://docs.rs/std/*/std/io/trait.Seek.html"><cide>Seek</code></a> lets you control where the next byte is\ncoming from:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::SeekFrom;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut f = File::open(&quot;foo.txt&quot;)?;\n    let mut buffer = [0; 10];\n\n    // skip to the last 10 bytes of the file\n    f.seek(SeekFrom::End(-10))?;\n\n    // read up to 10 bytes\n    let n = f.read(&amp;mut buffer)?;\n\n    println!(&quot;The bytes: {:?}&quot;, &amp;buffer[..n]);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a> uses an internal buffer to provide a number of other ways to read, but\nto show it off, we#$%ll need to talk about buffers in general. Keep reading!</p>\n<h2 id="bufreader-and-bufwriter"><a class="header" href="#bufreader-and-bufwriter">BufReader and BufWriter</a></h2>\n<p>Byte-based interfaces are unwieldy and can be inefficient, as we#$%d need to be\nmaking near-constant calls to the operating system. To help with this,\n<cide>std::io</code> comes with two structs, <a href="https://docs.rs/std/*/std/io/buffered/bufreader/struct.BufReader.html"><cide>BufReader</code></a> and <a href="https://docs.rs/std/*/std/io/buffered/bufwriter/struct.BufWriter.html"><cide>BufWriter</code></a>, which wrap\nreaders and writers. The wrapper uses a buffer, reducing the number of\ncalls and providing nicer methods for accessing exactly what you want.</p>\n<p>For example, <a href="https://docs.rs/std/*/std/io/buffered/bufreader/struct.BufReader.html"><cide>BufReader</code></a> works with the <a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a> trait to add extra\nmethods to any reader:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::open(&quot;foo.txt&quot;)?;\n    let mut reader = BufReader::new(f);\n    let mut buffer = String::new();\n\n    // read a line into buffer\n    reader.read_line(&amp;mut buffer)?;\n\n    println!(&quot;{}&quot;, buffer);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/buffered/bufwriter/struct.BufWriter.html"><cide>BufWriter</code></a> doesn#$%t add any new ways of writing; it just buffers every call\nto <a href="https://docs.rs/std/*/std/io/trait.Write.html#tymethod.write"><cide>write</code></a>:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufWriter;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::create(&quot;foo.txt&quot;)?;\n    {\n        let mut writer = BufWriter::new(f);\n\n        // write a byte to the buffer\n        writer.write(&amp;[42])?;\n\n    } // the buffer is flushed once writer goes out of scope\n\n    Ok(())\n}\n</code></pre>\n<h2 id="standard-input-and-output"><a class="header" href="#standard-input-and-output">Standard input and output</a></h2>\n<p>A very common source of input is standard input:</p>\n<per><cide class="language-no_run">use std::io;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut input = String::new();\n\n    io::stdin().read_line(&amp;mut input)?;\n\n    println!(&quot;You typed: {}&quot;, input.trim());\n    Ok(())\n}\n</code></pre>\n<p>Note that you cannot use the <a href="https://docs.rs/std/*/book/appendix-02-operators.html"><cide>?</code> operator</a> in functions that do not return\na <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>. Instead, you can call <a href="crate::result::Result::unwrap"><cide>.unwrap()</code></a>\nor <cide>match</code> on the return value to catch any possible errors:</p>\n<per><cide class="language-no_run">use std::io;\n\nlet mut input = String::new();\n\nio::stdin().read_line(&amp;mut input).unwrap();\n</code></pre>\n<p>And a very common source of output is standard output:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    io::stdout().write(&amp;[42])?;\n    Ok(())\n}\n</code></pre>\n<p>Of course, using <a href="https://docs.rs/std/*/std/io/stdio/fn.stdout.html"><cide>io::stdout</code></a> directly is less common than something like\n<a href="https://docs.rs/std/*/std/macro.println.html"><cide>println</code></a>.</p>\n<h2 id="iterator-types"><a class="header" href="#iterator-types">Iterator types</a></h2>\n<p>A large number of the structures provided by <cide>std::io</code> are for various\nways of iterating over I/O. For example, <a href="https://docs.rs/std/*/std/io/struct.Lines.html"><cide>Lines</code></a> is used to split over\nlines:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::open(&quot;foo.txt&quot;)?;\n    let reader = BufReader::new(f);\n\n    for line in reader.lines() {\n        println!(&quot;{}&quot;, line?);\n    }\n    Ok(())\n}\n</code></pre>\n<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>\n<p>There are a number of <a href="https://docs.rs/std/*/std/io/index.html#functions-1">functions</a> that offer access to various\nfeatures. For example, we can use three of these functions to copy everything\nfrom standard input to standard output:</p>\n<per><cide class="language-no_run">use std::io;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    io::copy(&amp;mut io::stdin(), &amp;mut io::stdout())?;\n    Ok(())\n}\n</code></pre>\n<h2 id="ioresult"><a class="header" href="#ioresult">io::Result</a></h2>\n<p>Last, but certainly not least, is <a href="https://docs.rs/std/*/std/io/error/type.Result.html"><cide>io::Result</code></a>. This type is used\nas the return type of many <cide>std::io</code> functions that can cause an error, and\ncan be returned from your own functions as well. Many of the examples in this\nmodule use the <a href="https://docs.rs/std/*/book/appendix-02-operators.html"><cide>?</code> operator</a>:</p>\n<per><cide>use std::io;\n\nfn read_input() -&gt; io::Result&lt;()&gt; {\n    let mut input = String::new();\n\n    io::stdin().read_line(&amp;mut input)?;\n\n    println!(&quot;You typed: {}&quot;, input.trim());\n\n    Ok(())\n}\n</code></pre>\n<p>The return type of <cide>read_input()</code>, <a href="https://docs.rs/std/*/std/io/error/type.Result.html"><cide>io::Result&lt;()&gt;</code></a>, is a very\ncommon type for functions which don#$%t have a #$%real#$% return value, but do want to\nreturn errors if they happen. In this case, the only purpose of this function is\nto read the line and print it, so we use <cide>()</code>.</p>\n<h2 id="platform-specific-behavior"><a class="header" href="#platform-specific-behavior">Platform-specific behavior</a></h2>\n<p>Many I/O functions throughout the standard library are documented to indicate\nwhat various library or syscalls they are delegated to. This is done to help\napplications both understand what#$%s happening under the hood as well as investigate\nany possibly unclear semantics. Note, however, that this is informative, not a binding\ncontract. The implementation of many of these functions are subject to change over\ntime and may call fewer or more syscalls/library functions.</p>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! println\n</code></pre>\n<hr />\n<p>Prints to the standard output, with a newline.</p>\n<p>On all platforms, the newline is the LINE FEED character (<cide>\n</code>/<cide>U+000A</code>) alone\n(no additional CARRIAGE RETURN (<cide>\r</code>/<cide>U+000D</code>)).</p>\n<p>Use the <a href="%60format!%60"><cide>format!</code></a> syntax to write data to the standard output.\nSee <a href="crate::fmt"><cide>std::fmt</code></a> for more information.</p>\n<p>Use <cide>println!</code> only for the primary output of your program. Use\n<a href="%60eprintln!%60"><cide>eprintln!</code></a> instead to print error and progress messages.</p>\n<h1 id="panics-1"><a class="header" href="#panics-1">Panics</a></h1>\n<p>Panics if writing to <a href="crate::io::stdout"><cide>io::stdout</code></a> fails.</p>\n<h1 id="examples-4"><a class="header" href="#examples-4">Examples</a></h1>\n<per><cide>println!(); // prints just a newline\nprintln!(&quot;hello there!&quot;);\nprintln!(&quot;format {} arguments&quot;, &quot;some&quot;);\n</code></pre>\n','<per><cide class="language-rust">let secret_number: i32\n</code></pre>\n','<per><cide class="language-rust">let mut guess: String\n</code></pre>\n','<per><cide class="language-rust">alloc::string\n</code></pre>\n<per><cide class="language-rust">pub struct String\n</code></pre>\n<hr />\n<p>A UTF-8–encoded, growable string.</p>\n<p>The <cide>String</code> type is the most common string type that has ownership over the\ncontents of the string. It has a close relationship with its borrowed\ncounterpart, the primitive <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>.</p>\n<h1 id="examples-5"><a class="header" href="#examples-5">Examples</a></h1>\n<p>You can create a <cide>String</code> from <a href="https://docs.rs/alloc/*/alloc/str/index.html">a literal string</a> with <a href="https://docs.rs/core/*/core/convert/trait.From.html#tymethod.from"><cide>String::from</code></a>:</p>\n<per><cide>let hello = String::from(&quot;Hello, world!&quot;);\n</code></pre>\n<p>You can append a <a href="%60char%60"><cide>char</code></a> to a <cide>String</code> with the <a href="String::push"><cide>push</code></a> method, and\nappend a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> with the <a href="String::push_str"><cide>push_str</code></a> method:</p>\n<per><cide>let mut hello = String::from(&quot;Hello, &quot;);\n\nhello.push(#$%w#$%);\nhello.push_str(&quot;orld!&quot;);\n</code></pre>\n<p>If you have a vector of UTF-8 bytes, you can create a <cide>String</code> from it with\nthe <a href="String::from_utf8"><cide>from_utf8</code></a> method:</p>\n<per><cide>// some bytes, in a vector\nlet sparkle_heart = vec![240, 159, 146, 150];\n\n// We know these bytes are valid, so we#$%ll use `unwrap()`.\nlet sparkle_heart = String::from_utf8(sparkle_heart).unwrap();\n\nassert_eq!(&quot;💖&quot;, sparkle_heart);\n</code></pre>\n<h1 id="utf-8"><a class="header" href="#utf-8">UTF-8</a></h1>\n<p><cide>String</code>s are always valid UTF-8. This has a few implications, the first of\nwhich is that if you need a non-UTF-8 string, consider <a href="https://docs.rs/alloc/*/std/ffi/struct.OsString.html"><cide>OsString</code></a>. It is\nsimilar, but without the UTF-8 constraint. The second implication is that\nyou cannot index into a <cide>String</code>:</p>\n<per><cide class="language-compile_fail,E0277">let s = &quot;hello&quot;;\n\nprintln!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!\n</code></pre>\n<p>Indexing is intended to be a constant-time operation, but UTF-8 encoding\ndoes not allow us to do this. Furthermore, it#$%s not clear what sort of\nthing the index should return: a byte, a codepoint, or a grapheme cluster.\nThe <a href="str::bytes"><cide>bytes</code></a> and <a href="str::chars"><cide>chars</code></a> methods return iterators over the first\ntwo, respectively.</p>\n<h1 id="deref"><a class="header" href="#deref">Deref</a></h1>\n<p><cide>String</code>s implement <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a><cide>&lt;Target=str&gt;</code>, and so inherit all of <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>#$%s\nmethods. In addition, this means that you can pass a <cide>String</code> to a\nfunction which takes a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> by using an ampersand (<cide>&amp;</code>):</p>\n<per><cide>fn takes_str(s: &amp;str) { }\n\nlet s = String::from(&quot;Hello&quot;);\n\ntakes_str(&amp;s);\n</code></pre>\n<p>This will create a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> from the <cide>String</code> and pass it in. This\nconversion is very inexpensive, and so generally, functions will accept\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>s as arguments unless they need a <cide>String</code> for some specific\nreason.</p>\n<p>In certain cases Rust doesn#$%t have enough information to make this\nconversion, known as <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a> coercion. In the following example a string\nslice <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;#$%a str</code></a> implements the trait <cide>TraitExample</code>, and the function\n<cide>example_func</code> takes anything that implements the trait. In this case Rust\nwould need to make two implicit conversions, which Rust doesn#$%t have the\nmeans to do. For that reason, the following example will not compile.</p>\n<per><cide class="language-compile_fail,E0277">trait TraitExample {}\n\nimpl&lt;#$%a&gt; TraitExample for &amp;#$%a str {}\n\nfn example_func&lt;A: TraitExample&gt;(example_arg: A) {}\n\nlet example_string = String::from(&quot;example_string&quot;);\nexample_func(&amp;example_string);\n</code></pre>\n<p>There are two options that would work instead. The first would be to\nchange the line <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(example_string.as_str());</code>, using the method <a href="String::as_str"><cide>as_str()</code></a>\nto explicitly extract the string slice containing the string. The second\nway changes <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(&amp;*example_string);</code>. In this case we are dereferencing a\n<cide>String</code> to a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, then referencing the <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> back to\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>. The second way is more idiomatic, however both work to do the\nconversion explicitly rather than relying on the implicit conversion.</p>\n<h1 id="representation"><a class="header" href="#representation">Representation</a></h1>\n<p>A <cide>String</code> is made up of three components: a pointer to some bytes, a\nlength, and a capacity. The pointer points to an internal buffer <cide>String</code>\nuses to store its data. The length is the number of bytes currently stored\nin the buffer, and the capacity is the size of the buffer in bytes. As such,\nthe length will always be less than or equal to the capacity.</p>\n<p>This buffer is always stored on the heap.</p>\n<p>You can look at these with the <a href="str::as_ptr"><cide>as_ptr</code></a>, <a href="String::len"><cide>len</code></a>, and <a href="String::capacity"><cide>capacity</code></a>\nmethods:</p>\n<per><cide>use std::mem;\n\nlet story = String::from(&quot;Once upon a time...&quot;);\n\n// Prevent automatically dropping the String#$%s data\nlet mut story = mem::ManuallyDrop::new(story);\n\nlet ptr = story.as_mut_ptr();\nlet len = story.len();\nlet capacity = story.capacity();\n\n// story has nineteen bytes\nassert_eq!(19, len);\n\n// We can re-build a String out of ptr, len, and capacity. This is all\n// unsafe because we are responsible for making sure the components are\n// valid:\nlet s = unsafe { String::from_raw_parts(ptr, len, capacity) } ;\n\nassert_eq!(String::from(&quot;Once upon a time...&quot;), s);\n</code></pre>\n<p>If a <cide>String</code> has enough capacity, adding elements to it will not\nre-allocate. For example, consider this program:</p>\n<per><cide>let mut s = String::new();\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>This will output the following:</p>\n<per><cide class="language-text">0\n5\n10\n20\n20\n40\n</code></pre>\n<p>At first, we have no memory allocated at all, but as we append to the\nstring, it increases its capacity appropriately. If we instead use the\n<a href="String::with_capacity"><cide>with_capacity</code></a> method to allocate the correct capacity initially:</p>\n<per><cide>let mut s = String::with_capacity(25);\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>We end up with a different output:</p>\n<per><cide class="language-text">25\n25\n25\n25\n25\n25\n</code></pre>\n<p>Here, there#$%s no need to allocate more memory inside the loop.</p>\n','<per><cide class="language-rust">alloc::string::String\n</code></pre>\n<per><cide class="language-rust">pub const fn new() -&gt; String\n</code></pre>\n<hr />\n<p>Creates a new empty <cide>String</code>.</p>\n<p>Given that the <cide>String</code> is empty, this will not allocate any initial\nbuffer. While that means that this initial operation is very\ninexpensive, it may cause excessive allocation later when you add\ndata. If you have an idea of how much data the <cide>String</code> will hold,\nconsider the <a href="String::with_capacity"><cide>with_capacity</code></a> method to prevent excessive\nre-allocation.</p>\n<h1 id="examples-6"><a class="header" href="#examples-6">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let s = String::new();\n</code></pre>\n','<per><cide class="language-rust">std::io::stdio\n</code></pre>\n<per><cide class="language-rust">pub fn stdin() -&gt; Stdin\n</code></pre>\n<hr />\n<p>Constructs a new handle to the standard input of the current process.</p>\n<p>Each handle returned is a reference to a shared global buffer whose access\nis synchronized via a mutex. If you need more explicit control over\nlocking, see the <a href="%60Stdin::lock%60"><cide>Stdin::lock</code></a> method.</p>\n<h3 id="note-windows-portability-consideration"><a class="header" href="#note-windows-portability-consideration">Note: Windows Portability Consideration</a></h3>\n<p>When operating in a console, the Windows implementation of this stream does not support\nnon-UTF-8 byte sequences. Attempting to read bytes that are not valid UTF-8 will return\nan error.</p>\n<h1 id="examples-7"><a class="header" href="#examples-7">Examples</a></h1>\n<p>Using implicit synchronization:</p>\n<per><cide class="language-no_run">use std::io::{self, Read};\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut buffer = String::new();\n    io::stdin().read_to_string(&amp;mut buffer)?;\n    Ok(())\n}\n</code></pre>\n<p>Using explicit synchronization:</p>\n<per><cide class="language-no_run">use std::io::{self, Read};\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut buffer = String::new();\n    let stdin = io::stdin();\n    let mut handle = stdin.lock();\n\n    handle.read_to_string(&amp;mut buffer)?;\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">std::io::stdio::Stdin\n</code></pre>\n<per><cide class="language-rust">pub fn read_line(&amp;self, buf: &amp;mut String) -&gt; io::Result&lt;usize&gt;\n</code></pre>\n<hr />\n<p>Locks this handle and reads a line of input, appending it to the specified buffer.</p>\n<p>For detailed semantics of this method, see the documentation on\n<a href="https://docs.rs/std/*/std/io/trait.BufRead.html#method.read_line"><cide>BufRead::read_line</code></a>.</p>\n<h1 id="examples-8"><a class="header" href="#examples-8">Examples</a></h1>\n<per><cide class="language-no_run">use std::io;\n\nlet mut input = String::new();\nmatch io::stdin().read_line(&amp;mut input) {\n    Ok(n) =&gt; {\n        println!(&quot;{} bytes read&quot;, n);\n        println!(&quot;{}&quot;, input);\n    }\n    Err(error) =&gt; println!(&quot;error: {}&quot;, error),\n}\n</code></pre>\n<p>You can run the example one of two ways:</p>\n<ul>\n<li>Pipe some text to it, e.g., <cide>printf foo | path/to/executable</code></li>\n<li>Give it text interactively by running the executable directly,\nin which case it will wait for the Enter key to be pressed before\ncontinuing</li>\n</ul>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">pub fn expect(self, msg: &amp;str) -&gt; T\n</code></pre>\n<hr />\n<p>Returns the contained <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> value, consuming the <cide>self</code> value.</p>\n<h1 id="panics-2"><a class="header" href="#panics-2">Panics</a></h1>\n<p>Panics if the value is an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>, with a panic message including the\npassed message, and the content of the <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>.</p>\n<h1 id="examples-9"><a class="header" href="#examples-9">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide class="language-should_panic">let x: Result&lt;u32, &amp;str&gt; = Err(&quot;emergency failure&quot;);\nx.expect(&quot;Testing expect&quot;); // panics with `Testing expect: emergency failure`\n</code></pre>\n','<per><cide class="language-rust">let guess: i32\n</code></pre>\n','<per><cide class="language-rust">i32\n</code></pre>\n<hr />\n<p>The 32-bit signed integer type.</p>\n','<per><cide class="language-rust">core::str\n</code></pre>\n<per><cide class="language-rust">pub fn trim(&amp;self) -&gt; &amp;str\n</code></pre>\n<hr />\n<p>Returns a string slice with leading and trailing whitespace removed.</p>\n<p>#$%Whitespace#$% is defined according to the terms of the Unicode Derived\nCore Property <cide>White_Space</code>.</p>\n<h1 id="examples-10"><a class="header" href="#examples-10">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let s = &quot; Hello\tworld\t&quot;;\n\nassert_eq!(&quot;Hello\tworld&quot;, s.trim());\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">Ok(T)\n</code></pre>\n<hr />\n<p>Contains the success value</p>\n','<per><cide class="language-rust">num: i32\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">Err(E)\n</code></pre>\n<hr />\n<p>Contains the error value</p>\n','<per><cide class="language-rust">core::cmp::Ord\n</code></pre>\n<per><cide class="language-rust">pub fn cmp(&amp;self, other: &amp;Self) -&gt; Ordering\n</code></pre>\n<hr />\n<p>This method returns an <a href="https://docs.rs/core/*/core/cmp/enum.Ordering.html"><cide>Ordering</code></a> between <cide>self</code> and <cide>other</code>.</p>\n<p>By convention, <cide>self.cmp(&amp;other)</code> returns the ordering matching the expression\n<cide>self &lt;operator&gt; other</code> if true.</p>\n<h1 id="examples-11"><a class="header" href="#examples-11">Examples</a></h1>\n<per><cide>use std::cmp::Ordering;\n\nassert_eq!(5.cmp(&amp;10), Ordering::Less);\nassert_eq!(10.cmp(&amp;5), Ordering::Greater);\nassert_eq!(5.cmp(&amp;5), Ordering::Equal);\n</code></pre>\n','<per><cide class="language-rust">core::cmp::Ordering\n</code></pre>\n<per><cide class="language-rust">Less\n</code></pre>\n<hr />\n<p>An ordering where a compared value is less than another.</p>\n','<per><cide class="language-rust">core::cmp::Ordering\n</code></pre>\n<per><cide class="language-rust">Greater\n</code></pre>\n<hr />\n<p>An ordering where a compared value is greater than another.</p>\n','<per><cide class="language-rust">core::cmp::Ordering\n</code></pre>\n<per><cide class="language-rust">Equal\n</code></pre>\n<hr />\n<p>An ordering where a compared value is equal to another.</p>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">pub struct Guess\n</code></pre>\n','<per><cide class="language-rust">playcrate::Guess\n</code></pre>\n<per><cide class="language-rust">value: i32\n</code></pre>\n','<per><cide class="language-rust">playcrate::Guess\n</code></pre>\n<per><cide class="language-rust">pub fn new(value: i32) -&gt; Guess\n</code></pre>\n','<per><cide class="language-rust">value: i32\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! panic\n</code></pre>\n','<per><cide class="language-rust">playcrate::Guess\n</code></pre>\n<per><cide class="language-rust">pub fn value(&amp;self) -&gt; i32\n</code></pre>\n','<per><cide class="language-rust">self: &amp;Guess\n</code></pre>\n',].map((x)=>x.replaceAll('#$%', "'").replaceAll('<per', '<pre').replaceAll('<cide', '<code'));
+    window.onload = () => {
+        console.log("hello");
+        tippy('.ra', {
+            content: (x) => {
+                const div = document.createElement('div');
+                div.innerHTML = hoverData[x.dataset.hover];
+                div.className = 'hover-holder';
+                div.querySelectorAll('code').forEach((y) => y.innerHTML = hljs.highlight('rust', y.innerText).value);
+                return div;
+            },
+            allowHTML: true,
+            delay: [200, 0],
+            interactive: true,
+            maxWidth: '80vw',
+            appendTo: document.querySelector('.content'),
+        });
+    };
+</script>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="ch09-02-recoverable-errors-with-result.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ch10-00-generics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="ch09-02-recoverable-errors-with-result.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ch10-00-generics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="ferris.js"></script>
+        
+        
+    </body>
+</html>

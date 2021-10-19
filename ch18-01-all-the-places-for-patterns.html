@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>All the Places Patterns Can Be Used - The Rust Programming Language</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="ferris.css">
+                <link rel="stylesheet" href="theme/2018-edition.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Common Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Functions</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Comments</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Control Flow</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Understanding Ownership</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> What is Ownership?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> References and Borrowing</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> The Slice Type</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Using Structs to Structure Related Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Defining and Instantiating Structs</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> An Example Program Using Structs</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Method Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Enums and Pattern Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Defining an Enum</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> The match Control Flow Operator</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Concise Control Flow with if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Managing Growing Projects with Packages, Crates, and Modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Packages and Crates</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Defining Modules to Control Scope and Privacy</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Paths for Referring to an Item in the Module Tree</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Bringing Paths Into Scope with the use Keyword</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Separating Modules into Different Files</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Storing Lists of Values with Vectors</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Storing UTF-8 Encoded Text with Strings</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Storing Keys with Associated Values in Hash Maps</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Unrecoverable Errors with panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Recoverable Errors with Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> To panic! or Not To panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Generic Types, Traits, and Lifetimes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Generic Data Types</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Traits: Defining Shared Behavior</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Validating References with Lifetimes</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Writing Automated Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> How to Write Tests</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Controlling How Tests Are Run</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Test Organization</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> An I/O Project: Building a Command Line Program</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Accepting Command Line Arguments</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Reading a File</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Refactoring to Improve Modularity and Error Handling</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Developing the Library’s Functionality with Test Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Working with Environment Variables</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Writing Error Messages to Standard Error Instead of Standard Output</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Functional Language Features: Iterators and Closures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Closures: Anonymous Functions that Can Capture Their Environment</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Processing a Series of Items with Iterators</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Improving Our I/O Project</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Comparing Performance: Loops vs. Iterators</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> More about Cargo and Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Customizing Builds with Release Profiles</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Publishing a Crate to Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo Workspaces</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Installing Binaries from Crates.io with cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Extending Cargo with Custom Commands</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Smart Pointers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Using Box&lt;T&gt; to Point to Data on the Heap</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Treating Smart Pointers Like Regular References with the Deref Trait</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Running Code on Cleanup with the Drop Trait</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, the Reference Counted Smart Pointer</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; and the Interior Mutability Pattern</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Reference Cycles Can Leak Memory</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Fearless Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Using Threads to Run Code Simultaneously</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> Using Message Passing to Transfer Data Between Threads</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Shared-State Concurrency</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Extensible Concurrency with the Sync and Send Traits</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Object Oriented Programming Features of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Characteristics of Object-Oriented Languages</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Using Trait Objects That Allow for Values of Different Types</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Implementing an Object-Oriented Design Pattern</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Patterns and Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html" class="active"><strong aria-hidden="true">18.1.</strong> All the Places Patterns Can Be Used</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability: Whether a Pattern Might Fail to Match</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Pattern Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Advanced Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Macros</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Final Project: Building a Multithreaded Web Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> Building a Single-Threaded Web Server</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Turning Our Single-Threaded Server into a Multithreaded Server</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Graceful Shutdown and Cleanup</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Keywords</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Operators and Symbols</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Derivable Traits</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Useful Development Tools</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Editions</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Translations of the Book</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - How Rust is Made and “Nightly Rust”</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Rust Programming Language</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.inlay-hint, .inlay-hint * {
+    border-radius: .4em;
+}
+
+.light .inlay-hint, .rust .inlay-hint {
+    background-color: #dcc;
+    color: #777;
+}
+
+.ayu .inlay-hint, .navy .inlay-hint, .coal .inlay-hint {
+    background-color: #444;
+    color: #999;
+}
+
+.inlay-hint {
+    font-size: 0.8em;
+    user-select: none;
+}
+.hover-holder {
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.tippy-content {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+</style>## All the Places Patterns Can Be Used
+<p>Patterns pop up in a number of places in Rust, and you’ve been using them a lot
+without realizing it! This section discusses all the places where patterns are
+valid.</p>
+<h3 id="match-arms"><a class="header" href="#match-arms"><code>match</code> Arms</a></h3>
+<p>As discussed in Chapter 6, we use patterns in the arms of <code>match</code> expressions.
+Formally, <code>match</code> expressions are defined as the keyword <code>match</code>, a value to
+match on, and one or more match arms that consist of a pattern and an
+expression to run if the value matches that arm’s pattern, like this:</p>
+<pre><code class="language-text">match VALUE {
+    PATTERN =&gt; EXPRESSION,
+    PATTERN =&gt; EXPRESSION,
+    PATTERN =&gt; EXPRESSION,
+}
+</code></pre>
+<p>One requirement for <code>match</code> expressions is that they need to be <em>exhaustive</em> in
+the sense that all possibilities for the value in the <code>match</code> expression must
+be accounted for. One way to ensure you’ve covered every possibility is to have
+a catchall pattern for the last arm: for example, a variable name matching any
+value can never fail and thus covers every remaining case.</p>
+<p>A particular pattern <code>_</code> will match anything, but it never binds to a variable,
+so it’s often used in the last match arm. The <code>_</code> pattern can be useful when
+you want to ignore any value not specified, for example. We’ll cover the <code>_</code>
+pattern in more detail in the <a href="ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern">“Ignoring Values in a
+Pattern”</a><!-- ignore --> section later in this
+chapter.</p>
+<h3 id="conditional-if-let-expressions"><a class="header" href="#conditional-if-let-expressions">Conditional <code>if let</code> Expressions</a></h3>
+<p>In Chapter 6 we discussed how to use <code>if let</code> expressions mainly as a shorter
+way to write the equivalent of a <code>match</code> that only matches one case.
+Optionally, <code>if let</code> can have a corresponding <code>else</code> containing code to run if
+the pattern in the <code>if let</code> doesn’t match.</p>
+<p>Listing 18-1 shows that it’s also possible to mix and match <code>if let</code>, <code>else if</code>, and <code>else if let</code> expressions. Doing so gives us more flexibility than a
+<code>match</code> expression in which we can express only one value to compare with the
+patterns. Also, the conditions in a series of <code>if let</code>, <code>else if</code>, <code>else if let</code> arms aren’t required to relate to each other.</p>
+<p>The code in Listing 18-1 shows a series of checks for several conditions that
+decide what the background color should be. For this example, we’ve created
+variables with hardcoded values that a real program might receive from user
+input.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn <span class="ra" data-hover="0">main</span>() {
+    let <span class="ra" data-hover="1">favorite_color</span>: <span class="ra" data-hover="2">Option</span>&lt;&amp;<span class="ra" data-hover="3">str</span>&gt; = <span class="ra" data-hover="4">None</span>;
+    let <span class="ra" data-hover="5">is_tuesday</span><span class="inlay-hint">: bool</span> = false;
+    let <span class="ra" data-hover="6">age</span>: <span class="ra" data-hover="7">Result</span>&lt;<span class="ra" data-hover="8">u8</span>, _&gt; = "34".<span class="ra" data-hover="9">parse</span>();
+
+    if let <span class="ra" data-hover="10">Some</span>(<span class="ra" data-hover="11">color</span><span class="inlay-hint">: &amp;str</span>) = <span class="ra" data-hover="1">favorite_color</span> {
+        <span class="ra" data-hover="12">println</span>!("Using your favorite color, {}, as the background", <span class="ra" data-hover="11">color</span>);
+    } else if <span class="ra" data-hover="5">is_tuesday</span> {
+        <span class="ra" data-hover="12">println</span>!("Tuesday is green day!");
+    } else if let <span class="ra" data-hover="13">Ok</span>(<span class="ra" data-hover="14">age</span><span class="inlay-hint">: u8</span>) = <span class="ra" data-hover="6">age</span> {
+        if <span class="ra" data-hover="14">age</span> &gt; 30 {
+            <span class="ra" data-hover="12">println</span>!("Using purple as the background color");
+        } else {
+            <span class="ra" data-hover="12">println</span>!("Using orange as the background color");
+        }
+    } else {
+        <span class="ra" data-hover="12">println</span>!("Using blue as the background color");
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 18-1: Mixing <code>if let</code>, <code>else if</code>, <code>else if let</code>,
+and <code>else</code></span></p>
+<p>If the user specifies a favorite color, that color is the background color. If
+today is Tuesday, the background color is green. If the user specifies
+their age as a string and we can parse it as a number successfully, the color
+is either purple or orange depending on the value of the number. If none of
+these conditions apply, the background color is blue.</p>
+<p>This conditional structure lets us support complex requirements. With the
+hardcoded values we have here, this example will print <code>Using purple as the background color</code>.</p>
+<p>You can see that <code>if let</code> can also introduce shadowed variables in the same way
+that <code>match</code> arms can: the line <code>if let Ok(age) = age</code> introduces a new
+shadowed <code>age</code> variable that contains the value inside the <code>Ok</code> variant. This
+means we need to place the <code>if age &gt; 30</code> condition within that block: we can’t
+combine these two conditions into <code>if let Ok(age) = age &amp;&amp; age &gt; 30</code>. The
+shadowed <code>age</code> we want to compare to 30 isn’t valid until the new scope starts
+with the curly bracket.</p>
+<p>The downside of using <code>if let</code> expressions is that the compiler doesn’t check
+exhaustiveness, whereas with <code>match</code> expressions it does. If we omitted the
+last <code>else</code> block and therefore missed handling some cases, the compiler would
+not alert us to the possible logic bug.</p>
+<h3 id="while-let-conditional-loops"><a class="header" href="#while-let-conditional-loops"><code>while let</code> Conditional Loops</a></h3>
+<p>Similar in construction to <code>if let</code>, the <code>while let</code> conditional loop allows a
+<code>while</code> loop to run for as long as a pattern continues to match. The example in
+Listing 18-2 shows a <code>while let</code> loop that uses a vector as a stack and prints
+the values in the vector in the opposite order in which they were pushed.</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let mut <span class="ra" data-hover="15">stack</span><span class="inlay-hint">: Vec&lt;i32&gt;</span> = <span class="ra" data-hover="16">Vec</span>::<span class="ra" data-hover="17">new</span>();
+
+    <span class="ra" data-hover="15">stack</span>.<span class="ra" data-hover="18">push</span>(1);
+    <span class="ra" data-hover="15">stack</span>.<span class="ra" data-hover="18">push</span>(2);
+    <span class="ra" data-hover="15">stack</span>.<span class="ra" data-hover="18">push</span>(3);
+
+    while let <span class="ra" data-hover="10">Some</span>(<span class="ra" data-hover="19">top</span><span class="inlay-hint">: i32</span>) = <span class="ra" data-hover="15">stack</span>.<span class="ra" data-hover="20">pop</span>() {
+        <span class="ra" data-hover="12">println</span>!("{}", <span class="ra" data-hover="19">top</span>);
+    }
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 18-2: Using a <code>while let</code> loop to print values
+for as long as <code>stack.pop()</code> returns <code>Some</code></span></p>
+<p>This example prints 3, 2, and then 1. The <code>pop</code> method takes the last element
+out of the vector and returns <code>Some(value)</code>. If the vector is empty, <code>pop</code>
+returns <code>None</code>. The <code>while</code> loop continues running the code in its block as
+long as <code>pop</code> returns <code>Some</code>. When <code>pop</code> returns <code>None</code>, the loop stops. We can
+use <code>while let</code> to pop every element off our stack.</p>
+<h3 id="for-loops"><a class="header" href="#for-loops"><code>for</code> Loops</a></h3>
+<p>In Chapter 3, we mentioned that the <code>for</code> loop is the most common loop
+construction in Rust code, but we haven’t yet discussed the pattern that <code>for</code>
+takes. In a <code>for</code> loop, the pattern is the value that directly follows the
+keyword <code>for</code>, so in <code>for x in y</code> the <code>x</code> is the pattern.</p>
+<p>Listing 18-3 demonstrates how to use a pattern in a <code>for</code> loop to destructure,
+or break apart, a tuple as part of the <code>for</code> loop.</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let <span class="ra" data-hover="21">v</span><span class="inlay-hint">: Vec&lt;char&gt;</span> = <span class="ra" data-hover="22">vec</span>!['a', 'b', 'c'];
+
+    for (<span class="ra" data-hover="23">index</span><span class="inlay-hint">: usize</span>, <span class="ra" data-hover="24">value</span><span class="inlay-hint">: &amp;char</span>) in <span class="ra" data-hover="21">v</span>.<span class="ra" data-hover="25">iter</span>().<span class="ra" data-hover="26">enumerate</span>() {
+        <span class="ra" data-hover="12">println</span>!("{} is at index {}", <span class="ra" data-hover="24">value</span>, <span class="ra" data-hover="23">index</span>);
+    }
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 18-3: Using a pattern in a <code>for</code> loop to
+destructure a tuple</span></p>
+<p>The code in Listing 18-3 will print the following:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling patterns v0.1.0 (file:///projects/patterns)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.52s
+     Running `target/debug/patterns`
+a is at index 0
+b is at index 1
+c is at index 2
+</code></pre>
+<p>We use the <code>enumerate</code> method to adapt an iterator to produce a value and that
+value’s index in the iterator, placed into a tuple. The first value produced is
+the tuple <code>(0, 'a')</code>. When this value is matched to the pattern <code>(index, value)</code>, <code>index</code> will be <code>0</code> and <code>value</code> will be <code>'a'</code>, printing the first line
+of the output.</p>
+<h3 id="let-statements"><a class="header" href="#let-statements"><code>let</code> Statements</a></h3>
+<p>Prior to this chapter, we had only explicitly discussed using patterns with
+<code>match</code> and <code>if let</code>, but in fact, we’ve used patterns in other places as well,
+including in <code>let</code> statements. For example, consider this straightforward
+variable assignment with <code>let</code>:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let <span class="ra" data-hover="27">x</span><span class="inlay-hint">: i32</span> = 5;
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>Throughout this book, we’ve used <code>let</code> like this hundreds of times, and
+although you might not have realized it, you were using patterns! More
+formally, a <code>let</code> statement looks like this:</p>
+<pre><code class="language-text">let PATTERN = EXPRESSION;
+</code></pre>
+<p>In statements like <code>let x = 5;</code> with a variable name in the <code>PATTERN</code> slot, the
+variable name is just a particularly simple form of a pattern. Rust compares
+the expression against the pattern and assigns any names it finds. So in the
+<code>let x = 5;</code> example, <code>x</code> is a pattern that means “bind what matches here to
+the variable <code>x</code>.” Because the name <code>x</code> is the whole pattern, this pattern
+effectively means “bind everything to the variable <code>x</code>, whatever the value is.”</p>
+<p>To see the pattern matching aspect of <code>let</code> more clearly, consider Listing
+18-4, which uses a pattern with <code>let</code> to destructure a tuple.</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let (<span class="ra" data-hover="28">x</span><span class="inlay-hint">: i32</span>, <span class="ra" data-hover="29">y</span><span class="inlay-hint">: i32</span>, <span class="ra" data-hover="30">z</span><span class="inlay-hint">: i32</span>) = (1, 2, 3);
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 18-4: Using a pattern to destructure a tuple and
+create three variables at once</span></p>
+<p>Here, we match a tuple against a pattern. Rust compares the value <code>(1, 2, 3)</code>
+to the pattern <code>(x, y, z)</code> and sees that the value matches the pattern, so Rust
+binds <code>1</code> to <code>x</code>, <code>2</code> to <code>y</code>, and <code>3</code> to <code>z</code>. You can think of this tuple
+pattern as nesting three individual variable patterns inside it.</p>
+<p>If the number of elements in the pattern doesn’t match the number of elements
+in the tuple, the overall type won’t match and we’ll get a compiler error. For
+example, Listing 18-5 shows an attempt to destructure a tuple with three
+elements into two variables, which won’t work.</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let (<span class="ra" data-hover="28">x</span><span class="inlay-hint">: i32</span>, <span class="ra" data-hover="29">y</span><span class="inlay-hint">: i32</span>) = (1, 2, 3);
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 18-5: Incorrectly constructing a pattern whose
+variables don’t match the number of elements in the tuple</span></p>
+<p>Attempting to compile this code results in this type error:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling patterns v0.1.0 (file:///projects/patterns)
+error[E0308]: mismatched types
+ --&gt; src/main.rs:2:9
+  |
+2 |     let (x, y) = (1, 2, 3);
+  |         ^^^^^^   --------- this expression has type `({integer}, {integer}, {integer})`
+  |         |
+  |         expected a tuple with 3 elements, found one with 2 elements
+  |
+  = note: expected tuple `({integer}, {integer}, {integer})`
+             found tuple `(_, _)`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `patterns` due to previous error
+</code></pre>
+<p>If we wanted to ignore one or more of the values in the tuple, we could use <code>_</code>
+or <code>..</code>, as you’ll see in the <a href="ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern">“Ignoring Values in a
+Pattern”</a><!-- ignore --> section. If the problem
+is that we have too many variables in the pattern, the solution is to make the
+types match by removing variables so the number of variables equals the number
+of elements in the tuple.</p>
+<h3 id="function-parameters"><a class="header" href="#function-parameters">Function Parameters</a></h3>
+<p>Function parameters can also be patterns. The code in Listing 18-6, which
+declares a function named <code>foo</code> that takes one parameter named <code>x</code> of type
+<code>i32</code>, should by now look familiar.</p>
+<pre><pre class="playground"><code class="language-rust hljs">fn <span class="ra" data-hover="31">foo</span>(<span class="ra" data-hover="28">x</span>: <span class="ra" data-hover="32">i32</span>) {
+    // code goes here
+}
+<span class="boring">
+</span><span class="boring">fn main() {}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 18-6: A function signature uses patterns in the
+parameters</span></p>
+<p>The <code>x</code> part is a pattern! As we did with <code>let</code>, we could match a tuple in a
+function’s arguments to the pattern. Listing 18-7 splits the values in a tuple
+as we pass it to a function.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn <span class="ra" data-hover="33">print_coordinates</span>(&amp;(<span class="ra" data-hover="28">x</span>, <span class="ra" data-hover="29">y</span>): &amp;(<span class="ra" data-hover="32">i32</span>, <span class="ra" data-hover="32">i32</span>)) {
+    <span class="ra" data-hover="12">println</span>!("Current location: ({}, {})", <span class="ra" data-hover="28">x</span>, <span class="ra" data-hover="29">y</span>);
+}
+
+fn <span class="ra" data-hover="0">main</span>() {
+    let <span class="ra" data-hover="34">point</span><span class="inlay-hint">: (i32, i32)</span> = (3, 5);
+    <span class="ra" data-hover="33">print_coordinates</span>(&amp;<span class="ra" data-hover="34">point</span>);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 18-7: A function with parameters that destructure
+a tuple</span></p>
+<p>This code prints <code>Current location: (3, 5)</code>. The values <code>&amp;(3, 5)</code> match the
+pattern <code>&amp;(x, y)</code>, so <code>x</code> is the value <code>3</code> and <code>y</code> is the value <code>5</code>.</p>
+<p>We can also use patterns in closure parameter lists in the same way as in
+function parameter lists, because closures are similar to functions, as
+discussed in Chapter 13.</p>
+<p>At this point, you’ve seen several ways of using patterns, but patterns don’t
+work the same in every place we can use them. In some places, the patterns must
+be irrefutable; in other circumstances, they can be refutable. We’ll discuss
+these two concepts next.</p>
+<script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.2/dist/tippy-bundle.umd.min.js" integrity="sha384-vApKv6LkBdPwmt/fNiQrBCVCZvuniXpG0b5UZhVrGAq1zXdZRSsPcWjGdVxkZJtX" crossorigin="anonymous"></script>
+<script>
+    const hoverData = ['<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn main()\n</code></pre>\n','<per><cide class="language-rust">let favorite_color: Option&lt;&amp;str&gt;\n</code></pre>\n','<per><cide class="language-rust">core::option\n</code></pre>\n<per><cide class="language-rust">pub enum Option&lt;T&gt;\n</code></pre>\n<hr />\n<p>The <cide>Option</code> type. See <a href="https://docs.rs/core/*/core/option/index.html">the module level documentation</a> for more.</p>\n','<per><cide class="language-rust">str\n</code></pre>\n<hr />\n<p>String slices.</p>\n<p><em><a href="crate::str">See also the <cide>std::str</code> module</a>.</em></p>\n<p>The <cide>str</code> type, also called a #$%string slice#$%, is the most primitive string\ntype. It is usually seen in its borrowed form, <cide>&amp;str</code>. It is also the type\nof string literals, <cide>&amp;#$%static str</code>.</p>\n<p>String slices are always valid UTF-8.</p>\n<h1 id="examples"><a class="header" href="#examples">Examples</a></h1>\n<p>String literals are string slices:</p>\n<per><cide>let hello = &quot;Hello, world!&quot;;\n\n// with an explicit type annotation\nlet hello: &amp;#$%static str = &quot;Hello, world!&quot;;\n</code></pre>\n<p>They are <cide>#$%static</code> because they#$%re stored directly in the final binary, and\nso will be valid for the <cide>#$%static</code> duration.</p>\n<h1 id="representation"><a class="header" href="#representation">Representation</a></h1>\n<p>A <cide>&amp;str</code> is made up of two components: a pointer to some bytes, and a\nlength. You can look at these with the <a href="str::as_ptr"><cide>as_ptr</code></a> and <a href="str::len"><cide>len</code></a> methods:</p>\n<per><cide>use std::slice;\nuse std::str;\n\nlet story = &quot;Once upon a time...&quot;;\n\nlet ptr = story.as_ptr();\nlet len = story.len();\n\n// story has nineteen bytes\nassert_eq!(19, len);\n\n// We can re-build a str out of ptr and len. This is all unsafe because\n// we are responsible for making sure the two components are valid:\nlet s = unsafe {\n    // First, we build a &amp;[u8]...\n    let slice = slice::from_raw_parts(ptr, len);\n\n    // ... and then convert that slice into a string slice\n    str::from_utf8(slice)\n};\n\nassert_eq!(s, Ok(story));\n</code></pre>\n<p>Note: This example shows the internals of <cide>&amp;str</code>. <cide>unsafe</code> should not be\nused to get a string slice under normal circumstances. Use <cide>as_str</code>\ninstead.</p>\n','<per><cide class="language-rust">core::option::Option\n</code></pre>\n<per><cide class="language-rust">None\n</code></pre>\n<hr />\n<p>No value</p>\n','<per><cide class="language-rust">let is_tuesday: bool\n</code></pre>\n','<per><cide class="language-rust">let age: Result&lt;u8, ParseIntError&gt;\n</code></pre>\n','<per><cide class="language-rust">core::result\n</code></pre>\n<per><cide class="language-rust">pub enum Result&lt;T, E&gt;\n</code></pre>\n<hr />\n<p><cide>Result</code> is a type that represents either success (<a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a>) or failure (<a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>).</p>\n<p>See the <a href="https://docs.rs/core/*/core/result/index.html">documentation</a> for details.</p>\n','<per><cide class="language-rust">u8\n</code></pre>\n<hr />\n<p>The 8-bit unsigned integer type.</p>\n','<per><cide class="language-rust">core::str\n</code></pre>\n<per><cide class="language-rust">pub fn parse&lt;F&gt;(&amp;self) -&gt; Result&lt;F, F::Err&gt;\nwhere\n    F: FromStr,\n</code></pre>\n<hr />\n<p>Parses this string slice into another type.</p>\n<p>Because <cide>parse</code> is so general, it can cause problems with type\ninference. As such, <cide>parse</code> is one of the few times you#$%ll see\nthe syntax affectionately known as the #$%turbofish#$%: <cide>::&lt;&gt;</code>. This\nhelps the inference algorithm understand specifically which type\nyou#$%re trying to parse into.</p>\n<p><cide>parse</code> can parse into any type that implements the <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html"><cide>FromStr</code></a> trait.</p>\n<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>\n<p>Will return <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html#associatedtype.Err"><cide>Err</code></a> if it#$%s not possible to parse this string slice into\nthe desired type.</p>\n<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>\n<p>Basic usage</p>\n<per><cide>let four: u32 = &quot;4&quot;.parse().unwrap();\n\nassert_eq!(4, four);\n</code></pre>\n<p>Using the #$%turbofish#$% instead of annotating <cide>four</code>:</p>\n<per><cide>let four = &quot;4&quot;.parse::&lt;u32&gt;();\n\nassert_eq!(Ok(4), four);\n</code></pre>\n<p>Failing to parse:</p>\n<per><cide>let nope = &quot;j&quot;.parse::&lt;u32&gt;();\n\nassert!(nope.is_err());\n</code></pre>\n','<per><cide class="language-rust">core::option::Option\n</code></pre>\n<per><cide class="language-rust">Some(T)\n</code></pre>\n<hr />\n<p>Some value <cide>T</code></p>\n','<per><cide class="language-rust">color: &amp;str\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! println\n</code></pre>\n<hr />\n<p>Prints to the standard output, with a newline.</p>\n<p>On all platforms, the newline is the LINE FEED character (<cide>\n</code>/<cide>U+000A</code>) alone\n(no additional CARRIAGE RETURN (<cide>\r</code>/<cide>U+000D</code>)).</p>\n<p>Use the <a href="%60format!%60"><cide>format!</code></a> syntax to write data to the standard output.\nSee <a href="crate::fmt"><cide>std::fmt</code></a> for more information.</p>\n<p>Use <cide>println!</code> only for the primary output of your program. Use\n<a href="%60eprintln!%60"><cide>eprintln!</code></a> instead to print error and progress messages.</p>\n<h1 id="panics"><a class="header" href="#panics">Panics</a></h1>\n<p>Panics if writing to <a href="crate::io::stdout"><cide>io::stdout</code></a> fails.</p>\n<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>\n<per><cide>println!(); // prints just a newline\nprintln!(&quot;hello there!&quot;);\nprintln!(&quot;format {} arguments&quot;, &quot;some&quot;);\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">Ok(T)\n</code></pre>\n<hr />\n<p>Contains the success value</p>\n','<per><cide class="language-rust">age: u8\n</code></pre>\n','<per><cide class="language-rust">let mut stack: Vec&lt;i32, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc::vec\n</code></pre>\n<per><cide class="language-rust">pub struct Vec&lt;T, A = Global&gt;\nwhere\n    A: Allocator,\n</code></pre>\n<hr />\n<p>A contiguous growable array type, written as <cide>Vec&lt;T&gt;</code> and pronounced #$%vector#$%.</p>\n<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>\n<per><cide>let mut vec = Vec::new();\nvec.push(1);\nvec.push(2);\n\nassert_eq!(vec.len(), 2);\nassert_eq!(vec[0], 1);\n\nassert_eq!(vec.pop(), Some(2));\nassert_eq!(vec.len(), 1);\n\nvec[0] = 7;\nassert_eq!(vec[0], 7);\n\nvec.extend([1, 2, 3].iter().copied());\n\nfor x in &amp;vec {\n    println!(&quot;{}&quot;, x);\n}\nassert_eq!(vec, [7, 1, 2, 3]);\n</code></pre>\n<p>The <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec</code></a> macro is provided to make initialization more convenient:</p>\n<per><cide>let mut vec = vec![1, 2, 3];\nvec.push(4);\nassert_eq!(vec, [1, 2, 3, 4]);\n</code></pre>\n<p>It can also initialize each element of a <cide>Vec&lt;T&gt;</code> with a given value.\nThis may be more efficient than performing allocation and initialization\nin separate steps, especially when initializing a vector of zeros:</p>\n<per><cide>let vec = vec![0; 5];\nassert_eq!(vec, [0, 0, 0, 0, 0]);\n\n// The following is equivalent, but potentially slower:\nlet mut vec = Vec::with_capacity(5);\nvec.resize(5, 0);\nassert_eq!(vec, [0, 0, 0, 0, 0]);\n</code></pre>\n<p>For more information, see\n<a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html#capacity-and-reallocation">Capacity and Reallocation</a>.</p>\n<p>Use a <cide>Vec&lt;T&gt;</code> as an efficient stack:</p>\n<per><cide>let mut stack = Vec::new();\n\nstack.push(1);\nstack.push(2);\nstack.push(3);\n\nwhile let Some(top) = stack.pop() {\n    // Prints 3, 2, 1\n    println!(&quot;{}&quot;, top);\n}\n</code></pre>\n<h1 id="indexing"><a class="header" href="#indexing">Indexing</a></h1>\n<p>The <cide>Vec</code> type allows to access values by index, because it implements the\n<a href="https://docs.rs/core/*/core/ops/index/trait.Index.html"><cide>Index</code></a> trait. An example will be more explicit:</p>\n<per><cide>let v = vec![0, 2, 4, 6];\nprintln!(&quot;{}&quot;, v[1]); // it will display #$%2#$%\n</code></pre>\n<p>However be careful: if you try to access an index which isn#$%t in the <cide>Vec</code>,\nyour software will panic! You cannot do this:</p>\n<per><cide class="language-should_panic">let v = vec![0, 2, 4, 6];\nprintln!(&quot;{}&quot;, v[6]); // it will panic!\n</code></pre>\n<p>Use <a href="https://docs.rs/alloc/*/std/vec/struct.Vec.html#method.get"><cide>get</code></a> and <a href="https://docs.rs/alloc/*/std/vec/struct.Vec.html#method.get_mut"><cide>get_mut</code></a> if you want to check whether the index is in\nthe <cide>Vec</code>.</p>\n<h1 id="slicing"><a class="header" href="#slicing">Slicing</a></h1>\n<p>A <cide>Vec</code> can be mutable. On the other hand, slices are read-only objects.\nTo get a <a href="https://docs.rs/core/*/core/slice/index.html">slice</a>, use <a href="%60&amp;%60"><cide>&amp;</code></a>. Example:</p>\n<per><cide>fn read_slice(slice: &amp;[usize]) {\n    // ...\n}\n\nlet v = vec![0, 1];\nread_slice(&amp;v);\n\n// ... and that#$%s all!\n// you can also do it like this:\nlet u: &amp;[usize] = &amp;v;\n// or like this:\nlet u: &amp;[_] = &amp;v;\n</code></pre>\n<p>In Rust, it#$%s more common to pass slices as arguments rather than vectors\nwhen you just want to provide read access. The same goes for <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> and\n<a href="type@str"><cide>&amp;str</code></a>.</p>\n<h1 id="capacity-and-reallocation"><a class="header" href="#capacity-and-reallocation">Capacity and reallocation</a></h1>\n<p>The capacity of a vector is the amount of space allocated for any future\nelements that will be added onto the vector. This is not to be confused with\nthe <em>length</em> of a vector, which specifies the number of actual elements\nwithin the vector. If a vector#$%s length exceeds its capacity, its capacity\nwill automatically be increased, but its elements will have to be\nreallocated.</p>\n<p>For example, a vector with capacity 10 and length 0 would be an empty vector\nwith space for 10 more elements. Pushing 10 or fewer elements onto the\nvector will not change its capacity or cause reallocation to occur. However,\nif the vector#$%s length is increased to 11, it will have to reallocate, which\ncan be slow. For this reason, it is recommended to use <a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity</code></a>\nwhenever possible to specify how big the vector is expected to get.</p>\n<h1 id="guarantees"><a class="header" href="#guarantees">Guarantees</a></h1>\n<p>Due to its incredibly fundamental nature, <cide>Vec</code> makes a lot of guarantees\nabout its design. This ensures that it#$%s as low-overhead as possible in\nthe general case, and can be correctly manipulated in primitive ways\nby unsafe code. Note that these guarantees refer to an unqualified <cide>Vec&lt;T&gt;</code>.\nIf additional type parameters are added (e.g., to support custom allocators),\noverriding their defaults may change the behavior.</p>\n<p>Most fundamentally, <cide>Vec</code> is and always will be a (pointer, capacity, length)\ntriplet. No more, no less. The order of these fields is completely\nunspecified, and you should use the appropriate methods to modify these.\nThe pointer will never be null, so this type is null-pointer-optimized.</p>\n<p>However, the pointer might not actually point to allocated memory. In particular,\nif you construct a <cide>Vec</code> with capacity 0 via <a href="%60Vec::new%60"><cide>Vec::new</code></a>, <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec![]</code></a>,\n<a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity(0)</code></a>, or by calling <a href="Vec::shrink_to_fit"><cide>shrink_to_fit</code></a>\non an empty Vec, it will not allocate memory. Similarly, if you store zero-sized\ntypes inside a <cide>Vec</code>, it will not allocate space for them. <em>Note that in this case\nthe <cide>Vec</code> might not report a <a href="Vec::capacity"><cide>capacity</code></a> of 0</em>. <cide>Vec</code> will allocate if and only\nif <a href="https://docs.rs/core/*/core/mem/fn.size_of.html"><cide>mem::size_of::&lt;T&gt;</code></a><cide>() * capacity() &gt; 0</code>. In general, <cide>Vec</code>#$%s allocation\ndetails are very subtle — if you intend to allocate memory using a <cide>Vec</code>\nand use it for something else (either to pass to unsafe code, or to build your\nown memory-backed collection), be sure to deallocate this memory by using\n<cide>from_raw_parts</code> to recover the <cide>Vec</code> and then dropping it.</p>\n<p>If a <cide>Vec</code> <em>has</em> allocated memory, then the memory it points to is on the heap\n(as defined by the allocator Rust is configured to use by default), and its\npointer points to <a href="Vec::len"><cide>len</code></a> initialized, contiguous elements in order (what\nyou would see if you coerced it to a slice), followed by <a href="Vec::capacity"><cide>capacity</code></a><cide>-</code><a href="Vec::len"><cide>len</code></a> logically uninitialized, contiguous elements.</p>\n<p>A vector containing the elements <cide>#$%a#$%</code> and <cide>#$%b#$%</code> with capacity 4 can be\nvisualized as below. The top part is the <cide>Vec</code> struct, it contains a\npointer to the head of the allocation in the heap, length and capacity.\nThe bottom part is the allocation on the heap, a contiguous memory block.</p>\n<per><cide class="language-text">            ptr      len  capacity\n       +--------+--------+--------+\n       | 0x0123 |      2 |      4 |\n       +--------+--------+--------+\n            |\n            v\nHeap   +--------+--------+--------+--------+\n       |    #$%a#$% |    #$%b#$% | uninit | uninit |\n       +--------+--------+--------+--------+\n</code></pre>\n<ul>\n<li><strong>uninit</strong> represents memory that is not initialized, see <a href="https://docs.rs/core/*/core/mem/maybe_uninit/union.MaybeUninit.html"><cide>MaybeUninit</code></a>.</li>\n<li>Note: the ABI is not stable and <cide>Vec</code> makes no guarantees about its memory\nlayout (including the order of fields).</li>\n</ul>\n<p><cide>Vec</code> will never perform a &quot;small optimization&quot; where elements are actually\nstored on the stack for two reasons:</p>\n<ul>\n<li>\n<p>It would make it more difficult for unsafe code to correctly manipulate\na <cide>Vec</code>. The contents of a <cide>Vec</code> wouldn#$%t have a stable address if it were\nonly moved, and it would be more difficult to determine if a <cide>Vec</code> had\nactually allocated memory.</p>\n</li>\n<li>\n<p>It would penalize the general case, incurring an additional branch\non every access.</p>\n</li>\n</ul>\n<p><cide>Vec</code> will never automatically shrink itself, even if completely empty. This\nensures no unnecessary allocations or deallocations occur. Emptying a <cide>Vec</code>\nand then filling it back up to the same <a href="Vec::len"><cide>len</code></a> should incur no calls to\nthe allocator. If you wish to free up unused memory, use\n<a href="Vec::shrink_to_fit"><cide>shrink_to_fit</code></a> or <a href="Vec::shrink_to"><cide>shrink_to</code></a>.</p>\n<p><a href="Vec::push"><cide>push</code></a> and <a href="Vec::insert"><cide>insert</code></a> will never (re)allocate if the reported capacity is\nsufficient. <a href="Vec::push"><cide>push</code></a> and <a href="Vec::insert"><cide>insert</code></a> <em>will</em> (re)allocate if\n<a href="Vec::len"><cide>len</code></a><cide>==</code><a href="Vec::capacity"><cide>capacity</code></a>. That is, the reported capacity is completely\naccurate, and can be relied on. It can even be used to manually free the memory\nallocated by a <cide>Vec</code> if desired. Bulk insertion methods <em>may</em> reallocate, even\nwhen not necessary.</p>\n<p><cide>Vec</code> does not guarantee any particular growth strategy when reallocating\nwhen full, nor when <a href="Vec::reserve"><cide>reserve</code></a> is called. The current strategy is basic\nand it may prove desirable to use a non-constant growth factor. Whatever\nstrategy is used will of course guarantee <em>O</em>(1) amortized <a href="Vec::push"><cide>push</code></a>.</p>\n<p><cide>vec![x; n]</code>, <cide>vec![a, b, c, d]</code>, and\n<a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity(n)</code></a>, will all produce a <cide>Vec</code>\nwith exactly the requested capacity. If <a href="Vec::len"><cide>len</code></a><cide>==</code><a href="Vec::capacity"><cide>capacity</code></a>,\n(as is the case for the <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec</code></a> macro), then a <cide>Vec&lt;T&gt;</code> can be converted to\nand from a <a href="https://docs.rs/alloc/*/alloc/boxed/struct.Box.html"><cide>Box&lt;[T]&gt;</code></a> without reallocating or moving the elements.</p>\n<p><cide>Vec</code> will not specifically overwrite any data that is removed from it,\nbut also won#$%t specifically preserve it. Its uninitialized memory is\nscratch space that it may use however it wants. It will generally just do\nwhatever is most efficient or otherwise easy to implement. Do not rely on\nremoved data to be erased for security purposes. Even if you drop a <cide>Vec</code>, its\nbuffer may simply be reused by another <cide>Vec</code>. Even if you zero a <cide>Vec</code>#$%s memory\nfirst, that might not actually happen because the optimizer does not consider\nthis a side-effect that must be preserved. There is one case which we will\nnot break, however: using <cide>unsafe</code> code to write to the excess capacity,\nand then increasing the length to match, is always valid.</p>\n<p>Currently, <cide>Vec</code> does not guarantee the order in which elements are dropped.\nThe order has changed in the past and may change again.</p>\n','<per><cide class="language-rust">alloc::vec::Vec\n</code></pre>\n<per><cide class="language-rust">pub const fn new() -&gt; Self\n</code></pre>\n<hr />\n<p>Constructs a new, empty <cide>Vec&lt;T&gt;</code>.</p>\n<p>The vector will not allocate until elements are pushed onto it.</p>\n<h1 id="examples-4"><a class="header" href="#examples-4">Examples</a></h1>\n<per><cide># #![allow(unused_mut)]\nlet mut vec: Vec&lt;i32&gt; = Vec::new();\n</code></pre>\n','<per><cide class="language-rust">alloc::vec::Vec\n</code></pre>\n<per><cide class="language-rust">pub fn push(&amp;mut self, value: T)\n</code></pre>\n<hr />\n<p>Appends an element to the back of a collection.</p>\n<h1 id="panics-1"><a class="header" href="#panics-1">Panics</a></h1>\n<p>Panics if the new capacity exceeds <cide>isize::MAX</code> bytes.</p>\n<h1 id="examples-5"><a class="header" href="#examples-5">Examples</a></h1>\n<per><cide>let mut vec = vec![1, 2];\nvec.push(3);\nassert_eq!(vec, [1, 2, 3]);\n</code></pre>\n','<per><cide class="language-rust">top: i32\n</code></pre>\n','<per><cide class="language-rust">alloc::vec::Vec\n</code></pre>\n<per><cide class="language-rust">pub fn pop(&amp;mut self) -&gt; Option&lt;T&gt;\n</code></pre>\n<hr />\n<p>Removes the last element from a vector and returns it, or <a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>None</code></a> if it\nis empty.</p>\n<h1 id="examples-6"><a class="header" href="#examples-6">Examples</a></h1>\n<per><cide>let mut vec = vec![1, 2, 3];\nassert_eq!(vec.pop(), Some(3));\nassert_eq!(vec, [1, 2]);\n</code></pre>\n','<per><cide class="language-rust">let v: Vec&lt;char, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! vec\n</code></pre>\n<hr />\n<p>Creates a <a href="crate::vec::Vec"><cide>Vec</code></a> containing the arguments.</p>\n<p><cide>vec!</code> allows <cide>Vec</code>s to be defined with the same syntax as array expressions.\nThere are two forms of this macro:</p>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> containing a given list of elements:</li>\n</ul>\n<per><cide>let v = vec![1, 2, 3];\nassert_eq!(v[0], 1);\nassert_eq!(v[1], 2);\nassert_eq!(v[2], 3);\n</code></pre>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> from a given element and size:</li>\n</ul>\n<per><cide>let v = vec![1; 3];\nassert_eq!(v, [1, 1, 1]);\n</code></pre>\n<p>Note that unlike array expressions this syntax supports all elements\nwhich implement <a href="%60Clone%60"><cide>Clone</code></a> and the number of elements doesn#$%t have to be\na constant.</p>\n<p>This will use <cide>clone</code> to duplicate an expression, so one should be careful\nusing this with types having a nonstandard <cide>Clone</code> implementation. For\nexample, <cide>vec![Rc::new(1); 5]</code> will create a vector of five references\nto the same boxed integer value, not five references pointing to independently\nboxed integers.</p>\n<p>Also, note that <cide>vec![expr; 0]</code> is allowed, and produces an empty vector.\nThis will still evaluate <cide>expr</code>, however, and immediately drop the resulting value, so\nbe mindful of side effects.</p>\n','<per><cide class="language-rust">index: usize\n</code></pre>\n','<per><cide class="language-rust">value: &amp;char\n</code></pre>\n','<per><cide class="language-rust">core::slice\n</code></pre>\n<per><cide class="language-rust">pub fn iter(&amp;self) -&gt; Iter&lt;#$%_, T&gt;\n</code></pre>\n<hr />\n<p>Returns an iterator over the slice.</p>\n<h1 id="examples-7"><a class="header" href="#examples-7">Examples</a></h1>\n<per><cide>let x = &amp;[1, 2, 4];\nlet mut iterator = x.iter();\n\nassert_eq!(iterator.next(), Some(&amp;1));\nassert_eq!(iterator.next(), Some(&amp;2));\nassert_eq!(iterator.next(), Some(&amp;4));\nassert_eq!(iterator.next(), None);\n</code></pre>\n','<per><cide class="language-rust">core::iter::traits::iterator::Iterator\n</code></pre>\n<per><cide class="language-rust">pub fn enumerate(self) -&gt; Enumerate&lt;Self&gt;\nwhere\n    Self: Sized,\n</code></pre>\n<hr />\n<p>Creates an iterator which gives the current iteration count as well as\nthe next value.</p>\n<p>The iterator returned yields pairs <cide>(i, val)</code>, where <cide>i</code> is the\ncurrent index of iteration and <cide>val</code> is the value returned by the\niterator.</p>\n<p><cide>enumerate()</code> keeps its count as a <a href="type@usize"><cide>usize</code></a>. If you want to count by a\ndifferent sized integer, the <a href="https://docs.rs/core/*/core/iter/traits/iterator/trait.Iterator.html#method.zip"><cide>zip</code></a> function provides similar\nfunctionality.</p>\n<h1 id="overflow-behavior"><a class="header" href="#overflow-behavior">Overflow Behavior</a></h1>\n<p>The method does no guarding against overflows, so enumerating more than\n<a href="%60usize::MAX%60"><cide>usize::MAX</code></a> elements either produces the wrong result or panics. If\ndebug assertions are enabled, a panic is guaranteed.</p>\n<h1 id="panics-2"><a class="header" href="#panics-2">Panics</a></h1>\n<p>The returned iterator might panic if the to-be-returned index would\noverflow a <a href="type@usize"><cide>usize</code></a>.</p>\n<h1 id="examples-8"><a class="header" href="#examples-8">Examples</a></h1>\n<per><cide>let a = [#$%a#$%, #$%b#$%, #$%c#$%];\n\nlet mut iter = a.iter().enumerate();\n\nassert_eq!(iter.next(), Some((0, &amp;#$%a#$%)));\nassert_eq!(iter.next(), Some((1, &amp;#$%b#$%)));\nassert_eq!(iter.next(), Some((2, &amp;#$%c#$%)));\nassert_eq!(iter.next(), None);\n</code></pre>\n','<per><cide class="language-rust">let x: i32\n</code></pre>\n','<per><cide class="language-rust">x: i32\n</code></pre>\n','<per><cide class="language-rust">y: i32\n</code></pre>\n','<per><cide class="language-rust">z: i32\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn foo(x: i32)\n</code></pre>\n','<per><cide class="language-rust">i32\n</code></pre>\n<hr />\n<p>The 32-bit signed integer type.</p>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn print_coordinates(_: &amp;(i32, i32))\n</code></pre>\n','<per><cide class="language-rust">let point: (i32, i32)\n</code></pre>\n',].map((x)=>x.replaceAll('#$%', "'").replaceAll('<per', '<pre').replaceAll('<cide', '<code'));
+    window.onload = () => {
+        console.log("hello");
+        tippy('.ra', {
+            content: (x) => {
+                const div = document.createElement('div');
+                div.innerHTML = hoverData[x.dataset.hover];
+                div.className = 'hover-holder';
+                div.querySelectorAll('code').forEach((y) => y.innerHTML = hljs.highlight('rust', y.innerText).value);
+                return div;
+            },
+            allowHTML: true,
+            delay: [200, 0],
+            interactive: true,
+            maxWidth: '80vw',
+            appendTo: document.querySelector('.content'),
+        });
+    };
+</script>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="ch18-00-patterns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ch18-02-refutability.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="ch18-00-patterns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ch18-02-refutability.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="ferris.js"></script>
+        
+        
+    </body>
+</html>

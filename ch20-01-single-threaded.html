@@ -1,0 +1,830 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Building a Single-Threaded Web Server - The Rust Programming Language</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="ferris.css">
+                <link rel="stylesheet" href="theme/2018-edition.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Common Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Functions</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Comments</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Control Flow</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Understanding Ownership</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> What is Ownership?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> References and Borrowing</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> The Slice Type</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Using Structs to Structure Related Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Defining and Instantiating Structs</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> An Example Program Using Structs</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Method Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Enums and Pattern Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Defining an Enum</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> The match Control Flow Operator</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Concise Control Flow with if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Managing Growing Projects with Packages, Crates, and Modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Packages and Crates</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Defining Modules to Control Scope and Privacy</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Paths for Referring to an Item in the Module Tree</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Bringing Paths Into Scope with the use Keyword</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Separating Modules into Different Files</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Storing Lists of Values with Vectors</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Storing UTF-8 Encoded Text with Strings</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Storing Keys with Associated Values in Hash Maps</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Unrecoverable Errors with panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Recoverable Errors with Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> To panic! or Not To panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Generic Types, Traits, and Lifetimes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Generic Data Types</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Traits: Defining Shared Behavior</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Validating References with Lifetimes</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Writing Automated Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> How to Write Tests</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Controlling How Tests Are Run</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Test Organization</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> An I/O Project: Building a Command Line Program</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Accepting Command Line Arguments</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Reading a File</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Refactoring to Improve Modularity and Error Handling</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Developing the Library’s Functionality with Test Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Working with Environment Variables</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Writing Error Messages to Standard Error Instead of Standard Output</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Functional Language Features: Iterators and Closures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Closures: Anonymous Functions that Can Capture Their Environment</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Processing a Series of Items with Iterators</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Improving Our I/O Project</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Comparing Performance: Loops vs. Iterators</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> More about Cargo and Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Customizing Builds with Release Profiles</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Publishing a Crate to Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo Workspaces</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Installing Binaries from Crates.io with cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Extending Cargo with Custom Commands</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Smart Pointers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Using Box&lt;T&gt; to Point to Data on the Heap</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Treating Smart Pointers Like Regular References with the Deref Trait</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Running Code on Cleanup with the Drop Trait</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, the Reference Counted Smart Pointer</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; and the Interior Mutability Pattern</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Reference Cycles Can Leak Memory</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Fearless Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Using Threads to Run Code Simultaneously</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> Using Message Passing to Transfer Data Between Threads</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Shared-State Concurrency</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Extensible Concurrency with the Sync and Send Traits</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Object Oriented Programming Features of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Characteristics of Object-Oriented Languages</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Using Trait Objects That Allow for Values of Different Types</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Implementing an Object-Oriented Design Pattern</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Patterns and Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> All the Places Patterns Can Be Used</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability: Whether a Pattern Might Fail to Match</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Pattern Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Advanced Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Macros</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Final Project: Building a Multithreaded Web Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html" class="active"><strong aria-hidden="true">20.1.</strong> Building a Single-Threaded Web Server</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Turning Our Single-Threaded Server into a Multithreaded Server</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Graceful Shutdown and Cleanup</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Keywords</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Operators and Symbols</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Derivable Traits</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Useful Development Tools</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Editions</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Translations of the Book</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - How Rust is Made and “Nightly Rust”</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Rust Programming Language</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.inlay-hint, .inlay-hint * {
+    border-radius: .4em;
+}
+
+.light .inlay-hint, .rust .inlay-hint {
+    background-color: #dcc;
+    color: #777;
+}
+
+.ayu .inlay-hint, .navy .inlay-hint, .coal .inlay-hint {
+    background-color: #444;
+    color: #999;
+}
+
+.inlay-hint {
+    font-size: 0.8em;
+    user-select: none;
+}
+.hover-holder {
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.tippy-content {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+</style>## Building a Single-Threaded Web Server
+<p>We’ll start by getting a single-threaded web server working. Before we begin,
+let’s look at a quick overview of the protocols involved in building web
+servers. The details of these protocols are beyond the scope of this book, but
+a brief overview will give you the information you need.</p>
+<p>The two main protocols involved in web servers are the <em>Hypertext Transfer
+Protocol</em> <em>(HTTP)</em> and the <em>Transmission Control Protocol</em> <em>(TCP)</em>. Both
+protocols are <em>request-response</em> protocols, meaning a <em>client</em> initiates
+requests and a <em>server</em> listens to the requests and provides a response to the
+client. The contents of those requests and responses are defined by the
+protocols.</p>
+<p>TCP is the lower-level protocol that describes the details of how information
+gets from one server to another but doesn’t specify what that information is.
+HTTP builds on top of TCP by defining the contents of the requests and
+responses. It’s technically possible to use HTTP with other protocols, but in
+the vast majority of cases, HTTP sends its data over TCP. We’ll work with the
+raw bytes of TCP and HTTP requests and responses.</p>
+<h3 id="listening-to-the-tcp-connection"><a class="header" href="#listening-to-the-tcp-connection">Listening to the TCP Connection</a></h3>
+<p>Our web server needs to listen to a TCP connection, so that’s the first part
+we’ll work on. The standard library offers a <code>std::net</code> module that lets us do
+this. Let’s make a new project in the usual fashion:</p>
+<pre><code class="language-console">$ cargo new hello
+     Created binary (application) `hello` project
+$ cd hello
+</code></pre>
+<p>Now enter the code in Listing 20-1 in <em>src/main.rs</em> to start. This code will
+listen at the address <code>127.0.0.1:7878</code> for incoming TCP streams. When it gets
+an incoming stream, it will print <code>Connection established!</code>.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">net</span>::<span class="ra" data-hover="2">TcpListener</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let <span class="ra" data-hover="4">listener</span><span class="inlay-hint">: TcpListener</span> = <span class="ra" data-hover="2">TcpListener</span>::<span class="ra" data-hover="5">bind</span>(<span class="inlay-hint">addr: </span>"127.0.0.1:7878").<span class="ra" data-hover="6">unwrap</span>();
+
+    for <span class="ra" data-hover="7">stream</span><span class="inlay-hint">: Result&lt;TcpStream, Error&gt;</span> in <span class="ra" data-hover="4">listener</span>.<span class="ra" data-hover="8">incoming</span>() {
+        let <span class="ra" data-hover="9">stream</span><span class="inlay-hint">: TcpStream</span> = <span class="ra" data-hover="7">stream</span>.<span class="ra" data-hover="6">unwrap</span>();
+
+        <span class="ra" data-hover="10">println</span>!("Connection established!");
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 20-1: Listening for incoming streams and printing
+a message when we receive a stream</span></p>
+<p>Using <code>TcpListener</code>, we can listen for TCP connections at the address
+<code>127.0.0.1:7878</code>. In the address, the section before the colon is an IP address
+representing your computer (this is the same on every computer and doesn’t
+represent the authors’ computer specifically), and <code>7878</code> is the port. We’ve
+chosen this port for two reasons: HTTP isn't normally accepted on this port, and
+7878 is <em>rust</em> typed on a telephone.</p>
+<p>The <code>bind</code> function in this scenario works like the <code>new</code> function in that it
+will return a new <code>TcpListener</code> instance. The reason the function is called
+<code>bind</code> is that in networking, connecting to a port to listen to is known as
+“binding to a port.”</p>
+<p>The <code>bind</code> function returns a <code>Result&lt;T, E&gt;</code>, which indicates that binding
+might fail. For example, connecting to port 80 requires administrator
+privileges (nonadministrators can listen only on ports higher than 1023), so if
+we tried to connect to port 80 without being an administrator, binding wouldn’t
+work. As another example, binding wouldn’t work if we ran two instances of our
+program and so had two programs listening to the same port. Because we’re
+writing a basic server just for learning purposes, we won’t worry about
+handling these kinds of errors; instead, we use <code>unwrap</code> to stop the program if
+errors happen.</p>
+<p>The <code>incoming</code> method on <code>TcpListener</code> returns an iterator that gives us a
+sequence of streams (more specifically, streams of type <code>TcpStream</code>). A single
+<em>stream</em> represents an open connection between the client and the server. A
+<em>connection</em> is the name for the full request and response process in which a
+client connects to the server, the server generates a response, and the server
+closes the connection. As such, <code>TcpStream</code> will read from itself to see what
+the client sent and then allow us to write our response to the stream. Overall,
+this <code>for</code> loop will process each connection in turn and produce a series of
+streams for us to handle.</p>
+<p>For now, our handling of the stream consists of calling <code>unwrap</code> to terminate
+our program if the stream has any errors; if there aren’t any errors, the
+program prints a message. We’ll add more functionality for the success case in
+the next listing. The reason we might receive errors from the <code>incoming</code> method
+when a client connects to the server is that we’re not actually iterating over
+connections. Instead, we’re iterating over <em>connection attempts</em>. The
+connection might not be successful for a number of reasons, many of them
+operating system specific. For example, many operating systems have a limit to
+the number of simultaneous open connections they can support; new connection
+attempts beyond that number will produce an error until some of the open
+connections are closed.</p>
+<p>Let’s try running this code! Invoke <code>cargo run</code> in the terminal and then load
+<em>127.0.0.1:7878</em> in a web browser. The browser should show an error message
+like “Connection reset,” because the server isn’t currently sending back any
+data. But when you look at your terminal, you should see several messages that
+were printed when the browser connected to the server!</p>
+<pre><code class="language-text">     Running `target/debug/hello`
+Connection established!
+Connection established!
+Connection established!
+</code></pre>
+<p>Sometimes, you’ll see multiple messages printed for one browser request; the
+reason might be that the browser is making a request for the page as well as a
+request for other resources, like the <em>favicon.ico</em> icon that appears in the
+browser tab.</p>
+<p>It could also be that the browser is trying to connect to the server multiple
+times because the server isn’t responding with any data. When <code>stream</code> goes out
+of scope and is dropped at the end of the loop, the connection is closed as
+part of the <code>drop</code> implementation. Browsers sometimes deal with closed
+connections by retrying, because the problem might be temporary. The important
+factor is that we’ve successfully gotten a handle to a TCP connection!</p>
+<p>Remember to stop the program by pressing <span class="keystroke">ctrl-c</span>
+when you’re done running a particular version of the code. Then restart <code>cargo run</code> after you’ve made each set of code changes to make sure you’re running the
+newest code.</p>
+<h3 id="reading-the-request"><a class="header" href="#reading-the-request">Reading the Request</a></h3>
+<p>Let’s implement the functionality to read the request from the browser! To
+separate the concerns of first getting a connection and then taking some action
+with the connection, we’ll start a new function for processing connections. In
+this new <code>handle_connection</code> function, we’ll read data from the TCP stream and
+print it so we can see the data being sent from the browser. Change the code to
+look like Listing 20-2.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="11">io</span>::<span class="ra" data-hover="12">prelude</span>::*;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">net</span>::<span class="ra" data-hover="2">TcpListener</span>;
+use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="1">net</span>::<span class="ra" data-hover="13">TcpStream</span>;
+
+fn <span class="ra" data-hover="3">main</span>() {
+    let <span class="ra" data-hover="4">listener</span><span class="inlay-hint">: TcpListener</span> = <span class="ra" data-hover="2">TcpListener</span>::<span class="ra" data-hover="5">bind</span>(<span class="inlay-hint">addr: </span>"127.0.0.1:7878").<span class="ra" data-hover="6">unwrap</span>();
+
+    for <span class="ra" data-hover="7">stream</span><span class="inlay-hint">: Result&lt;TcpStream, Error&gt;</span> in <span class="ra" data-hover="4">listener</span>.<span class="ra" data-hover="8">incoming</span>() {
+        let <span class="ra" data-hover="9">stream</span><span class="inlay-hint">: TcpStream</span> = <span class="ra" data-hover="7">stream</span>.<span class="ra" data-hover="6">unwrap</span>();
+
+        <span class="ra" data-hover="14">handle_connection</span>(<span class="ra" data-hover="9">stream</span>);
+    }
+}
+
+fn <span class="ra" data-hover="14">handle_connection</span>(mut <span class="ra" data-hover="15">stream</span>: <span class="ra" data-hover="13">TcpStream</span>) {
+    let mut <span class="ra" data-hover="16">buffer</span><span class="inlay-hint">: [u8; 1024]</span> = [0; 1024];
+
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="17">read</span>(<span class="inlay-hint">buf: </span>&amp;mut <span class="ra" data-hover="16">buffer</span>).<span class="ra" data-hover="6">unwrap</span>();
+
+    <span class="ra" data-hover="10">println</span>!("Request: {}", <span class="ra" data-hover="18">String</span>::<span class="ra" data-hover="19">from_utf8_lossy</span>(&amp;<span class="ra" data-hover="16">buffer</span>[..]));
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 20-2: Reading from the <code>TcpStream</code> and printing
+the data</span></p>
+<p>We bring <code>std::io::prelude</code> into scope to get access to certain traits that let
+us read from and write to the stream. In the <code>for</code> loop in the <code>main</code> function,
+instead of printing a message that says we made a connection, we now call the
+new <code>handle_connection</code> function and pass the <code>stream</code> to it.</p>
+<p>In the <code>handle_connection</code> function, we’ve made the <code>stream</code> parameter mutable.
+The reason is that the <code>TcpStream</code> instance keeps track of what data it returns
+to us internally. It might read more data than we asked for and save that data
+for the next time we ask for data. It therefore needs to be <code>mut</code> because its
+internal state might change; usually, we think of “reading” as not needing
+mutation, but in this case we need the <code>mut</code> keyword.</p>
+<p>Next, we need to actually read from the stream. We do this in two steps:
+first, we declare a <code>buffer</code> on the stack to hold the data that is read in.
+We’ve made the buffer 1024 bytes in size, which is big enough to hold the
+data of a basic request and sufficient for our purposes in this chapter. If
+we wanted to handle requests of an arbitrary size, buffer management would
+need to be more complicated; we’ll keep it simple for now. We pass the buffer
+to <code>stream.read</code>, which will read bytes from the <code>TcpStream</code> and put them in
+the buffer.</p>
+<p>Second, we convert the bytes in the buffer to a string and print that string.
+The <code>String::from_utf8_lossy</code> function takes a <code>&amp;[u8]</code> and produces a <code>String</code>
+from it. The “lossy” part of the name indicates the behavior of this function
+when it sees an invalid UTF-8 sequence: it will replace the invalid sequence
+with <code>�</code>, the <code>U+FFFD REPLACEMENT CHARACTER</code>. You might see replacement
+characters for characters in the buffer that aren’t filled by request data.</p>
+<p>Let’s try this code! Start the program and make a request in a web browser
+again. Note that we’ll still get an error page in the browser, but our
+program’s output in the terminal will now look similar to this:</p>
+<pre><code class="language-console">$ cargo run
+   Compiling hello v0.1.0 (file:///projects/hello)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.42s
+     Running `target/debug/hello`
+Request: GET / HTTP/1.1
+Host: 127.0.0.1:7878
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+Firefox/52.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+������������������������������������
+</code></pre>
+<p>Depending on your browser, you might get slightly different output. Now that
+we’re printing the request data, we can see why we get multiple connections
+from one browser request by looking at the path after <code>Request: GET</code>. If the
+repeated connections are all requesting <em>/</em>, we know the browser is trying to
+fetch <em>/</em> repeatedly because it’s not getting a response from our program.</p>
+<p>Let’s break down this request data to understand what the browser is asking of
+our program.</p>
+<h3 id="a-closer-look-at-an-http-request"><a class="header" href="#a-closer-look-at-an-http-request">A Closer Look at an HTTP Request</a></h3>
+<p>HTTP is a text-based protocol, and a request takes this format:</p>
+<pre><code class="language-text">Method Request-URI HTTP-Version CRLF
+headers CRLF
+message-body
+</code></pre>
+<p>The first line is the <em>request line</em> that holds information about what the
+client is requesting. The first part of the request line indicates the <em>method</em>
+being used, such as <code>GET</code> or <code>POST</code>, which describes how the client is making
+this request. Our client used a <code>GET</code> request.</p>
+<p>The next part of the request line is <em>/</em>, which indicates the <em>Uniform Resource
+Identifier</em> <em>(URI)</em> the client is requesting: a URI is almost, but not quite,
+the same as a <em>Uniform Resource Locator</em> <em>(URL)</em>. The difference between URIs
+and URLs isn’t important for our purposes in this chapter, but the HTTP spec
+uses the term URI, so we can just mentally substitute URL for URI here.</p>
+<p>The last part is the HTTP version the client uses, and then the request line
+ends in a <em>CRLF sequence</em>. (CRLF stands for <em>carriage return</em> and <em>line feed</em>,
+which are terms from the typewriter days!) The CRLF sequence can also be
+written as <code>\r\n</code>, where <code>\r</code> is a carriage return and <code>\n</code> is a line feed. The
+CRLF sequence separates the request line from the rest of the request data.
+Note that when the CRLF is printed, we see a new line start rather than <code>\r\n</code>.</p>
+<p>Looking at the request line data we received from running our program so far,
+we see that <code>GET</code> is the method, <em>/</em> is the request URI, and <code>HTTP/1.1</code> is the
+version.</p>
+<p>After the request line, the remaining lines starting from <code>Host:</code> onward are
+headers. <code>GET</code> requests have no body.</p>
+<p>Try making a request from a different browser or asking for a different
+address, such as <em>127.0.0.1:7878/test</em>, to see how the request data changes.</p>
+<p>Now that we know what the browser is asking for, let’s send back some data!</p>
+<h3 id="writing-a-response"><a class="header" href="#writing-a-response">Writing a Response</a></h3>
+<p>Now we’ll implement sending data in response to a client request. Responses
+have the following format:</p>
+<pre><code class="language-text">HTTP-Version Status-Code Reason-Phrase CRLF
+headers CRLF
+message-body
+</code></pre>
+<p>The first line is a <em>status line</em> that contains the HTTP version used in the
+response, a numeric status code that summarizes the result of the request, and
+a reason phrase that provides a text description of the status code. After the
+CRLF sequence are any headers, another CRLF sequence, and the body of the
+response.</p>
+<p>Here is an example response that uses HTTP version 1.1, has a status code of
+200, an OK reason phrase, no headers, and no body:</p>
+<pre><code class="language-text">HTTP/1.1 200 OK\r\n\r\n
+</code></pre>
+<p>The status code 200 is the standard success response. The text is a tiny
+successful HTTP response. Let’s write this to the stream as our response to a
+successful request! From the <code>handle_connection</code> function, remove the
+<code>println!</code> that was printing the request data and replace it with the code in
+Listing 20-3.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use std::io::prelude::*;
+</span><span class="boring">use std::net::TcpListener;
+</span><span class="boring">use std::net::TcpStream;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+</span><span class="boring">
+</span><span class="boring">    for stream in listener.incoming() {
+</span><span class="boring">        let stream = stream.unwrap();
+</span><span class="boring">
+</span><span class="boring">        handle_connection(stream);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn <span class="ra" data-hover="14">handle_connection</span>(mut <span class="ra" data-hover="15">stream</span>: <span class="ra" data-hover="13">TcpStream</span>) {
+    let mut <span class="ra" data-hover="16">buffer</span><span class="inlay-hint">: [u8; 1024]</span> = [0; 1024];
+
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="17">read</span>(<span class="inlay-hint">buf: </span>&amp;mut <span class="ra" data-hover="16">buffer</span>).<span class="ra" data-hover="6">unwrap</span>();
+
+    let <span class="ra" data-hover="20">response</span><span class="inlay-hint">: &amp;str</span> = "HTTP/1.1 200 OK\r\n\r\n";
+
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="21">write</span>(<span class="ra" data-hover="20"><span class="inlay-hint">buf: </span>response</span>.<span class="ra" data-hover="22">as_bytes</span>()).<span class="ra" data-hover="6">unwrap</span>();
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="23">flush</span>().<span class="ra" data-hover="6">unwrap</span>();
+}
+</code></pre></pre>
+<p><span class="caption">Listing 20-3: Writing a tiny successful HTTP response to
+the stream</span></p>
+<p>The first new line defines the <code>response</code> variable that holds the success
+message’s data. Then we call <code>as_bytes</code> on our <code>response</code> to convert the string
+data to bytes. The <code>write</code> method on <code>stream</code> takes a <code>&amp;[u8]</code> and sends those
+bytes directly down the connection.</p>
+<p>Because the <code>write</code> operation could fail, we use <code>unwrap</code> on any error result
+as before. Again, in a real application you would add error handling here.
+Finally, <code>flush</code> will wait and prevent the program from continuing until all
+the bytes are written to the connection; <code>TcpStream</code> contains an internal
+buffer to minimize calls to the underlying operating system.</p>
+<p>With these changes, let’s run our code and make a request. We’re no longer
+printing any data to the terminal, so we won’t see any output other than the
+output from Cargo. When you load <em>127.0.0.1:7878</em> in a web browser, you should
+get a blank page instead of an error. You’ve just hand-coded an HTTP request
+and response!</p>
+<h3 id="returning-real-html"><a class="header" href="#returning-real-html">Returning Real HTML</a></h3>
+<p>Let’s implement the functionality for returning more than a blank page. Create
+a new file, <em>hello.html</em>, in the root of your project directory, not in the
+<em>src</em> directory. You can input any HTML you want; Listing 20-4 shows one
+possibility.</p>
+<p><span class="filename">Filename: hello.html</span></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Hello!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    &lt;p&gt;Hi from Rust&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><span class="caption">Listing 20-4: A sample HTML file to return in a
+response</span></p>
+<p>This is a minimal HTML5 document with a heading and some text. To return this
+from the server when a request is received, we’ll modify <code>handle_connection</code> as
+shown in Listing 20-5 to read the HTML file, add it to the response as a body,
+and send it.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">use <span class="ra" data-hover="0">std</span>::<span class="ra" data-hover="24">fs</span>;
+// --snip--
+
+<span class="boring">use std::io::prelude::*;
+</span><span class="boring">use std::net::TcpListener;
+</span><span class="boring">use std::net::TcpStream;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+</span><span class="boring">
+</span><span class="boring">    for stream in listener.incoming() {
+</span><span class="boring">        let stream = stream.unwrap();
+</span><span class="boring">
+</span><span class="boring">        handle_connection(stream);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>fn <span class="ra" data-hover="14">handle_connection</span>(mut <span class="ra" data-hover="15">stream</span>: <span class="ra" data-hover="13">TcpStream</span>) {
+    let mut <span class="ra" data-hover="16">buffer</span><span class="inlay-hint">: [u8; 1024]</span> = [0; 1024];
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="17">read</span>(<span class="inlay-hint">buf: </span>&amp;mut <span class="ra" data-hover="16">buffer</span>).<span class="ra" data-hover="6">unwrap</span>();
+
+    let <span class="ra" data-hover="25">contents</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="24">fs</span>::<span class="ra" data-hover="26">read_to_string</span>(<span class="inlay-hint">path: </span>"hello.html").<span class="ra" data-hover="6">unwrap</span>();
+
+    let <span class="ra" data-hover="27">response</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="28">format</span>!(
+        "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
+        <span class="ra" data-hover="25">contents</span>.<span class="ra" data-hover="29">len</span>(),
+        <span class="ra" data-hover="25">contents
+    );
+
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="21">write</span>(<span class="ra" data-hover="27"><span class="inlay-hint">buf: </span>response</span>.<span class="ra" data-hover="30">as_bytes</span>()).<span class="ra" data-hover="6">unwrap</span>();
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="23">flush</span>().<span class="ra" data-hover="6">unwrap</span>();
+}
+</code></pre></pre>
+<p><span class="caption">Listing 20-5: Sending the contents of <em>hello.html</em> as the
+body of the response</span></p>
+<p>We’ve added a line at the top to bring the standard library’s filesystem module
+into scope. The code for reading the contents of a file to a string should look
+familiar; we used it in Chapter 12 when we read the contents of a file for our
+I/O project in Listing 12-4.</p>
+<p>Next, we use <code>format!</code> to add the file’s contents as the body of the success
+response. To ensure a valid HTTP response, we add the <code>Content-Length</code> header
+which is set to the size of our response body, in this case the size of <code>hello.html</code>.</p>
+<p>Run this code with <code>cargo run</code> and load <em>127.0.0.1:7878</em> in your browser; you
+should see your HTML rendered!</p>
+<p>Currently, we’re ignoring the request data in <code>buffer</code> and just sending back
+the contents of the HTML file unconditionally. That means if you try requesting
+<em>127.0.0.1:7878/something-else</em> in your browser, you’ll still get back this
+same HTML response. Our server is very limited and is not what most web servers
+do. We want to customize our responses depending on the request and only send
+back the HTML file for a well-formed request to <em>/</em>.</p>
+<h3 id="validating-the-request-and-selectively-responding"><a class="header" href="#validating-the-request-and-selectively-responding">Validating the Request and Selectively Responding</a></h3>
+<p>Right now, our web server will return the HTML in the file no matter what the
+client requested. Let’s add functionality to check that the browser is
+requesting <em>/</em> before returning the HTML file and return an error if the
+browser requests anything else. For this we need to modify <code>handle_connection</code>,
+as shown in Listing 20-6. This new code checks the content of the request
+received against what we know a request for <em>/</em> looks like and adds <code>if</code> and
+<code>else</code> blocks to treat requests differently.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use std::fs;
+</span><span class="boring">use std::io::prelude::*;
+</span><span class="boring">use std::net::TcpListener;
+</span><span class="boring">use std::net::TcpStream;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+</span><span class="boring">
+</span><span class="boring">    for stream in listener.incoming() {
+</span><span class="boring">        let stream = stream.unwrap();
+</span><span class="boring">
+</span><span class="boring">        handle_connection(stream);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>// --snip--
+
+fn <span class="ra" data-hover="14">handle_connection</span>(mut <span class="ra" data-hover="15">stream</span>: <span class="ra" data-hover="13">TcpStream</span>) {
+    let mut <span class="ra" data-hover="16">buffer</span><span class="inlay-hint">: [u8; 1024]</span> = [0; 1024];
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="17">read</span>(<span class="inlay-hint">buf: </span>&amp;mut <span class="ra" data-hover="16">buffer</span>).<span class="ra" data-hover="6">unwrap</span>();
+
+    let <span class="ra" data-hover="31">get</span><span class="inlay-hint">: &amp;[u8; 16]</span> = b"GET / HTTP/1.1\r\n";
+
+    if <span class="ra" data-hover="16">buffer</span>.<span class="ra" data-hover="32">starts_with</span>(<span class="ra" data-hover="31"><span class="inlay-hint">needle: </span>get</span>) {
+        let <span class="ra" data-hover="25">contents</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="24">fs</span>::<span class="ra" data-hover="26">read_to_string</span>(<span class="inlay-hint">path: </span>"hello.html").<span class="ra" data-hover="6">unwrap</span>();
+
+        let <span class="ra" data-hover="27">response</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="28">format</span>!(
+            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
+            <span class="ra" data-hover="25">contents</span>.<span class="ra" data-hover="29">len</span>(),
+            <span class="ra" data-hover="25">contents
+        );
+
+        <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="21">write</span>(<span class="ra" data-hover="27"><span class="inlay-hint">buf: </span>response</span>.<span class="ra" data-hover="30">as_bytes</span>()).<span class="ra" data-hover="6">unwrap</span>();
+        <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="23">flush</span>().<span class="ra" data-hover="6">unwrap</span>();
+    } else {
+        // some other request
+    }
+}
+</code></pre></pre>
+<p><span class="caption">Listing 20-6: Matching the request and handling requests
+to <em>/</em> differently from other requests</span></p>
+<p>First, we hardcode the data corresponding to the <em>/</em> request into the <code>get</code>
+variable. Because we’re reading raw bytes into the buffer, we transform <code>get</code>
+into a byte string by adding the <code>b&quot;&quot;</code> byte string syntax at the start of the
+content data. Then we check whether <code>buffer</code> starts with the bytes in <code>get</code>. If
+it does, it means we’ve received a well-formed request to <em>/</em>, which is the
+success case we’ll handle in the <code>if</code> block that returns the contents of our
+HTML file.</p>
+<p>If <code>buffer</code> does <em>not</em> start with the bytes in <code>get</code>, it means we’ve received
+some other request. We’ll add code to the <code>else</code> block in a moment to respond
+to all other requests.</p>
+<p>Run this code now and request <em>127.0.0.1:7878</em>; you should get the HTML in
+<em>hello.html</em>. If you make any other request, such as
+<em>127.0.0.1:7878/something-else</em>, you’ll get a connection error like those you
+saw when running the code in Listing 20-1 and Listing 20-2.</p>
+<p>Now let’s add the code in Listing 20-7 to the <code>else</code> block to return a response
+with the status code 404, which signals that the content for the request was
+not found. We’ll also return some HTML for a page to render in the browser
+indicating the response to the end user.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use std::fs;
+</span><span class="boring">use std::io::prelude::*;
+</span><span class="boring">use std::net::TcpListener;
+</span><span class="boring">use std::net::TcpStream;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+</span><span class="boring">
+</span><span class="boring">    for stream in listener.incoming() {
+</span><span class="boring">        let stream = stream.unwrap();
+</span><span class="boring">
+</span><span class="boring">        handle_connection(stream);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span><span class="boring">fn handle_connection(mut stream: TcpStream) {
+</span><span class="boring">    let mut buffer = [0; 1024];
+</span><span class="boring">    stream.read(&mut buffer).unwrap();
+</span><span class="boring">
+</span><span class="boring">    let get = b"GET / HTTP/1.1\r\n";
+</span><span class="boring">
+</span><span class="boring">    if buffer.starts_with(get) {
+</span><span class="boring">        let contents = fs::read_to_string("hello.html").unwrap();
+</span><span class="boring">
+</span><span class="boring">        let response = format!(
+</span><span class="boring">            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
+</span><span class="boring">            contents.len(),
+</span><span class="boring">            contents
+</span><span class="boring">        );
+</span><span class="boring">
+</span><span class="boring">        stream.write(response.as_bytes()).unwrap();
+</span><span class="boring">        stream.flush().unwrap();
+</span>    // --snip--
+    } else {
+        let <span class="ra" data-hover="33">status_line</span><span class="inlay-hint">: &amp;str</span> = "HTTP/1.1 404 NOT FOUND";
+        let <span class="ra" data-hover="25">contents</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="24">fs</span>::<span class="ra" data-hover="26">read_to_string</span>(<span class="inlay-hint">path: </span>"404.html").<span class="ra" data-hover="6">unwrap</span>();
+
+        let <span class="ra" data-hover="27">response</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="28">format</span>!(
+            "{}\r\nContent-Length: {}\r\n\r\n{}",
+            <span class="ra" data-hover="33">status_line</span>,
+            <span class="ra" data-hover="25">contents</span>.<span class="ra" data-hover="29">len</span>(),
+            <span class="ra" data-hover="25">contents
+        );
+
+        <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="21">write</span>(<span class="ra" data-hover="27"><span class="inlay-hint">buf: </span>response</span>.<span class="ra" data-hover="30">as_bytes</span>()).<span class="ra" data-hover="6">unwrap</span>();
+        <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="23">flush</span>().<span class="ra" data-hover="6">unwrap</span>();
+    }
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p><span class="caption">Listing 20-7: Responding with status code 404 and an
+error page if anything other than <em>/</em> was requested</span></p>
+<p>Here, our response has a status line with status code 404 and the reason
+phrase <code>NOT FOUND</code>. The body of the response will be the HTML in the file
+<em>404.html</em>. You’ll need to create a <em>404.html</em> file next to <em>hello.html</em> for
+the error page; again feel free to use any HTML you want or use the example
+HTML in Listing 20-8.</p>
+<p><span class="filename">Filename: 404.html</span></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Hello!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Oops!&lt;/h1&gt;
+    &lt;p&gt;Sorry, I don't know what you're asking for.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><span class="caption">Listing 20-8: Sample content for the page to send back
+with any 404 response</span></p>
+<p>With these changes, run your server again. Requesting <em>127.0.0.1:7878</em>
+should return the contents of <em>hello.html</em>, and any other request, like
+<em>127.0.0.1:7878/foo</em>, should return the error HTML from <em>404.html</em>.</p>
+<h3 id="a-touch-of-refactoring"><a class="header" href="#a-touch-of-refactoring">A Touch of Refactoring</a></h3>
+<p>At the moment the <code>if</code> and <code>else</code> blocks have a lot of repetition: they’re both
+reading files and writing the contents of the files to the stream. The only
+differences are the status line and the filename. Let’s make the code more
+concise by pulling out those differences into separate <code>if</code> and <code>else</code> lines
+that will assign the values of the status line and the filename to variables;
+we can then use those variables unconditionally in the code to read the file
+and write the response. Listing 20-9 shows the resulting code after replacing
+the large <code>if</code> and <code>else</code> blocks.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">use std::fs;
+</span><span class="boring">use std::io::prelude::*;
+</span><span class="boring">use std::net::TcpListener;
+</span><span class="boring">use std::net::TcpStream;
+</span><span class="boring">
+</span><span class="boring">fn main() {
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+</span><span class="boring">
+</span><span class="boring">    for stream in listener.incoming() {
+</span><span class="boring">        let stream = stream.unwrap();
+</span><span class="boring">
+</span><span class="boring">        handle_connection(stream);
+</span><span class="boring">    }
+</span><span class="boring">}
+</span><span class="boring">
+</span>// --snip--
+
+fn <span class="ra" data-hover="14">handle_connection</span>(mut <span class="ra" data-hover="15">stream</span>: <span class="ra" data-hover="13">TcpStream</span>) {
+    // --snip--
+
+<span class="boring">    let mut buffer = [0; 1024];
+</span><span class="boring">    stream.read(&mut buffer).unwrap();
+</span><span class="boring">
+</span><span class="boring">    let get = b"GET / HTTP/1.1\r\n";
+</span><span class="boring">
+</span>    let (<span class="ra" data-hover="34">status_line</span><span class="inlay-hint">: &amp;str</span>, <span class="ra" data-hover="35">filename</span><span class="inlay-hint">: &amp;str</span>) = if <span class="ra" data-hover="16">buffer</span>.<span class="ra" data-hover="32">starts_with</span>(<span class="ra" data-hover="31"><span class="inlay-hint">needle: </span>get</span>) {
+        ("HTTP/1.1 200 OK", "hello.html")
+    } else {
+        ("HTTP/1.1 404 NOT FOUND", "404.html")
+    };
+
+    let <span class="ra" data-hover="25">contents</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="24">fs</span>::<span class="ra" data-hover="26">read_to_string</span>(<span class="ra" data-hover="35"><span class="inlay-hint">path: </span>filename</span>).<span class="ra" data-hover="6">unwrap</span>();
+
+    let <span class="ra" data-hover="27">response</span><span class="inlay-hint">: String</span> = <span class="ra" data-hover="28">format</span>!(
+        "{}\r\nContent-Length: {}\r\n\r\n{}",
+        <span class="ra" data-hover="34">status_line</span>,
+        <span class="ra" data-hover="25">contents</span>.<span class="ra" data-hover="29">len</span>(),
+        <span class="ra" data-hover="25">contents
+    );
+
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="21">write</span>(<span class="ra" data-hover="27"><span class="inlay-hint">buf: </span>response</span>.<span class="ra" data-hover="30">as_bytes</span>()).<span class="ra" data-hover="6">unwrap</span>();
+    <span class="ra" data-hover="15">stream</span>.<span class="ra" data-hover="23">flush</span>().<span class="ra" data-hover="6">unwrap</span>();
+}
+</code></pre></pre>
+<p><span class="caption">Listing 20-9: Refactoring the <code>if</code> and <code>else</code> blocks to
+contain only the code that differs between the two cases</span></p>
+<p>Now the <code>if</code> and <code>else</code> blocks only return the appropriate values for the
+status line and filename in a tuple; we then use destructuring to assign these
+two values to <code>status_line</code> and <code>filename</code> using a pattern in the <code>let</code>
+statement, as discussed in Chapter 18.</p>
+<p>The previously duplicated code is now outside the <code>if</code> and <code>else</code> blocks and
+uses the <code>status_line</code> and <code>filename</code> variables. This makes it easier to see
+the difference between the two cases, and it means we have only one place to
+update the code if we want to change how the file reading and response writing
+work. The behavior of the code in Listing 20-9 will be the same as that in
+Listing 20-8.</p>
+<p>Awesome! We now have a simple web server in approximately 40 lines of Rust code
+that responds to one request with a page of content and responds to all other
+requests with a 404 response.</p>
+<p>Currently, our server runs in a single thread, meaning it can only serve one
+request at a time. Let’s examine how that can be a problem by simulating some
+slow requests. Then we’ll fix it so our server can handle multiple requests at
+once.</p>
+<script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.2/dist/tippy-bundle.umd.min.js" integrity="sha384-vApKv6LkBdPwmt/fNiQrBCVCZvuniXpG0b5UZhVrGAq1zXdZRSsPcWjGdVxkZJtX" crossorigin="anonymous"></script>
+<script>
+    const hoverData = ['<per><cide class="language-rust">extern crate std\n</code></pre>\n<hr />\n<h1 id="the-rust-standard-library"><a class="header" href="#the-rust-standard-library">The Rust Standard Library</a></h1>\n<p>The Rust Standard Library is the foundation of portable Rust software, a\nset of minimal and battle-tested shared abstractions for the <a href="https://crates.io">broader Rust\necosystem</a>. It offers core types, like <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> and\n<a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a>, library-defined <a href="https://docs.rs/std/*/std/index.html#primitives">operations on language\nprimitives</a>, <a href="https://docs.rs/std/*/std/index.html#macros">standard macros</a>, <a href="https://docs.rs/std/*/std/io/index.html">I/O</a> and\n<a href="https://docs.rs/std/*/std/thread/index.html">multithreading</a>, among <a href="https://docs.rs/std/*/std/index.html#what-is-in-the-standard-library-documentation">many other things</a>.</p>\n<p><cide>std</code> is available to all Rust crates by default. Therefore, the\nstandard library can be accessed in <a href="https://docs.rs/std/*/book/ch07-02-defining-modules-to-control-scope-and-privacy.html"><cide>use</code></a> statements through the path\n<cide>std</code>, as in <a href="https://docs.rs/std/*/std/env/index.html"><cide>use std::env</code></a>.</p>\n<h1 id="how-to-read-this-documentation"><a class="header" href="#how-to-read-this-documentation">How to read this documentation</a></h1>\n<p>If you already know the name of what you are looking for, the fastest way to\nfind it is to use the <!-- raw HTML omitted -->search\nbar<!-- raw HTML omitted --> at the top of the page.</p>\n<p>Otherwise, you may want to jump to one of these useful sections:</p>\n<ul>\n<li><a href="https://docs.rs/std/*/std/index.html#modules"><cide>std::*</code> modules</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#primitives">Primitive types</a></li>\n<li><a href="https://docs.rs/std/*/std/index.html#macros">Standard macros</a></li>\n<li><a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a></li>\n</ul>\n<p>If this is your first time, the documentation for the standard library is\nwritten to be casually perused. Clicking on interesting things should\ngenerally lead you to interesting places. Still, there are important bits\nyou don#$%t want to miss, so read on for a tour of the standard library and\nits documentation!</p>\n<p>Once you are familiar with the contents of the standard library you may\nbegin to find the verbosity of the prose distracting. At this stage in your\ndevelopment you may want to press the <cide>[-]</code> button near the top of the\npage to collapse it into a more skimmable view.</p>\n<p>While you are looking at that <cide>[-]</code> button also notice the <cide>[src]</code>\nbutton. Rust#$%s API documentation comes with the source code and you are\nencouraged to read it. The standard library source is generally high\nquality and a peek behind the curtains is often enlightening.</p>\n<h1 id="what-is-in-the-standard-library-documentation"><a class="header" href="#what-is-in-the-standard-library-documentation">What is in the standard library documentation?</a></h1>\n<p>First of all, The Rust Standard Library is divided into a number of focused\nmodules, <a href="https://docs.rs/std/*/std/index.html#modules">all listed further down this page</a>. These modules are\nthe bedrock upon which all of Rust is forged, and they have mighty names\nlike <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>std::slice</code></a> and <a href="https://docs.rs/core/*/core/cmp/index.html"><cide>std::cmp</code></a>. Modules#$% documentation typically\nincludes an overview of the module along with examples, and are a smart\nplace to start familiarizing yourself with the library.</p>\n<p>Second, implicit methods on <a href="https://docs.rs/std/*/book/ch03-02-data-types.html">primitive types</a> are documented here. This can\nbe a source of confusion for two reasons:</p>\n<ol>\n<li>While primitives are implemented by the compiler, the standard library\nimplements methods directly on the primitive types (and it is the only\nlibrary that does so), which are <a href="https://docs.rs/std/*/std/index.html#primitives">documented in the section on\nprimitives</a>.</li>\n<li>The standard library exports many modules <em>with the same name as\nprimitive types</em>. These define additional items related to the primitive\ntype, but not the all-important methods.</li>\n</ol>\n<p>So for example there is a <a href="primitive::i32">page for the primitive type\n<cide>i32</code></a> that lists all the methods that can be called on\n32-bit integers (very useful), and there is a <a href="https://docs.rs/core/*/core/i32/index.html">page for the module\n<cide>std::i32</code></a> that documents the constant values <a href="https://docs.rs/core/*/core/i32/const.MIN.html"><cide>MIN</code></a> and <a href="https://docs.rs/core/*/core/i32/const.MAX.html"><cide>MAX</code></a> (rarely\nuseful).</p>\n<p>Note the documentation for the primitives <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> (also\ncalled #$%slice#$%). Many method calls on <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> and <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> are actually\ncalls to methods on <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> and <a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> respectively, via <a href="https://docs.rs/std/*/book/ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">deref\ncoercions</a>.</p>\n<p>Third, the standard library defines <a href="https://docs.rs/std/*/std/prelude/index.html">The Rust Prelude</a>, a small collection\nof items - mostly traits - that are imported into every module of every\ncrate. The traits in the prelude are pervasive, making the prelude\ndocumentation a good entry point to learning about the library.</p>\n<p>And finally, the standard library exports a number of standard macros, and\n<a href="https://docs.rs/std/*/std/index.html#macros">lists them on this page</a> (technically, not all of the standard\nmacros are defined by the standard library - some are defined by the\ncompiler - but they are documented here the same). Like the prelude, the\nstandard macros are imported by default into all crates.</p>\n<h1 id="contributing-changes-to-the-documentation"><a class="header" href="#contributing-changes-to-the-documentation">Contributing changes to the documentation</a></h1>\n<p>Check out the rust contribution guidelines <a href="https://rustc-dev-guide.rust-lang.org/contributing.html#writing-documentation">here</a>.\nThe source for this documentation can be found on\n<a href="https://github.com/rust-lang/rust">GitHub</a>.\nTo contribute changes, make sure you read the guidelines first, then submit\npull-requests for your suggested changes.</p>\n<p>Contributions are appreciated! If you see a part of the docs that can be\nimproved, submit a PR, or chat with us first on <a href="https://discord.gg/rust-lang">Discord</a>\n#docs.</p>\n<h1 id="a-tour-of-the-rust-standard-library"><a class="header" href="#a-tour-of-the-rust-standard-library">A Tour of The Rust Standard Library</a></h1>\n<p>The rest of this crate documentation is dedicated to pointing out notable\nfeatures of The Rust Standard Library.</p>\n<h2 id="containers-and-collections"><a class="header" href="#containers-and-collections">Containers and collections</a></h2>\n<p>The <a href="https://docs.rs/core/*/core/option/index.html"><cide>option</code></a> and <a href="https://docs.rs/core/*/core/result/index.html"><cide>result</code></a> modules define optional and error-handling\ntypes, <a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>Option&lt;T&gt;</code></a> and <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>. The <a href="https://docs.rs/core/*/core/iter/index.html"><cide>iter</code></a> module defines\nRust#$%s iterator trait, <a href="https://docs.rs/core/*/core/iter/traits/iterator/trait.Iterator.html"><cide>Iterator</code></a>, which works with the <a href="https://docs.rs/std/*/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> loop to\naccess collections.</p>\n<p>The standard library exposes three common ways to deal with contiguous\nregions of memory:</p>\n<ul>\n<li><a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a> - A heap-allocated <em>vector</em> that is resizable at runtime.</li>\n<li><a href="https://docs.rs/core/*/core/array/index.html"><cide>[T; N]</code></a> - An inline <em>array</em> with a fixed size at compile time.</li>\n<li><a href="https://docs.rs/alloc/*/alloc/slice/index.html"><cide>[T]</code></a> - A dynamically sized <em>slice</em> into any other kind of contiguous\nstorage, whether heap-allocated or not.</li>\n</ul>\n<p>Slices can only be handled through some kind of <em>pointer</em>, and as such come\nin many flavors such as:</p>\n<ul>\n<li><cide>&amp;[T]</code> - <em>shared slice</em></li>\n<li><cide>&amp;mut [T]</code> - <em>mutable slice</em></li>\n<li><a href="https://docs.rs/alloc/*/alloc/boxed/index.html"><cide>Box&lt;[T]&gt;</code></a> - <em>owned slice</em></li>\n</ul>\n<p><a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, a UTF-8 string slice, is a primitive type, and the standard library\ndefines many methods for it. Rust <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>s are typically accessed as\nimmutable references: <cide>&amp;str</code>. Use the owned <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> for building and\nmutating strings.</p>\n<p>For converting to strings use the <a href="https://docs.rs/alloc/*/alloc/macro.format.html"><cide>format</code></a> macro, and for converting from\nstrings use the <a href="https://docs.rs/core/*/core/str/traits/trait.FromStr.html"><cide>FromStr</code></a> trait.</p>\n<p>Data may be shared by placing it in a reference-counted box or the <a href="https://docs.rs/alloc/*/alloc/rc/struct.Rc.html"><cide>Rc</code></a>\ntype, and if further contained in a <a href="https://docs.rs/core/*/core/cell/struct.Cell.html"><cide>Cell</code></a> or <a href="https://docs.rs/core/*/core/cell/struct.RefCell.html"><cide>RefCell</code></a>, may be mutated\nas well as shared. Likewise, in a concurrent setting it is common to pair an\natomically-reference-counted box, <a href="https://docs.rs/alloc/*/alloc/sync/struct.Arc.html"><cide>Arc</code></a>, with a <a href="https://docs.rs/std/*/std/sync/mutex/struct.Mutex.html"><cide>Mutex</code></a> to get the same\neffect.</p>\n<p>The <a href="https://docs.rs/std/*/std/collections/index.html"><cide>collections</code></a> module defines maps, sets, linked lists and other\ntypical collection types, including the common <a href="https://docs.rs/std/*/std/collections/hash/map/struct.HashMap.html"><cide>HashMap&lt;K, V&gt;</code></a>.</p>\n<h2 id="platform-abstractions-and-io"><a class="header" href="#platform-abstractions-and-io">Platform abstractions and I/O</a></h2>\n<p>Besides basic data types, the standard library is largely concerned with\nabstracting over differences in common platforms, most notably Windows and\nUnix derivatives.</p>\n<p>Common types of I/O, including <a href="https://docs.rs/std/*/std/fs/struct.File.html">files</a>, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html">TCP</a>, <a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html">UDP</a>, are defined in the\n<a href="https://docs.rs/std/*/std/io/index.html"><cide>io</code></a>, <a href="https://docs.rs/std/*/std/fs/index.html"><cide>fs</code></a>, and <a href="https://docs.rs/std/*/std/net/index.html"><cide>net</code></a> modules.</p>\n<p>The <a href="https://docs.rs/std/*/std/thread/index.html"><cide>thread</code></a> module contains Rust#$%s threading abstractions. <a href="https://docs.rs/std/*/std/sync/index.html"><cide>sync</code></a>\ncontains further primitive shared memory types, including <a href="https://docs.rs/core/*/core/sync/atomic/index.html"><cide>atomic</code></a> and\n<a href="https://docs.rs/std/*/std/sync/mpsc/index.html"><cide>mpsc</code></a>, which contains the channel types for message passing.</p>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod net\n</code></pre>\n<hr />\n<p>Networking primitives for TCP/UDP communication.</p>\n<p>This module provides networking functionality for the Transmission Control and User\nDatagram Protocols, as well as types for IP and socket addresses.</p>\n<h1 id="organization"><a class="header" href="#organization">Organization</a></h1>\n<ul>\n<li><a href="https://docs.rs/std/*/std/net/tcp/struct.TcpListener.html"><cide>TcpListener</code></a> and <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a> provide functionality for communication over TCP</li>\n<li><a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html"><cide>UdpSocket</code></a> provides functionality for communication over UDP</li>\n<li><a href="https://docs.rs/std/*/std/net/ip/enum.IpAddr.html"><cide>IpAddr</code></a> represents IP addresses of either IPv4 or IPv6; <a href="https://docs.rs/std/*/std/net/ip/struct.Ipv4Addr.html"><cide>Ipv4Addr</code></a> and\n<a href="https://docs.rs/std/*/std/net/ip/struct.Ipv6Addr.html"><cide>Ipv6Addr</code></a> are respectively IPv4 and IPv6 addresses</li>\n<li><a href="https://docs.rs/std/*/std/net/addr/enum.SocketAddr.html"><cide>SocketAddr</code></a> represents socket addresses of either IPv4 or IPv6; <a href="https://docs.rs/std/*/std/net/addr/struct.SocketAddrV4.html"><cide>SocketAddrV4</code></a>\nand <a href="https://docs.rs/std/*/std/net/addr/struct.SocketAddrV6.html"><cide>SocketAddrV6</code></a> are respectively IPv4 and IPv6 socket addresses</li>\n<li><a href="https://docs.rs/std/*/std/net/addr/trait.ToSocketAddrs.html"><cide>ToSocketAddrs</code></a> is a trait that used for generic address resolution when interacting\nwith networking objects like <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpListener.html"><cide>TcpListener</code></a>, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a> or <a href="https://docs.rs/std/*/std/net/udp/struct.UdpSocket.html"><cide>UdpSocket</code></a></li>\n<li>Other types are return or parameter types for various methods in this module</li>\n</ul>\n','<per><cide class="language-rust">std::net::tcp\n</code></pre>\n<per><cide class="language-rust">pub struct TcpListener\n</code></pre>\n<hr />\n<p>A TCP socket server, listening for connections.</p>\n<p>After creating a <cide>TcpListener</code> by <a href="TcpListener::bind"><cide>bind</code></a>ing it to a socket address, it listens\nfor incoming TCP connections. These can be accepted by calling <a href="TcpListener::accept"><cide>accept</code></a> or by\niterating over the <a href="https://docs.rs/std/*/std/net/tcp/struct.Incoming.html"><cide>Incoming</code></a> iterator returned by <a href="%60TcpListener::incoming%60"><cide>incoming</code></a>.</p>\n<p>The socket will be closed when the value is dropped.</p>\n<p>The Transmission Control Protocol is specified in <a href="https://tools.ietf.org/html/rfc793">IETF RFC 793</a>.</p>\n<h1 id="examples"><a class="header" href="#examples">Examples</a></h1>\n<per><cide class="language-no_run">use std::net::{TcpListener, TcpStream};\n\nfn handle_client(stream: TcpStream) {\n    // ...\n}\n\nfn main() -&gt; std::io::Result&lt;()&gt; {\n    let listener = TcpListener::bind(&quot;127.0.0.1:80&quot;)?;\n\n    // accept connections and process them serially\n    for stream in listener.incoming() {\n        handle_client(stream?);\n    }\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn main()\n</code></pre>\n','<per><cide class="language-rust">let listener: TcpListener\n</code></pre>\n','<per><cide class="language-rust">std::net::tcp::TcpListener\n</code></pre>\n<per><cide class="language-rust">pub fn bind&lt;A&gt;(addr: A) -&gt; io::Result&lt;TcpListener&gt;\nwhere\n    A: ToSocketAddrs,\n</code></pre>\n<hr />\n<p>Creates a new <cide>TcpListener</code> which will be bound to the specified\naddress.</p>\n<p>The returned listener is ready for accepting connections.</p>\n<p>Binding with a port number of 0 will request that the OS assigns a port\nto this listener. The port allocated can be queried via the\n<a href="%60TcpListener::local_addr%60"><cide>TcpListener::local_addr</code></a> method.</p>\n<p>The address type can be any implementor of <a href="https://docs.rs/std/*/std/net/addr/trait.ToSocketAddrs.html"><cide>ToSocketAddrs</code></a> trait. See\nits documentation for concrete examples.</p>\n<p>If <cide>addr</code> yields multiple addresses, <cide>bind</code> will be attempted with\neach of the addresses until one succeeds and returns the listener. If\nnone of the addresses succeed in creating a listener, the error returned\nfrom the last attempt (the last address) is returned.</p>\n<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>\n<p>Creates a TCP listener bound to <cide>127.0.0.1:80</code>:</p>\n<per><cide class="language-no_run">use std::net::TcpListener;\n\nlet listener = TcpListener::bind(&quot;127.0.0.1:80&quot;).unwrap();\n</code></pre>\n<p>Creates a TCP listener bound to <cide>127.0.0.1:80</code>. If that fails, create a\nTCP listener bound to <cide>127.0.0.1:443</code>:</p>\n<per><cide class="language-no_run">use std::net::{SocketAddr, TcpListener};\n\nlet addrs = [\n    SocketAddr::from(([127, 0, 0, 1], 80)),\n    SocketAddr::from(([127, 0, 0, 1], 443)),\n];\nlet listener = TcpListener::bind(&amp;addrs[..]).unwrap();\n</code></pre>\n','<per><cide class="language-rust">core::result::Result\n</code></pre>\n<per><cide class="language-rust">pub fn unwrap(self) -&gt; T\n</code></pre>\n<hr />\n<p>Returns the contained <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok</code></a> value, consuming the <cide>self</code> value.</p>\n<p>Because this function may panic, its use is generally discouraged.\nInstead, prefer to use pattern matching and handle the <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>\ncase explicitly, or call <a href="Result::unwrap_or"><cide>unwrap_or</code></a>, <a href="Result::unwrap_or_else"><cide>unwrap_or_else</code></a>, or\n<a href="Result::unwrap_or_default"><cide>unwrap_or_default</code></a>.</p>\n<h1 id="panics"><a class="header" href="#panics">Panics</a></h1>\n<p>Panics if the value is an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>, with a panic message provided by the\n<a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a>#$%s value.</p>\n<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let x: Result&lt;u32, &amp;str&gt; = Ok(2);\nassert_eq!(x.unwrap(), 2);\n</code></pre>\n<per><cide class="language-should_panic">let x: Result&lt;u32, &amp;str&gt; = Err(&quot;emergency failure&quot;);\nx.unwrap(); // panics with `emergency failure`\n</code></pre>\n','<per><cide class="language-rust">stream: Result&lt;TcpStream, Error&gt;\n</code></pre>\n','<per><cide class="language-rust">std::net::tcp::TcpListener\n</code></pre>\n<per><cide class="language-rust">pub fn incoming(&amp;self) -&gt; Incoming&lt;#$%_&gt;\n</code></pre>\n<hr />\n<p>Returns an iterator over the connections being received on this\nlistener.</p>\n<p>The returned iterator will never return <a href="https://docs.rs/core/*/core/option/enum.Option.html"><cide>None</code></a> and will also not yield\nthe peer#$%s <a href="https://docs.rs/std/*/std/net/addr/enum.SocketAddr.html"><cide>SocketAddr</code></a> structure. Iterating over it is equivalent to\ncalling <a href="%60TcpListener::accept%60"><cide>TcpListener::accept</code></a> in a loop.</p>\n<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>\n<per><cide class="language-no_run">use std::net::TcpListener;\n\nlet listener = TcpListener::bind(&quot;127.0.0.1:80&quot;).unwrap();\n\nfor stream in listener.incoming() {\n    match stream {\n        Ok(stream) =&gt; {\n            println!(&quot;new client!&quot;);\n        }\n        Err(e) =&gt; { /* connection failed */ }\n    }\n}\n</code></pre>\n','<per><cide class="language-rust">let stream: TcpStream\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! println\n</code></pre>\n<hr />\n<p>Prints to the standard output, with a newline.</p>\n<p>On all platforms, the newline is the LINE FEED character (<cide>\n</code>/<cide>U+000A</code>) alone\n(no additional CARRIAGE RETURN (<cide>\r</code>/<cide>U+000D</code>)).</p>\n<p>Use the <a href="%60format!%60"><cide>format!</code></a> syntax to write data to the standard output.\nSee <a href="crate::fmt"><cide>std::fmt</code></a> for more information.</p>\n<p>Use <cide>println!</code> only for the primary output of your program. Use\n<a href="%60eprintln!%60"><cide>eprintln!</code></a> instead to print error and progress messages.</p>\n<h1 id="panics-1"><a class="header" href="#panics-1">Panics</a></h1>\n<p>Panics if writing to <a href="crate::io::stdout"><cide>io::stdout</code></a> fails.</p>\n<h1 id="examples-4"><a class="header" href="#examples-4">Examples</a></h1>\n<per><cide>println!(); // prints just a newline\nprintln!(&quot;hello there!&quot;);\nprintln!(&quot;format {} arguments&quot;, &quot;some&quot;);\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod io\n</code></pre>\n<hr />\n<p>Traits, helpers, and type definitions for core I/O functionality.</p>\n<p>The <cide>std::io</code> module contains a number of common things you#$%ll need\nwhen doing input and output. The most core part of this module is\nthe <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> traits, which provide the\nmost general interface for reading and writing input and output.</p>\n<h1 id="read-and-write"><a class="header" href="#read-and-write">Read and Write</a></h1>\n<p>Because they are traits, <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> are implemented by a number\nof other types, and you can implement them for your types too. As such,\nyou#$%ll see a few different types of I/O throughout the documentation in\nthis module: <a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>s, <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a>s, and sometimes even <a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html"><cide>Vec&lt;T&gt;</code></a>s. For\nexample, <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> adds a <a href="https://docs.rs/std/*/std/io/trait.Read.html#tymethod.read"><cide>read</code></a> method, which we can use on\n<a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>s:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut f = File::open(&quot;foo.txt&quot;)?;\n    let mut buffer = [0; 10];\n\n    // read up to 10 bytes\n    let n = f.read(&amp;mut buffer)?;\n\n    println!(&quot;The bytes: {:?}&quot;, &amp;buffer[..n]);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html"><cide>Write</code></a> are so important, implementors of the two traits have a\nnickname: readers and writers. So you#$%ll sometimes see #$%a reader#$% instead\nof #$%a type that implements the <a href="https://docs.rs/std/*/std/io/trait.Read.html"><cide>Read</code></a> trait#$%. Much easier!</p>\n<h2 id="seek-and-bufread"><a class="header" href="#seek-and-bufread">Seek and BufRead</a></h2>\n<p>Beyond that, there are two important traits that are provided: <a href="https://docs.rs/std/*/std/io/trait.Seek.html"><cide>Seek</code></a>\nand <a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a>. Both of these build on top of a reader to control\nhow the reading happens. <a href="https://docs.rs/std/*/std/io/trait.Seek.html"><cide>Seek</code></a> lets you control where the next byte is\ncoming from:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::SeekFrom;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut f = File::open(&quot;foo.txt&quot;)?;\n    let mut buffer = [0; 10];\n\n    // skip to the last 10 bytes of the file\n    f.seek(SeekFrom::End(-10))?;\n\n    // read up to 10 bytes\n    let n = f.read(&amp;mut buffer)?;\n\n    println!(&quot;The bytes: {:?}&quot;, &amp;buffer[..n]);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a> uses an internal buffer to provide a number of other ways to read, but\nto show it off, we#$%ll need to talk about buffers in general. Keep reading!</p>\n<h2 id="bufreader-and-bufwriter"><a class="header" href="#bufreader-and-bufwriter">BufReader and BufWriter</a></h2>\n<p>Byte-based interfaces are unwieldy and can be inefficient, as we#$%d need to be\nmaking near-constant calls to the operating system. To help with this,\n<cide>std::io</code> comes with two structs, <a href="https://docs.rs/std/*/std/io/buffered/bufreader/struct.BufReader.html"><cide>BufReader</code></a> and <a href="https://docs.rs/std/*/std/io/buffered/bufwriter/struct.BufWriter.html"><cide>BufWriter</code></a>, which wrap\nreaders and writers. The wrapper uses a buffer, reducing the number of\ncalls and providing nicer methods for accessing exactly what you want.</p>\n<p>For example, <a href="https://docs.rs/std/*/std/io/buffered/bufreader/struct.BufReader.html"><cide>BufReader</code></a> works with the <a href="https://docs.rs/std/*/std/io/trait.BufRead.html"><cide>BufRead</code></a> trait to add extra\nmethods to any reader:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::open(&quot;foo.txt&quot;)?;\n    let mut reader = BufReader::new(f);\n    let mut buffer = String::new();\n\n    // read a line into buffer\n    reader.read_line(&amp;mut buffer)?;\n\n    println!(&quot;{}&quot;, buffer);\n    Ok(())\n}\n</code></pre>\n<p><a href="https://docs.rs/std/*/std/io/buffered/bufwriter/struct.BufWriter.html"><cide>BufWriter</code></a> doesn#$%t add any new ways of writing; it just buffers every call\nto <a href="https://docs.rs/std/*/std/io/trait.Write.html#tymethod.write"><cide>write</code></a>:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufWriter;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::create(&quot;foo.txt&quot;)?;\n    {\n        let mut writer = BufWriter::new(f);\n\n        // write a byte to the buffer\n        writer.write(&amp;[42])?;\n\n    } // the buffer is flushed once writer goes out of scope\n\n    Ok(())\n}\n</code></pre>\n<h2 id="standard-input-and-output"><a class="header" href="#standard-input-and-output">Standard input and output</a></h2>\n<p>A very common source of input is standard input:</p>\n<per><cide class="language-no_run">use std::io;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut input = String::new();\n\n    io::stdin().read_line(&amp;mut input)?;\n\n    println!(&quot;You typed: {}&quot;, input.trim());\n    Ok(())\n}\n</code></pre>\n<p>Note that you cannot use the <a href="https://docs.rs/std/*/book/appendix-02-operators.html"><cide>?</code> operator</a> in functions that do not return\na <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>. Instead, you can call <a href="crate::result::Result::unwrap"><cide>.unwrap()</code></a>\nor <cide>match</code> on the return value to catch any possible errors:</p>\n<per><cide class="language-no_run">use std::io;\n\nlet mut input = String::new();\n\nio::stdin().read_line(&amp;mut input).unwrap();\n</code></pre>\n<p>And a very common source of output is standard output:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    io::stdout().write(&amp;[42])?;\n    Ok(())\n}\n</code></pre>\n<p>Of course, using <a href="https://docs.rs/std/*/std/io/stdio/fn.stdout.html"><cide>io::stdout</code></a> directly is less common than something like\n<a href="https://docs.rs/std/*/std/macro.println.html"><cide>println</code></a>.</p>\n<h2 id="iterator-types"><a class="header" href="#iterator-types">Iterator types</a></h2>\n<p>A large number of the structures provided by <cide>std::io</code> are for various\nways of iterating over I/O. For example, <a href="https://docs.rs/std/*/std/io/struct.Lines.html"><cide>Lines</code></a> is used to split over\nlines:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::io::BufReader;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let f = File::open(&quot;foo.txt&quot;)?;\n    let reader = BufReader::new(f);\n\n    for line in reader.lines() {\n        println!(&quot;{}&quot;, line?);\n    }\n    Ok(())\n}\n</code></pre>\n<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>\n<p>There are a number of <a href="https://docs.rs/std/*/std/io/index.html#functions-1">functions</a> that offer access to various\nfeatures. For example, we can use three of these functions to copy everything\nfrom standard input to standard output:</p>\n<per><cide class="language-no_run">use std::io;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    io::copy(&amp;mut io::stdin(), &amp;mut io::stdout())?;\n    Ok(())\n}\n</code></pre>\n<h2 id="ioresult"><a class="header" href="#ioresult">io::Result</a></h2>\n<p>Last, but certainly not least, is <a href="https://docs.rs/std/*/std/io/error/type.Result.html"><cide>io::Result</code></a>. This type is used\nas the return type of many <cide>std::io</code> functions that can cause an error, and\ncan be returned from your own functions as well. Many of the examples in this\nmodule use the <a href="https://docs.rs/std/*/book/appendix-02-operators.html"><cide>?</code> operator</a>:</p>\n<per><cide>use std::io;\n\nfn read_input() -&gt; io::Result&lt;()&gt; {\n    let mut input = String::new();\n\n    io::stdin().read_line(&amp;mut input)?;\n\n    println!(&quot;You typed: {}&quot;, input.trim());\n\n    Ok(())\n}\n</code></pre>\n<p>The return type of <cide>read_input()</code>, <a href="https://docs.rs/std/*/std/io/error/type.Result.html"><cide>io::Result&lt;()&gt;</code></a>, is a very\ncommon type for functions which don#$%t have a #$%real#$% return value, but do want to\nreturn errors if they happen. In this case, the only purpose of this function is\nto read the line and print it, so we use <cide>()</code>.</p>\n<h2 id="platform-specific-behavior"><a class="header" href="#platform-specific-behavior">Platform-specific behavior</a></h2>\n<p>Many I/O functions throughout the standard library are documented to indicate\nwhat various library or syscalls they are delegated to. This is done to help\napplications both understand what#$%s happening under the hood as well as investigate\nany possibly unclear semantics. Note, however, that this is informative, not a binding\ncontract. The implementation of many of these functions are subject to change over\ntime and may call fewer or more syscalls/library functions.</p>\n','<per><cide class="language-rust">std::io\n</code></pre>\n<per><cide class="language-rust">mod prelude\n</code></pre>\n<hr />\n<p>The I/O Prelude.</p>\n<p>The purpose of this module is to alleviate imports of many common I/O traits\nby adding a glob import to the top of I/O heavy modules:</p>\n<per><cide># #![allow(unused_imports)]\nuse std::io::prelude::*;\n</code></pre>\n','<per><cide class="language-rust">std::net::tcp\n</code></pre>\n<per><cide class="language-rust">pub struct TcpStream\n</code></pre>\n<hr />\n<p>A TCP stream between a local and a remote socket.</p>\n<p>After creating a <cide>TcpStream</code> by either <a href="TcpStream::connect"><cide>connect</code></a>ing to a remote host or\n<a href="TcpListener::accept"><cide>accept</code></a>ing a connection on a <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpListener.html"><cide>TcpListener</code></a>, data can be transmitted\nby <a href="https://docs.rs/std/*/std/io/trait.Read.html">reading</a> and <a href="https://docs.rs/std/*/std/io/trait.Write.html">writing</a> to it.</p>\n<p>The connection will be closed when the value is dropped. The reading and writing\nportions of the connection can also be shut down individually with the <a href="TcpStream::shutdown"><cide>shutdown</code></a>\nmethod.</p>\n<p>The Transmission Control Protocol is specified in <a href="https://tools.ietf.org/html/rfc793">IETF RFC 793</a>.</p>\n<h1 id="examples-5"><a class="header" href="#examples-5">Examples</a></h1>\n<per><cide class="language-no_run">use std::io::prelude::*;\nuse std::net::TcpStream;\n\nfn main() -&gt; std::io::Result&lt;()&gt; {\n    let mut stream = TcpStream::connect(&quot;127.0.0.1:34254&quot;)?;\n\n    stream.write(&amp;[1])?;\n    stream.read(&amp;mut [0; 128])?;\n    Ok(())\n} // the stream is closed here\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn handle_connection(stream: TcpStream)\n</code></pre>\n','<per><cide class="language-rust">mut stream: TcpStream\n</code></pre>\n','<per><cide class="language-rust">let mut buffer: [u8; 1024]\n</code></pre>\n','<per><cide class="language-rust">std::io::Read\n</code></pre>\n<per><cide class="language-rust">pub fn read(&amp;mut self, buf: &amp;mut [u8]) -&gt; Result&lt;usize&gt;\n</code></pre>\n<hr />\n<p>Pull some bytes from this source into the specified buffer, returning\nhow many bytes were read.</p>\n<p>This function does not provide any guarantees about whether it blocks\nwaiting for data, but if an object needs to block for a read and cannot,\nit will typically signal this via an <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> return value.</p>\n<p>If the return value of this method is <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok(n)</code></a>, then implementations must\nguarantee that <cide>0 &lt;= n &lt;= buf.len()</code>. A nonzero <cide>n</code> value indicates\nthat the buffer <cide>buf</code> has been filled in with <cide>n</code> bytes of data from this\nsource. If <cide>n</code> is <cide>0</code>, then it can indicate one of two scenarios:</p>\n<ol>\n<li>This reader has reached its &quot;end of file&quot; and will likely no longer\nbe able to produce bytes. Note that this does not mean that the\nreader will <em>always</em> no longer be able to produce bytes. As an example,\non Linux, this method will call the <cide>recv</code> syscall for a <a href="https://docs.rs/std/*/std/net/tcp/struct.TcpStream.html"><cide>TcpStream</code></a>,\nwhere returning zero indicates the connection was shut down correctly. While\nfor <a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>, it is possible to reach the end of file and get zero as result,\nbut if more data is appended to the file, future calls to <cide>read</code> will return\nmore data.</li>\n<li>The buffer specified was 0 bytes in length.</li>\n</ol>\n<p>It is not an error if the returned value <cide>n</code> is smaller than the buffer size,\neven when the reader is not at the end of the stream yet.\nThis may happen for example because fewer bytes are actually available right now\n(e. g. being close to end-of-file) or because read() was interrupted by a signal.</p>\n<p>As this trait is safe to implement, callers cannot rely on <cide>n &lt;= buf.len()</code> for safety.\nExtra care needs to be taken when <cide>unsafe</code> functions are used to access the read bytes.\nCallers have to ensure that no unchecked out-of-bounds accesses are possible even if\n<cide>n &gt; buf.len()</code>.</p>\n<p>No guarantees are provided about the contents of <cide>buf</code> when this\nfunction is called, implementations cannot rely on any property of the\ncontents of <cide>buf</code> being true. It is recommended that <em>implementations</em>\nonly write data to <cide>buf</code> instead of reading its contents.</p>\n<p>Correspondingly, however, <em>callers</em> of this method may not assume any guarantees\nabout how the implementation uses <cide>buf</code>. The trait is safe to implement,\nso it is possible that the code that#$%s supposed to write to the buffer might also read\nfrom it. It is your responsibility to make sure that <cide>buf</code> is initialized\nbefore calling <cide>read</code>. Calling <cide>read</code> with an uninitialized <cide>buf</code> (of the kind one\nobtains via <a href="https://docs.rs/core/*/core/mem/maybe_uninit/union.MaybeUninit.html"><cide>MaybeUninit&lt;T&gt;</code></a>) is not safe, and can lead to undefined behavior.</p>\n<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>\n<p>If this function encounters any form of I/O or other error, an error\nvariant will be returned. If an error is returned then it must be\nguaranteed that no bytes were read.</p>\n<p>An error of the <a href="https://docs.rs/std/*/std/io/error/enum.ErrorKind.html"><cide>ErrorKind::Interrupted</code></a> kind is non-fatal and the read\noperation should be retried if there is nothing else to do.</p>\n<h1 id="examples-6"><a class="header" href="#examples-6">Examples</a></h1>\n<p><a href="https://docs.rs/std/*/std/fs/struct.File.html"><cide>File</code></a>s implement <cide>Read</code>:</p>\n<per><cide class="language-no_run">use std::io;\nuse std::io::prelude::*;\nuse std::fs::File;\n\nfn main() -&gt; io::Result&lt;()&gt; {\n    let mut f = File::open(&quot;foo.txt&quot;)?;\n    let mut buffer = [0; 10];\n\n    // read up to 10 bytes\n    let n = f.read(&amp;mut buffer[..])?;\n\n    println!(&quot;The bytes: {:?}&quot;, &amp;buffer[..n]);\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">alloc::string\n</code></pre>\n<per><cide class="language-rust">pub struct String\n</code></pre>\n<hr />\n<p>A UTF-8–encoded, growable string.</p>\n<p>The <cide>String</code> type is the most common string type that has ownership over the\ncontents of the string. It has a close relationship with its borrowed\ncounterpart, the primitive <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>.</p>\n<h1 id="examples-7"><a class="header" href="#examples-7">Examples</a></h1>\n<p>You can create a <cide>String</code> from <a href="https://docs.rs/alloc/*/alloc/str/index.html">a literal string</a> with <a href="https://docs.rs/core/*/core/convert/trait.From.html#tymethod.from"><cide>String::from</code></a>:</p>\n<per><cide>let hello = String::from(&quot;Hello, world!&quot;);\n</code></pre>\n<p>You can append a <a href="%60char%60"><cide>char</code></a> to a <cide>String</code> with the <a href="String::push"><cide>push</code></a> method, and\nappend a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> with the <a href="String::push_str"><cide>push_str</code></a> method:</p>\n<per><cide>let mut hello = String::from(&quot;Hello, &quot;);\n\nhello.push(#$%w#$%);\nhello.push_str(&quot;orld!&quot;);\n</code></pre>\n<p>If you have a vector of UTF-8 bytes, you can create a <cide>String</code> from it with\nthe <a href="String::from_utf8"><cide>from_utf8</code></a> method:</p>\n<per><cide>// some bytes, in a vector\nlet sparkle_heart = vec![240, 159, 146, 150];\n\n// We know these bytes are valid, so we#$%ll use `unwrap()`.\nlet sparkle_heart = String::from_utf8(sparkle_heart).unwrap();\n\nassert_eq!(&quot;💖&quot;, sparkle_heart);\n</code></pre>\n<h1 id="utf-8"><a class="header" href="#utf-8">UTF-8</a></h1>\n<p><cide>String</code>s are always valid UTF-8. This has a few implications, the first of\nwhich is that if you need a non-UTF-8 string, consider <a href="https://docs.rs/alloc/*/std/ffi/struct.OsString.html"><cide>OsString</code></a>. It is\nsimilar, but without the UTF-8 constraint. The second implication is that\nyou cannot index into a <cide>String</code>:</p>\n<per><cide class="language-compile_fail,E0277">let s = &quot;hello&quot;;\n\nprintln!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!\n</code></pre>\n<p>Indexing is intended to be a constant-time operation, but UTF-8 encoding\ndoes not allow us to do this. Furthermore, it#$%s not clear what sort of\nthing the index should return: a byte, a codepoint, or a grapheme cluster.\nThe <a href="str::bytes"><cide>bytes</code></a> and <a href="str::chars"><cide>chars</code></a> methods return iterators over the first\ntwo, respectively.</p>\n<h1 id="deref"><a class="header" href="#deref">Deref</a></h1>\n<p><cide>String</code>s implement <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a><cide>&lt;Target=str&gt;</code>, and so inherit all of <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>#$%s\nmethods. In addition, this means that you can pass a <cide>String</code> to a\nfunction which takes a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> by using an ampersand (<cide>&amp;</code>):</p>\n<per><cide>fn takes_str(s: &amp;str) { }\n\nlet s = String::from(&quot;Hello&quot;);\n\ntakes_str(&amp;s);\n</code></pre>\n<p>This will create a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> from the <cide>String</code> and pass it in. This\nconversion is very inexpensive, and so generally, functions will accept\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>s as arguments unless they need a <cide>String</code> for some specific\nreason.</p>\n<p>In certain cases Rust doesn#$%t have enough information to make this\nconversion, known as <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a> coercion. In the following example a string\nslice <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;#$%a str</code></a> implements the trait <cide>TraitExample</code>, and the function\n<cide>example_func</code> takes anything that implements the trait. In this case Rust\nwould need to make two implicit conversions, which Rust doesn#$%t have the\nmeans to do. For that reason, the following example will not compile.</p>\n<per><cide class="language-compile_fail,E0277">trait TraitExample {}\n\nimpl&lt;#$%a&gt; TraitExample for &amp;#$%a str {}\n\nfn example_func&lt;A: TraitExample&gt;(example_arg: A) {}\n\nlet example_string = String::from(&quot;example_string&quot;);\nexample_func(&amp;example_string);\n</code></pre>\n<p>There are two options that would work instead. The first would be to\nchange the line <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(example_string.as_str());</code>, using the method <a href="String::as_str"><cide>as_str()</code></a>\nto explicitly extract the string slice containing the string. The second\nway changes <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(&amp;*example_string);</code>. In this case we are dereferencing a\n<cide>String</code> to a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, then referencing the <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> back to\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>. The second way is more idiomatic, however both work to do the\nconversion explicitly rather than relying on the implicit conversion.</p>\n<h1 id="representation"><a class="header" href="#representation">Representation</a></h1>\n<p>A <cide>String</code> is made up of three components: a pointer to some bytes, a\nlength, and a capacity. The pointer points to an internal buffer <cide>String</code>\nuses to store its data. The length is the number of bytes currently stored\nin the buffer, and the capacity is the size of the buffer in bytes. As such,\nthe length will always be less than or equal to the capacity.</p>\n<p>This buffer is always stored on the heap.</p>\n<p>You can look at these with the <a href="str::as_ptr"><cide>as_ptr</code></a>, <a href="String::len"><cide>len</code></a>, and <a href="String::capacity"><cide>capacity</code></a>\nmethods:</p>\n<per><cide>use std::mem;\n\nlet story = String::from(&quot;Once upon a time...&quot;);\n\n// Prevent automatically dropping the String#$%s data\nlet mut story = mem::ManuallyDrop::new(story);\n\nlet ptr = story.as_mut_ptr();\nlet len = story.len();\nlet capacity = story.capacity();\n\n// story has nineteen bytes\nassert_eq!(19, len);\n\n// We can re-build a String out of ptr, len, and capacity. This is all\n// unsafe because we are responsible for making sure the components are\n// valid:\nlet s = unsafe { String::from_raw_parts(ptr, len, capacity) } ;\n\nassert_eq!(String::from(&quot;Once upon a time...&quot;), s);\n</code></pre>\n<p>If a <cide>String</code> has enough capacity, adding elements to it will not\nre-allocate. For example, consider this program:</p>\n<per><cide>let mut s = String::new();\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>This will output the following:</p>\n<per><cide class="language-text">0\n5\n10\n20\n20\n40\n</code></pre>\n<p>At first, we have no memory allocated at all, but as we append to the\nstring, it increases its capacity appropriately. If we instead use the\n<a href="String::with_capacity"><cide>with_capacity</code></a> method to allocate the correct capacity initially:</p>\n<per><cide>let mut s = String::with_capacity(25);\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>We end up with a different output:</p>\n<per><cide class="language-text">25\n25\n25\n25\n25\n25\n</code></pre>\n<p>Here, there#$%s no need to allocate more memory inside the loop.</p>\n','<per><cide class="language-rust">alloc::string::String\n</code></pre>\n<per><cide class="language-rust">pub fn from_utf8_lossy(v: &amp;[u8]) -&gt; Cow&lt;#$%_, str&gt;\n</code></pre>\n<hr />\n<p>Converts a slice of bytes to a string, including invalid characters.</p>\n<p>Strings are made of bytes (<a href="%60u8%60"><cide>u8</code></a>), and a slice of bytes\n(<a href="https://docs.rs/core/*/core/slice/index.html"><cide>&amp;[u8]</code></a>) is made of bytes, so this function converts\nbetween the two. Not all byte slices are valid strings, however: strings\nare required to be valid UTF-8. During this conversion,\n<cide>from_utf8_lossy()</code> will replace any invalid UTF-8 sequences with\n<a href="https://docs.rs/core/*/core/char/const.REPLACEMENT_CHARACTER.html"><cide>U+FFFD REPLACEMENT CHARACTER</code></a>, which looks like this: �</p>\n<p>If you are sure that the byte slice is valid UTF-8, and you don#$%t want\nto incur the overhead of the conversion, there is an unsafe version\nof this function, <a href="String::from_utf8_unchecked"><cide>from_utf8_unchecked</code></a>, which has the same behavior\nbut skips the checks.</p>\n<p>This function returns a <a href="https://docs.rs/alloc/*/alloc/borrow/enum.Cow.html"><cide>Cow&lt;#$%a, str&gt;</code></a>. If our byte slice is invalid\nUTF-8, then we need to insert the replacement characters, which will\nchange the size of the string, and hence, require a <cide>String</code>. But if\nit#$%s already valid UTF-8, we don#$%t need a new allocation. This return\ntype allows us to handle both cases.</p>\n<h1 id="examples-8"><a class="header" href="#examples-8">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>// some bytes, in a vector\nlet sparkle_heart = vec![240, 159, 146, 150];\n\nlet sparkle_heart = String::from_utf8_lossy(&amp;sparkle_heart);\n\nassert_eq!(&quot;💖&quot;, sparkle_heart);\n</code></pre>\n<p>Incorrect bytes:</p>\n<per><cide>// some invalid bytes\nlet input = b&quot;Hello \xF0\x90\x80World&quot;;\nlet output = String::from_utf8_lossy(input);\n\nassert_eq!(&quot;Hello �World&quot;, output);\n</code></pre>\n','<per><cide class="language-rust">let response: &amp;str\n</code></pre>\n','<per><cide class="language-rust">std::io::Write\n</code></pre>\n<per><cide class="language-rust">pub fn write(&amp;mut self, buf: &amp;[u8]) -&gt; Result&lt;usize&gt;\n</code></pre>\n<hr />\n<p>Write a buffer into this writer, returning how many bytes were written.</p>\n<p>This function will attempt to write the entire contents of <cide>buf</code>, but\nthe entire write may not succeed, or the write may also generate an\nerror. A call to <cide>write</code> represents <em>at most one</em> attempt to write to\nany wrapped object.</p>\n<p>Calls to <cide>write</code> are not guaranteed to block waiting for data to be\nwritten, and a write which would otherwise block can be indicated through\nan <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Err</code></a> variant.</p>\n<p>If the return value is <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Ok(n)</code></a> then it must be guaranteed that\n<cide>n &lt;= buf.len()</code>. A return value of <cide>0</code> typically means that the\nunderlying object is no longer able to accept bytes and will likely not\nbe able to in the future as well, or that the buffer provided is empty.</p>\n<h1 id="errors-1"><a class="header" href="#errors-1">Errors</a></h1>\n<p>Each call to <cide>write</code> may generate an I/O error indicating that the\noperation could not be completed. If an error is returned then no bytes\nin the buffer were written to this writer.</p>\n<p>It is <strong>not</strong> considered an error if the entire buffer could not be\nwritten to this writer.</p>\n<p>An error of the <a href="https://docs.rs/std/*/std/io/error/enum.ErrorKind.html"><cide>ErrorKind::Interrupted</code></a> kind is non-fatal and the\nwrite operation should be retried if there is nothing else to do.</p>\n<h1 id="examples-9"><a class="header" href="#examples-9">Examples</a></h1>\n<per><cide class="language-no_run">use std::io::prelude::*;\nuse std::fs::File;\n\nfn main() -&gt; std::io::Result&lt;()&gt; {\n    let mut buffer = File::create(&quot;foo.txt&quot;)?;\n\n    // Writes some prefix of the byte string, not necessarily all of it.\n    buffer.write(b&quot;some bytes&quot;)?;\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">core::str\n</code></pre>\n<per><cide class="language-rust">pub const fn as_bytes(&amp;self) -&gt; &amp;[u8]\n</code></pre>\n<hr />\n<p>Converts a string slice to a byte slice. To convert the byte slice back\ninto a string slice, use the <a href="https://docs.rs/core/*/core/str/converts/fn.from_utf8.html"><cide>from_utf8</code></a> function.</p>\n<h1 id="examples-10"><a class="header" href="#examples-10">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let bytes = &quot;bors&quot;.as_bytes();\nassert_eq!(b&quot;bors&quot;, bytes);\n</code></pre>\n','<per><cide class="language-rust">std::io::Write\n</code></pre>\n<per><cide class="language-rust">pub fn flush(&amp;mut self) -&gt; Result&lt;()&gt;\n</code></pre>\n<hr />\n<p>Flush this output stream, ensuring that all intermediately buffered\ncontents reach their destination.</p>\n<h1 id="errors-2"><a class="header" href="#errors-2">Errors</a></h1>\n<p>It is considered an error if not all bytes could be written due to\nI/O errors or EOF being reached.</p>\n<h1 id="examples-11"><a class="header" href="#examples-11">Examples</a></h1>\n<per><cide class="language-no_run">use std::io::prelude::*;\nuse std::io::BufWriter;\nuse std::fs::File;\n\nfn main() -&gt; std::io::Result&lt;()&gt; {\n    let mut buffer = BufWriter::new(File::create(&quot;foo.txt&quot;)?);\n\n    buffer.write_all(b&quot;some bytes&quot;)?;\n    buffer.flush()?;\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">mod fs\n</code></pre>\n<hr />\n<p>Filesystem manipulation operations.</p>\n<p>This module contains basic methods to manipulate the contents of the local\nfilesystem. All methods in this module represent cross-platform filesystem\noperations. Extra platform-specific functionality can be found in the\nextension traits of <cide>std::os::$platform</code>.</p>\n','<per><cide class="language-rust">let contents: String\n</code></pre>\n','<per><cide class="language-rust">std::fs\n</code></pre>\n<per><cide class="language-rust">pub fn read_to_string&lt;P&gt;(path: P) -&gt; io::Result&lt;String&gt;\nwhere\n    P: AsRef&lt;Path&gt;,\n</code></pre>\n<hr />\n<p>Read the entire contents of a file into a string.</p>\n<p>This is a convenience function for using <a href="%60File::open%60"><cide>File::open</code></a> and <a href="https://docs.rs/std/*/std/io/trait.Read.html#method.read_to_string"><cide>read_to_string</code></a>\nwith fewer imports and without an intermediate variable. It pre-allocates a\nbuffer based on the file size when available, so it is generally faster than\nreading into a string created with <a href="%60String::new()%60"><cide>String::new()</code></a>.</p>\n<h1 id="errors-3"><a class="header" href="#errors-3">Errors</a></h1>\n<p>This function will return an error if <cide>path</code> does not already exist.\nOther errors may also be returned according to <a href="%60OpenOptions::open%60"><cide>OpenOptions::open</code></a>.</p>\n<p>It will also return an error if it encounters while reading an error\nof a kind other than <a href="https://docs.rs/std/*/std/io/error/enum.ErrorKind.html"><cide>io::ErrorKind::Interrupted</code></a>,\nor if the contents of the file are not valid UTF-8.</p>\n<h1 id="examples-12"><a class="header" href="#examples-12">Examples</a></h1>\n<per><cide class="language-no_run">use std::fs;\nuse std::net::SocketAddr;\nuse std::error::Error;\n\nfn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {\n    let foo: SocketAddr = fs::read_to_string(&quot;address.txt&quot;)?.parse()?;\n    Ok(())\n}\n</code></pre>\n','<per><cide class="language-rust">let response: String\n</code></pre>\n','<per><cide class="language-rust">alloc\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! format\n</code></pre>\n<hr />\n<p>Creates a <cide>String</code> using interpolation of runtime expressions.</p>\n<p>The first argument <cide>format!</code> receives is a format string. This must be a string\nliteral. The power of the formatting string is in the <cide>{}</code>s contained.</p>\n<p>Additional parameters passed to <cide>format!</code> replace the <cide>{}</code>s within the\nformatting string in the order given unless named or positional parameters\nare used; see <a href="../std/fmt/index.html"><cide>std::fmt</code></a> for more information.</p>\n<p>A common use for <cide>format!</code> is concatenation and interpolation of strings.\nThe same convention is used with <a href="../std/macro.print.html"><cide>print!</code></a> and <a href="core::write"><cide>write!</code></a> macros,\ndepending on the intended destination of the string.</p>\n<p>To convert a single value to a string, use the <a href="crate::string::ToString"><cide>to_string</code></a> method. This\nwill use the <a href="core::fmt::Display"><cide>Display</code></a> formatting trait.</p>\n<h1 id="panics-2"><a class="header" href="#panics-2">Panics</a></h1>\n<p><cide>format!</code> panics if a formatting trait implementation returns an error.\nThis indicates an incorrect implementation\nsince <cide>fmt::Write for String</code> never returns an error itself.</p>\n<h1 id="examples-13"><a class="header" href="#examples-13">Examples</a></h1>\n<per><cide>format!(&quot;test&quot;);\nformat!(&quot;hello {}&quot;, &quot;world!&quot;);\nformat!(&quot;x = {}, y = {y}&quot;, 10, y = 30);\n</code></pre>\n','<per><cide class="language-rust">alloc::string::String\n</code></pre>\n<per><cide class="language-rust">pub fn len(&amp;self) -&gt; usize\n</code></pre>\n<hr />\n<p>Returns the length of this <cide>String</code>, in bytes, not <a href="%60char%60"><cide>char</code></a>s or\ngraphemes. In other words, it may not be what a human considers the\nlength of the string.</p>\n<h1 id="examples-14"><a class="header" href="#examples-14">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let a = String::from(&quot;foo&quot;);\nassert_eq!(a.len(), 3);\n\nlet fancy_f = String::from(&quot;ƒoo&quot;);\nassert_eq!(fancy_f.len(), 4);\nassert_eq!(fancy_f.chars().count(), 3);\n</code></pre>\n','<per><cide class="language-rust">alloc::string::String\n</code></pre>\n<per><cide class="language-rust">pub fn as_bytes(&amp;self) -&gt; &amp;[u8]\n</code></pre>\n<hr />\n<p>Returns a byte slice of this <cide>String</code>#$%s contents.</p>\n<p>The inverse of this method is <a href="String::from_utf8"><cide>from_utf8</code></a>.</p>\n<h1 id="examples-15"><a class="header" href="#examples-15">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let s = String::from(&quot;hello&quot;);\n\nassert_eq!(&amp;[104, 101, 108, 108, 111], s.as_bytes());\n</code></pre>\n','<per><cide class="language-rust">let get: &amp;[u8; 16]\n</code></pre>\n','<per><cide class="language-rust">core::slice\n</code></pre>\n<per><cide class="language-rust">pub fn starts_with(&amp;self, needle: &amp;[T]) -&gt; bool\nwhere\n    T: PartialEq,\n</code></pre>\n<hr />\n<p>Returns <cide>true</code> if <cide>needle</code> is a prefix of the slice.</p>\n<h1 id="examples-16"><a class="header" href="#examples-16">Examples</a></h1>\n<per><cide>let v = [10, 40, 30];\nassert!(v.starts_with(&amp;[10]));\nassert!(v.starts_with(&amp;[10, 40]));\nassert!(!v.starts_with(&amp;[50]));\nassert!(!v.starts_with(&amp;[10, 50]));\n</code></pre>\n<p>Always returns <cide>true</code> if <cide>needle</code> is an empty slice:</p>\n<per><cide>let v = &amp;[10, 40, 30];\nassert!(v.starts_with(&amp;[]));\nlet v: &amp;[u8] = &amp;[];\nassert!(v.starts_with(&amp;[]));\n</code></pre>\n','<per><cide class="language-rust">let status_line: &amp;str\n</code></pre>\n','<per><cide class="language-rust">status_line: &amp;str\n</code></pre>\n','<per><cide class="language-rust">filename: &amp;str\n</code></pre>\n',].map((x)=>x.replaceAll('#$%', "'").replaceAll('<per', '<pre').replaceAll('<cide', '<code'));
+    window.onload = () => {
+        console.log("hello");
+        tippy('.ra', {
+            content: (x) => {
+                const div = document.createElement('div');
+                div.innerHTML = hoverData[x.dataset.hover];
+                div.className = 'hover-holder';
+                div.querySelectorAll('code').forEach((y) => y.innerHTML = hljs.highlight('rust', y.innerText).value);
+                return div;
+            },
+            allowHTML: true,
+            delay: [200, 0],
+            interactive: true,
+            maxWidth: '80vw',
+            appendTo: document.querySelector('.content'),
+        });
+    };
+</script>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="ch20-00-final-project-a-web-server.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ch20-02-multithreaded.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="ch20-00-final-project-a-web-server.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ch20-02-multithreaded.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="ferris.js"></script>
+        
+        
+    </body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Advanced Functions and Closures - The Rust Programming Language</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="ferris.css">
+                <link rel="stylesheet" href="theme/2018-edition.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> Hello, Cargo!</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> Programming a Guessing Game</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> Common Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> Variables and Mutability</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> Functions</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> Comments</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> Control Flow</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> Understanding Ownership</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> What is Ownership?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> References and Borrowing</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> The Slice Type</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> Using Structs to Structure Related Data</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> Defining and Instantiating Structs</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> An Example Program Using Structs</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> Method Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> Enums and Pattern Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> Defining an Enum</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> The match Control Flow Operator</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> Concise Control Flow with if let</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> Managing Growing Projects with Packages, Crates, and Modules</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> Packages and Crates</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> Defining Modules to Control Scope and Privacy</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> Paths for Referring to an Item in the Module Tree</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> Bringing Paths Into Scope with the use Keyword</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> Separating Modules into Different Files</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> Common Collections</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> Storing Lists of Values with Vectors</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> Storing UTF-8 Encoded Text with Strings</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> Storing Keys with Associated Values in Hash Maps</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> Error Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> Unrecoverable Errors with panic!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Recoverable Errors with Result</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> To panic! or Not To panic!</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> Generic Types, Traits, and Lifetimes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> Generic Data Types</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> Traits: Defining Shared Behavior</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> Validating References with Lifetimes</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> Writing Automated Tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> How to Write Tests</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> Controlling How Tests Are Run</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> Test Organization</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> An I/O Project: Building a Command Line Program</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> Accepting Command Line Arguments</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> Reading a File</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> Refactoring to Improve Modularity and Error Handling</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> Developing the Library’s Functionality with Test Driven Development</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> Working with Environment Variables</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> Writing Error Messages to Standard Error Instead of Standard Output</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> Functional Language Features: Iterators and Closures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> Closures: Anonymous Functions that Can Capture Their Environment</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> Processing a Series of Items with Iterators</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> Improving Our I/O Project</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> Comparing Performance: Loops vs. Iterators</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> More about Cargo and Crates.io</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> Customizing Builds with Release Profiles</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Publishing a Crate to Crates.io</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> Cargo Workspaces</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> Installing Binaries from Crates.io with cargo install</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> Extending Cargo with Custom Commands</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> Smart Pointers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Using Box&lt;T&gt; to Point to Data on the Heap</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Treating Smart Pointers Like Regular References with the Deref Trait</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Running Code on Cleanup with the Drop Trait</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, the Reference Counted Smart Pointer</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt; and the Interior Mutability Pattern</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html"><strong aria-hidden="true">15.6.</strong> Reference Cycles Can Leak Memory</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> Fearless Concurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> Using Threads to Run Code Simultaneously</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> Using Message Passing to Transfer Data Between Threads</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> Shared-State Concurrency</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Extensible Concurrency with the Sync and Send Traits</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> Object Oriented Programming Features of Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> Characteristics of Object-Oriented Languages</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> Using Trait Objects That Allow for Values of Different Types</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> Implementing an Object-Oriented Design Pattern</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> Patterns and Matching</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> All the Places Patterns Can Be Used</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> Refutability: Whether a Pattern Might Fail to Match</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> Pattern Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> Advanced Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> Unsafe Rust</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> Advanced Traits</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> Advanced Types</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html" class="active"><strong aria-hidden="true">19.4.</strong> Advanced Functions and Closures</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> Macros</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> Final Project: Building a Multithreaded Web Server</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> Building a Single-Threaded Web Server</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> Turning Our Single-Threaded Server into a Multithreaded Server</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> Graceful Shutdown and Cleanup</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - Keywords</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - Operators and Symbols</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - Derivable Traits</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - Useful Development Tools</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - Editions</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - Translations of the Book</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - How Rust is Made and “Nightly Rust”</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Rust Programming Language</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <style>
+.inlay-hint, .inlay-hint * {
+    border-radius: .4em;
+}
+
+.light .inlay-hint, .rust .inlay-hint {
+    background-color: #dcc;
+    color: #777;
+}
+
+.ayu .inlay-hint, .navy .inlay-hint, .coal .inlay-hint {
+    background-color: #444;
+    color: #999;
+}
+
+.inlay-hint {
+    font-size: 0.8em;
+    user-select: none;
+}
+.hover-holder {
+    max-height: 40vh;
+    overflow: auto;
+}
+
+.tippy-content {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+</style>## Advanced Functions and Closures
+<p>Next, we’ll explore some advanced features related to functions and
+closures, which include function pointers and returning closures.</p>
+<h3 id="function-pointers"><a class="header" href="#function-pointers">Function Pointers</a></h3>
+<p>We’ve talked about how to pass closures to functions; you can also pass regular
+functions to functions! This technique is useful when you want to pass a
+function you’ve already defined rather than defining a new closure. Doing this
+with function pointers will allow you to use functions as arguments to other
+functions. Functions coerce to the type <code>fn</code> (with a lowercase f), not to be
+confused with the <code>Fn</code> closure trait. The <code>fn</code> type is called a <em>function
+pointer</em>. The syntax for specifying that a parameter is a function pointer is
+similar to that of closures, as shown in Listing 19-27.</p>
+<p><span class="filename">Filename: src/main.rs</span></p>
+<pre><pre class="playground"><code class="language-rust hljs">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn <span class="ra" data-hover="0">add_one</span>(<span class="ra" data-hover="1">x</span>: <span class="ra" data-hover="2">i32</span>) -&gt; <span class="ra" data-hover="2">i32</span> {
+    <span class="ra" data-hover="1">x</span> + 1
+}
+
+fn <span class="ra" data-hover="3">do_twice</span>(<span class="ra" data-hover="4">f</span>: fn(<span class="ra" data-hover="2">i32</span>) -&gt; <span class="ra" data-hover="2">i32</span>, <span class="ra" data-hover="5">arg</span>: <span class="ra" data-hover="2">i32</span>) -&gt; <span class="ra" data-hover="2">i32</span> {
+    <span class="ra" data-hover="4">f</span>(<span class="ra" data-hover="5">arg</span>) + <span class="ra" data-hover="4">f</span>(<span class="ra" data-hover="5">arg</span>)
+}
+
+fn <span class="ra" data-hover="6">main</span>() {
+    let <span class="ra" data-hover="7">answer</span><span class="inlay-hint">: i32</span> = <span class="ra" data-hover="3">do_twice</span>(<span class="ra" data-hover="0"><span class="inlay-hint">f: </span>add_one</span>, <span class="inlay-hint">arg: </span>5);
+
+    <span class="ra" data-hover="8">println</span>!("The answer is: {}", <span class="ra" data-hover="7">answer</span>);
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p><span class="caption">Listing 19-27: Using the <code>fn</code> type to accept a function
+pointer as an argument</span></p>
+<p>This code prints <code>The answer is: 12</code>. We specify that the parameter <code>f</code> in
+<code>do_twice</code> is an <code>fn</code> that takes one parameter of type <code>i32</code> and returns an
+<code>i32</code>. We can then call <code>f</code> in the body of <code>do_twice</code>. In <code>main</code>, we can pass
+the function name <code>add_one</code> as the first argument to <code>do_twice</code>.</p>
+<p>Unlike closures, <code>fn</code> is a type rather than a trait, so we specify <code>fn</code> as the
+parameter type directly rather than declaring a generic type parameter with one
+of the <code>Fn</code> traits as a trait bound.</p>
+<p>Function pointers implement all three of the closure traits (<code>Fn</code>, <code>FnMut</code>, and
+<code>FnOnce</code>), so you can always pass a function pointer as an argument for a
+function that expects a closure. It’s best to write functions using a generic
+type and one of the closure traits so your functions can accept either
+functions or closures.</p>
+<p>An example of where you would want to only accept <code>fn</code> and not closures is when
+interfacing with external code that doesn’t have closures: C functions can
+accept functions as arguments, but C doesn’t have closures.</p>
+<p>As an example of where you could use either a closure defined inline or a named
+function, let’s look at a use of <code>map</code>. To use the <code>map</code> function to turn a
+vector of numbers into a vector of strings, we could use a closure, like this:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let <span class="ra" data-hover="9">list_of_numbers</span><span class="inlay-hint">: Vec&lt;i32&gt;</span> = <span class="ra" data-hover="10">vec</span>![1, 2, 3];
+    let <span class="ra" data-hover="11">list_of_strings</span>: <span class="ra" data-hover="12">Vec</span>&lt;<span class="ra" data-hover="13">String</span>&gt; =
+        <span class="ra" data-hover="9">list_of_numbers</span>.<span class="ra" data-hover="14">iter</span>().<span class="ra" data-hover="15">map</span>(|<span class="ra" data-hover="16">i</span><span class="inlay-hint">: &amp;i32</span>| <span class="ra" data-hover="16">i</span>.<span class="ra" data-hover="17">to_string</span>()).<span class="ra" data-hover="18">collect</span>();
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>Or we could name a function as the argument to <code>map</code> instead of the closure,
+like this:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    let <span class="ra" data-hover="9">list_of_numbers</span><span class="inlay-hint">: Vec&lt;i32&gt;</span> = <span class="ra" data-hover="10">vec</span>![1, 2, 3];
+    let <span class="ra" data-hover="11">list_of_strings</span>: <span class="ra" data-hover="12">Vec</span>&lt;<span class="ra" data-hover="13">String</span>&gt; =
+        <span class="ra" data-hover="9">list_of_numbers</span>.<span class="ra" data-hover="14">iter</span>().<span class="ra" data-hover="15">map</span>(<span class="ra" data-hover="19">ToString</span>::<span class="ra" data-hover="17">to_string</span>).<span class="ra" data-hover="18">collect</span>();
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>Note that we must use the fully qualified syntax that we talked about earlier
+in the <a href="ch19-03-advanced-traits.html#advanced-traits">“Advanced Traits”</a><!-- ignore --> section because
+there are multiple functions available named <code>to_string</code>. Here, we’re using the
+<code>to_string</code> function defined in the <code>ToString</code> trait, which the standard
+library has implemented for any type that implements <code>Display</code>.</p>
+<p>We have another useful pattern that exploits an implementation detail of tuple
+structs and tuple-struct enum variants. These types use <code>()</code> as initializer
+syntax, which looks like a function call. The initializers are actually
+implemented as functions returning an instance that’s constructed from their
+arguments. We can use these initializer functions as function pointers that
+implement the closure traits, which means we can specify the initializer
+functions as arguments for methods that take closures, like so:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">fn main() {
+</span>    enum <span class="ra" data-hover="20">Status</span> {
+        <span class="ra" data-hover="21">Value</span>(<span class="ra" data-hover="22">u32</span>),
+        <span class="ra" data-hover="23">Stop</span>,
+    }
+
+    let <span class="ra" data-hover="24">list_of_statuses</span>: <span class="ra" data-hover="12">Vec</span>&lt;<span class="ra" data-hover="20">Status</span>&gt; = (0u32..20).<span class="ra" data-hover="15">map</span>(<span class="ra" data-hover="20">Status</span>::<span class="ra" data-hover="21">Value</span>).<span class="ra" data-hover="18">collect</span>();
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>Here we create <code>Status::Value</code> instances using each <code>u32</code> value in the range
+that <code>map</code> is called on by using the initializer function of <code>Status::Value</code>.
+Some people prefer this style, and some people prefer to use closures. They
+compile to the same code, so use whichever style is clearer to you.</p>
+<h3 id="returning-closures"><a class="header" href="#returning-closures">Returning Closures</a></h3>
+<p>Closures are represented by traits, which means you can’t return closures
+directly. In most cases where you might want to return a trait, you can instead
+use the concrete type that implements the trait as the return value of the
+function. But you can’t do that with closures because they don’t have a
+concrete type that is returnable; you’re not allowed to use the function
+pointer <code>fn</code> as a return type, for example.</p>
+<p>The following code tries to return a closure directly, but it won’t compile:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn <span class="ra" data-hover="25">returns_closure</span>() -&gt; dyn <span class="ra" data-hover="26">Fn</span>(<span class="ra" data-hover="2">i32</span>) -&gt; <span class="ra" data-hover="2">i32</span> {
+    |<span class="ra" data-hover="1">x</span><span class="inlay-hint">: i32</span>| <span class="ra" data-hover="1">x</span> + 1
+}
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>The compiler error is as follows:</p>
+<pre><code class="language-console">$ cargo build
+   Compiling functions-example v0.1.0 (file:///projects/functions-example)
+error[E0746]: return type cannot have an unboxed trait object
+ --&gt; src/lib.rs:1:25
+  |
+1 | fn returns_closure() -&gt; dyn Fn(i32) -&gt; i32 {
+  |                         ^^^^^^^^^^^^^^^^^^ doesn't have a size known at compile-time
+  |
+  = note: for information on `impl Trait`, see &lt;https://doc.rust-lang.org/book/ch10-02-traits.html#returning-types-that-implement-traits&gt;
+help: use `impl Fn(i32) -&gt; i32` as the return type, as all return paths are of type `[closure@src/lib.rs:2:5: 2:14]`, which implements `Fn(i32) -&gt; i32`
+  |
+1 | fn returns_closure() -&gt; impl Fn(i32) -&gt; i32 {
+  |                         ^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0746`.
+error: could not compile `functions-example` due to previous error
+</code></pre>
+<p>The error references the <code>Sized</code> trait again! Rust doesn’t know how much space
+it will need to store the closure. We saw a solution to this problem earlier.
+We can use a trait object:</p>
+<pre><pre class="playground"><code class="language-rust hljs"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn <span class="ra" data-hover="27">returns_closure</span>() -&gt; <span class="ra" data-hover="28">Box</span>&lt;dyn <span class="ra" data-hover="26">Fn</span>(<span class="ra" data-hover="2">i32</span>) -&gt; <span class="ra" data-hover="2">i32</span>&gt; {
+    <span class="ra" data-hover="28">Box</span>::<span class="ra" data-hover="29">new</span>(|<span class="ra" data-hover="1">x</span><span class="inlay-hint">: i32</span>| <span class="ra" data-hover="1">x</span> + 1)
+}
+<span class="boring">}
+</span>
+</code></pre></pre>
+<p>This code will compile just fine. For more about trait objects, refer to the
+section <a href="ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types">“Using Trait Objects That Allow for Values of Different
+Types”</a><!--
+ignore --> in Chapter 17.</p>
+<p>Next, let’s look at macros!</p>
+<script src="https://unpkg.com/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tippy.js@6.3.2/dist/tippy-bundle.umd.min.js" integrity="sha384-vApKv6LkBdPwmt/fNiQrBCVCZvuniXpG0b5UZhVrGAq1zXdZRSsPcWjGdVxkZJtX" crossorigin="anonymous"></script>
+<script>
+    const hoverData = ['<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn add_one(x: i32) -&gt; i32\n</code></pre>\n','<per><cide class="language-rust">x: i32\n</code></pre>\n','<per><cide class="language-rust">i32\n</code></pre>\n<hr />\n<p>The 32-bit signed integer type.</p>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32\n</code></pre>\n','<per><cide class="language-rust">f: fn(i32) -&gt; i32\n</code></pre>\n','<per><cide class="language-rust">arg: i32\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn main()\n</code></pre>\n','<per><cide class="language-rust">let answer: i32\n</code></pre>\n','<per><cide class="language-rust">std\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! println\n</code></pre>\n<hr />\n<p>Prints to the standard output, with a newline.</p>\n<p>On all platforms, the newline is the LINE FEED character (<cide>\n</code>/<cide>U+000A</code>) alone\n(no additional CARRIAGE RETURN (<cide>\r</code>/<cide>U+000D</code>)).</p>\n<p>Use the <a href="%60format!%60"><cide>format!</code></a> syntax to write data to the standard output.\nSee <a href="crate::fmt"><cide>std::fmt</code></a> for more information.</p>\n<p>Use <cide>println!</code> only for the primary output of your program. Use\n<a href="%60eprintln!%60"><cide>eprintln!</code></a> instead to print error and progress messages.</p>\n<h1 id="panics"><a class="header" href="#panics">Panics</a></h1>\n<p>Panics if writing to <a href="crate::io::stdout"><cide>io::stdout</code></a> fails.</p>\n<h1 id="examples"><a class="header" href="#examples">Examples</a></h1>\n<per><cide>println!(); // prints just a newline\nprintln!(&quot;hello there!&quot;);\nprintln!(&quot;format {} arguments&quot;, &quot;some&quot;);\n</code></pre>\n','<per><cide class="language-rust">let list_of_numbers: Vec&lt;i32, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc\n</code></pre>\n<per><cide class="language-rust">#[macro_export] macro_rules! vec\n</code></pre>\n<hr />\n<p>Creates a <a href="crate::vec::Vec"><cide>Vec</code></a> containing the arguments.</p>\n<p><cide>vec!</code> allows <cide>Vec</code>s to be defined with the same syntax as array expressions.\nThere are two forms of this macro:</p>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> containing a given list of elements:</li>\n</ul>\n<per><cide>let v = vec![1, 2, 3];\nassert_eq!(v[0], 1);\nassert_eq!(v[1], 2);\nassert_eq!(v[2], 3);\n</code></pre>\n<ul>\n<li>Create a <a href="crate::vec::Vec"><cide>Vec</code></a> from a given element and size:</li>\n</ul>\n<per><cide>let v = vec![1; 3];\nassert_eq!(v, [1, 1, 1]);\n</code></pre>\n<p>Note that unlike array expressions this syntax supports all elements\nwhich implement <a href="%60Clone%60"><cide>Clone</code></a> and the number of elements doesn#$%t have to be\na constant.</p>\n<p>This will use <cide>clone</code> to duplicate an expression, so one should be careful\nusing this with types having a nonstandard <cide>Clone</code> implementation. For\nexample, <cide>vec![Rc::new(1); 5]</code> will create a vector of five references\nto the same boxed integer value, not five references pointing to independently\nboxed integers.</p>\n<p>Also, note that <cide>vec![expr; 0]</code> is allowed, and produces an empty vector.\nThis will still evaluate <cide>expr</code>, however, and immediately drop the resulting value, so\nbe mindful of side effects.</p>\n','<per><cide class="language-rust">let list_of_strings: Vec&lt;String, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc::vec\n</code></pre>\n<per><cide class="language-rust">pub struct Vec&lt;T, A = Global&gt;\nwhere\n    A: Allocator,\n</code></pre>\n<hr />\n<p>A contiguous growable array type, written as <cide>Vec&lt;T&gt;</code> and pronounced #$%vector#$%.</p>\n<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>\n<per><cide>let mut vec = Vec::new();\nvec.push(1);\nvec.push(2);\n\nassert_eq!(vec.len(), 2);\nassert_eq!(vec[0], 1);\n\nassert_eq!(vec.pop(), Some(2));\nassert_eq!(vec.len(), 1);\n\nvec[0] = 7;\nassert_eq!(vec[0], 7);\n\nvec.extend([1, 2, 3].iter().copied());\n\nfor x in &amp;vec {\n    println!(&quot;{}&quot;, x);\n}\nassert_eq!(vec, [7, 1, 2, 3]);\n</code></pre>\n<p>The <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec</code></a> macro is provided to make initialization more convenient:</p>\n<per><cide>let mut vec = vec![1, 2, 3];\nvec.push(4);\nassert_eq!(vec, [1, 2, 3, 4]);\n</code></pre>\n<p>It can also initialize each element of a <cide>Vec&lt;T&gt;</code> with a given value.\nThis may be more efficient than performing allocation and initialization\nin separate steps, especially when initializing a vector of zeros:</p>\n<per><cide>let vec = vec![0; 5];\nassert_eq!(vec, [0, 0, 0, 0, 0]);\n\n// The following is equivalent, but potentially slower:\nlet mut vec = Vec::with_capacity(5);\nvec.resize(5, 0);\nassert_eq!(vec, [0, 0, 0, 0, 0]);\n</code></pre>\n<p>For more information, see\n<a href="https://docs.rs/alloc/*/alloc/vec/struct.Vec.html#capacity-and-reallocation">Capacity and Reallocation</a>.</p>\n<p>Use a <cide>Vec&lt;T&gt;</code> as an efficient stack:</p>\n<per><cide>let mut stack = Vec::new();\n\nstack.push(1);\nstack.push(2);\nstack.push(3);\n\nwhile let Some(top) = stack.pop() {\n    // Prints 3, 2, 1\n    println!(&quot;{}&quot;, top);\n}\n</code></pre>\n<h1 id="indexing"><a class="header" href="#indexing">Indexing</a></h1>\n<p>The <cide>Vec</code> type allows to access values by index, because it implements the\n<a href="https://docs.rs/core/*/core/ops/index/trait.Index.html"><cide>Index</code></a> trait. An example will be more explicit:</p>\n<per><cide>let v = vec![0, 2, 4, 6];\nprintln!(&quot;{}&quot;, v[1]); // it will display #$%2#$%\n</code></pre>\n<p>However be careful: if you try to access an index which isn#$%t in the <cide>Vec</code>,\nyour software will panic! You cannot do this:</p>\n<per><cide class="language-should_panic">let v = vec![0, 2, 4, 6];\nprintln!(&quot;{}&quot;, v[6]); // it will panic!\n</code></pre>\n<p>Use <a href="https://docs.rs/alloc/*/std/vec/struct.Vec.html#method.get"><cide>get</code></a> and <a href="https://docs.rs/alloc/*/std/vec/struct.Vec.html#method.get_mut"><cide>get_mut</code></a> if you want to check whether the index is in\nthe <cide>Vec</code>.</p>\n<h1 id="slicing"><a class="header" href="#slicing">Slicing</a></h1>\n<p>A <cide>Vec</code> can be mutable. On the other hand, slices are read-only objects.\nTo get a <a href="https://docs.rs/core/*/core/slice/index.html">slice</a>, use <a href="%60&amp;%60"><cide>&amp;</code></a>. Example:</p>\n<per><cide>fn read_slice(slice: &amp;[usize]) {\n    // ...\n}\n\nlet v = vec![0, 1];\nread_slice(&amp;v);\n\n// ... and that#$%s all!\n// you can also do it like this:\nlet u: &amp;[usize] = &amp;v;\n// or like this:\nlet u: &amp;[_] = &amp;v;\n</code></pre>\n<p>In Rust, it#$%s more common to pass slices as arguments rather than vectors\nwhen you just want to provide read access. The same goes for <a href="https://docs.rs/alloc/*/alloc/string/struct.String.html"><cide>String</code></a> and\n<a href="type@str"><cide>&amp;str</code></a>.</p>\n<h1 id="capacity-and-reallocation"><a class="header" href="#capacity-and-reallocation">Capacity and reallocation</a></h1>\n<p>The capacity of a vector is the amount of space allocated for any future\nelements that will be added onto the vector. This is not to be confused with\nthe <em>length</em> of a vector, which specifies the number of actual elements\nwithin the vector. If a vector#$%s length exceeds its capacity, its capacity\nwill automatically be increased, but its elements will have to be\nreallocated.</p>\n<p>For example, a vector with capacity 10 and length 0 would be an empty vector\nwith space for 10 more elements. Pushing 10 or fewer elements onto the\nvector will not change its capacity or cause reallocation to occur. However,\nif the vector#$%s length is increased to 11, it will have to reallocate, which\ncan be slow. For this reason, it is recommended to use <a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity</code></a>\nwhenever possible to specify how big the vector is expected to get.</p>\n<h1 id="guarantees"><a class="header" href="#guarantees">Guarantees</a></h1>\n<p>Due to its incredibly fundamental nature, <cide>Vec</code> makes a lot of guarantees\nabout its design. This ensures that it#$%s as low-overhead as possible in\nthe general case, and can be correctly manipulated in primitive ways\nby unsafe code. Note that these guarantees refer to an unqualified <cide>Vec&lt;T&gt;</code>.\nIf additional type parameters are added (e.g., to support custom allocators),\noverriding their defaults may change the behavior.</p>\n<p>Most fundamentally, <cide>Vec</code> is and always will be a (pointer, capacity, length)\ntriplet. No more, no less. The order of these fields is completely\nunspecified, and you should use the appropriate methods to modify these.\nThe pointer will never be null, so this type is null-pointer-optimized.</p>\n<p>However, the pointer might not actually point to allocated memory. In particular,\nif you construct a <cide>Vec</code> with capacity 0 via <a href="%60Vec::new%60"><cide>Vec::new</code></a>, <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec![]</code></a>,\n<a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity(0)</code></a>, or by calling <a href="Vec::shrink_to_fit"><cide>shrink_to_fit</code></a>\non an empty Vec, it will not allocate memory. Similarly, if you store zero-sized\ntypes inside a <cide>Vec</code>, it will not allocate space for them. <em>Note that in this case\nthe <cide>Vec</code> might not report a <a href="Vec::capacity"><cide>capacity</code></a> of 0</em>. <cide>Vec</code> will allocate if and only\nif <a href="https://docs.rs/core/*/core/mem/fn.size_of.html"><cide>mem::size_of::&lt;T&gt;</code></a><cide>() * capacity() &gt; 0</code>. In general, <cide>Vec</code>#$%s allocation\ndetails are very subtle — if you intend to allocate memory using a <cide>Vec</code>\nand use it for something else (either to pass to unsafe code, or to build your\nown memory-backed collection), be sure to deallocate this memory by using\n<cide>from_raw_parts</code> to recover the <cide>Vec</code> and then dropping it.</p>\n<p>If a <cide>Vec</code> <em>has</em> allocated memory, then the memory it points to is on the heap\n(as defined by the allocator Rust is configured to use by default), and its\npointer points to <a href="Vec::len"><cide>len</code></a> initialized, contiguous elements in order (what\nyou would see if you coerced it to a slice), followed by <a href="Vec::capacity"><cide>capacity</code></a><cide>-</code><a href="Vec::len"><cide>len</code></a> logically uninitialized, contiguous elements.</p>\n<p>A vector containing the elements <cide>#$%a#$%</code> and <cide>#$%b#$%</code> with capacity 4 can be\nvisualized as below. The top part is the <cide>Vec</code> struct, it contains a\npointer to the head of the allocation in the heap, length and capacity.\nThe bottom part is the allocation on the heap, a contiguous memory block.</p>\n<per><cide class="language-text">            ptr      len  capacity\n       +--------+--------+--------+\n       | 0x0123 |      2 |      4 |\n       +--------+--------+--------+\n            |\n            v\nHeap   +--------+--------+--------+--------+\n       |    #$%a#$% |    #$%b#$% | uninit | uninit |\n       +--------+--------+--------+--------+\n</code></pre>\n<ul>\n<li><strong>uninit</strong> represents memory that is not initialized, see <a href="https://docs.rs/core/*/core/mem/maybe_uninit/union.MaybeUninit.html"><cide>MaybeUninit</code></a>.</li>\n<li>Note: the ABI is not stable and <cide>Vec</code> makes no guarantees about its memory\nlayout (including the order of fields).</li>\n</ul>\n<p><cide>Vec</code> will never perform a &quot;small optimization&quot; where elements are actually\nstored on the stack for two reasons:</p>\n<ul>\n<li>\n<p>It would make it more difficult for unsafe code to correctly manipulate\na <cide>Vec</code>. The contents of a <cide>Vec</code> wouldn#$%t have a stable address if it were\nonly moved, and it would be more difficult to determine if a <cide>Vec</code> had\nactually allocated memory.</p>\n</li>\n<li>\n<p>It would penalize the general case, incurring an additional branch\non every access.</p>\n</li>\n</ul>\n<p><cide>Vec</code> will never automatically shrink itself, even if completely empty. This\nensures no unnecessary allocations or deallocations occur. Emptying a <cide>Vec</code>\nand then filling it back up to the same <a href="Vec::len"><cide>len</code></a> should incur no calls to\nthe allocator. If you wish to free up unused memory, use\n<a href="Vec::shrink_to_fit"><cide>shrink_to_fit</code></a> or <a href="Vec::shrink_to"><cide>shrink_to</code></a>.</p>\n<p><a href="Vec::push"><cide>push</code></a> and <a href="Vec::insert"><cide>insert</code></a> will never (re)allocate if the reported capacity is\nsufficient. <a href="Vec::push"><cide>push</code></a> and <a href="Vec::insert"><cide>insert</code></a> <em>will</em> (re)allocate if\n<a href="Vec::len"><cide>len</code></a><cide>==</code><a href="Vec::capacity"><cide>capacity</code></a>. That is, the reported capacity is completely\naccurate, and can be relied on. It can even be used to manually free the memory\nallocated by a <cide>Vec</code> if desired. Bulk insertion methods <em>may</em> reallocate, even\nwhen not necessary.</p>\n<p><cide>Vec</code> does not guarantee any particular growth strategy when reallocating\nwhen full, nor when <a href="Vec::reserve"><cide>reserve</code></a> is called. The current strategy is basic\nand it may prove desirable to use a non-constant growth factor. Whatever\nstrategy is used will of course guarantee <em>O</em>(1) amortized <a href="Vec::push"><cide>push</code></a>.</p>\n<p><cide>vec![x; n]</code>, <cide>vec![a, b, c, d]</code>, and\n<a href="%60Vec::with_capacity%60"><cide>Vec::with_capacity(n)</code></a>, will all produce a <cide>Vec</code>\nwith exactly the requested capacity. If <a href="Vec::len"><cide>len</code></a><cide>==</code><a href="Vec::capacity"><cide>capacity</code></a>,\n(as is the case for the <a href="https://docs.rs/alloc/*/alloc/macro.vec.html"><cide>vec</code></a> macro), then a <cide>Vec&lt;T&gt;</code> can be converted to\nand from a <a href="https://docs.rs/alloc/*/alloc/boxed/struct.Box.html"><cide>Box&lt;[T]&gt;</code></a> without reallocating or moving the elements.</p>\n<p><cide>Vec</code> will not specifically overwrite any data that is removed from it,\nbut also won#$%t specifically preserve it. Its uninitialized memory is\nscratch space that it may use however it wants. It will generally just do\nwhatever is most efficient or otherwise easy to implement. Do not rely on\nremoved data to be erased for security purposes. Even if you drop a <cide>Vec</code>, its\nbuffer may simply be reused by another <cide>Vec</code>. Even if you zero a <cide>Vec</code>#$%s memory\nfirst, that might not actually happen because the optimizer does not consider\nthis a side-effect that must be preserved. There is one case which we will\nnot break, however: using <cide>unsafe</code> code to write to the excess capacity,\nand then increasing the length to match, is always valid.</p>\n<p>Currently, <cide>Vec</code> does not guarantee the order in which elements are dropped.\nThe order has changed in the past and may change again.</p>\n','<per><cide class="language-rust">alloc::string\n</code></pre>\n<per><cide class="language-rust">pub struct String\n</code></pre>\n<hr />\n<p>A UTF-8–encoded, growable string.</p>\n<p>The <cide>String</code> type is the most common string type that has ownership over the\ncontents of the string. It has a close relationship with its borrowed\ncounterpart, the primitive <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>.</p>\n<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>\n<p>You can create a <cide>String</code> from <a href="https://docs.rs/alloc/*/alloc/str/index.html">a literal string</a> with <a href="https://docs.rs/core/*/core/convert/trait.From.html#tymethod.from"><cide>String::from</code></a>:</p>\n<per><cide>let hello = String::from(&quot;Hello, world!&quot;);\n</code></pre>\n<p>You can append a <a href="%60char%60"><cide>char</code></a> to a <cide>String</code> with the <a href="String::push"><cide>push</code></a> method, and\nappend a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> with the <a href="String::push_str"><cide>push_str</code></a> method:</p>\n<per><cide>let mut hello = String::from(&quot;Hello, &quot;);\n\nhello.push(#$%w#$%);\nhello.push_str(&quot;orld!&quot;);\n</code></pre>\n<p>If you have a vector of UTF-8 bytes, you can create a <cide>String</code> from it with\nthe <a href="String::from_utf8"><cide>from_utf8</code></a> method:</p>\n<per><cide>// some bytes, in a vector\nlet sparkle_heart = vec![240, 159, 146, 150];\n\n// We know these bytes are valid, so we#$%ll use `unwrap()`.\nlet sparkle_heart = String::from_utf8(sparkle_heart).unwrap();\n\nassert_eq!(&quot;💖&quot;, sparkle_heart);\n</code></pre>\n<h1 id="utf-8"><a class="header" href="#utf-8">UTF-8</a></h1>\n<p><cide>String</code>s are always valid UTF-8. This has a few implications, the first of\nwhich is that if you need a non-UTF-8 string, consider <a href="https://docs.rs/alloc/*/std/ffi/struct.OsString.html"><cide>OsString</code></a>. It is\nsimilar, but without the UTF-8 constraint. The second implication is that\nyou cannot index into a <cide>String</code>:</p>\n<per><cide class="language-compile_fail,E0277">let s = &quot;hello&quot;;\n\nprintln!(&quot;The first letter of s is {}&quot;, s[0]); // ERROR!!!\n</code></pre>\n<p>Indexing is intended to be a constant-time operation, but UTF-8 encoding\ndoes not allow us to do this. Furthermore, it#$%s not clear what sort of\nthing the index should return: a byte, a codepoint, or a grapheme cluster.\nThe <a href="str::bytes"><cide>bytes</code></a> and <a href="str::chars"><cide>chars</code></a> methods return iterators over the first\ntwo, respectively.</p>\n<h1 id="deref"><a class="header" href="#deref">Deref</a></h1>\n<p><cide>String</code>s implement <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a><cide>&lt;Target=str&gt;</code>, and so inherit all of <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>#$%s\nmethods. In addition, this means that you can pass a <cide>String</code> to a\nfunction which takes a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> by using an ampersand (<cide>&amp;</code>):</p>\n<per><cide>fn takes_str(s: &amp;str) { }\n\nlet s = String::from(&quot;Hello&quot;);\n\ntakes_str(&amp;s);\n</code></pre>\n<p>This will create a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a> from the <cide>String</code> and pass it in. This\nconversion is very inexpensive, and so generally, functions will accept\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>s as arguments unless they need a <cide>String</code> for some specific\nreason.</p>\n<p>In certain cases Rust doesn#$%t have enough information to make this\nconversion, known as <a href="https://docs.rs/core/*/core/ops/deref/trait.Deref.html"><cide>Deref</code></a> coercion. In the following example a string\nslice <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;#$%a str</code></a> implements the trait <cide>TraitExample</code>, and the function\n<cide>example_func</code> takes anything that implements the trait. In this case Rust\nwould need to make two implicit conversions, which Rust doesn#$%t have the\nmeans to do. For that reason, the following example will not compile.</p>\n<per><cide class="language-compile_fail,E0277">trait TraitExample {}\n\nimpl&lt;#$%a&gt; TraitExample for &amp;#$%a str {}\n\nfn example_func&lt;A: TraitExample&gt;(example_arg: A) {}\n\nlet example_string = String::from(&quot;example_string&quot;);\nexample_func(&amp;example_string);\n</code></pre>\n<p>There are two options that would work instead. The first would be to\nchange the line <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(example_string.as_str());</code>, using the method <a href="String::as_str"><cide>as_str()</code></a>\nto explicitly extract the string slice containing the string. The second\nway changes <cide>example_func(&amp;example_string);</code> to\n<cide>example_func(&amp;*example_string);</code>. In this case we are dereferencing a\n<cide>String</code> to a <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a>, then referencing the <a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>str</code></a> back to\n<a href="https://docs.rs/alloc/*/alloc/str/index.html"><cide>&amp;str</code></a>. The second way is more idiomatic, however both work to do the\nconversion explicitly rather than relying on the implicit conversion.</p>\n<h1 id="representation"><a class="header" href="#representation">Representation</a></h1>\n<p>A <cide>String</code> is made up of three components: a pointer to some bytes, a\nlength, and a capacity. The pointer points to an internal buffer <cide>String</code>\nuses to store its data. The length is the number of bytes currently stored\nin the buffer, and the capacity is the size of the buffer in bytes. As such,\nthe length will always be less than or equal to the capacity.</p>\n<p>This buffer is always stored on the heap.</p>\n<p>You can look at these with the <a href="str::as_ptr"><cide>as_ptr</code></a>, <a href="String::len"><cide>len</code></a>, and <a href="String::capacity"><cide>capacity</code></a>\nmethods:</p>\n<per><cide>use std::mem;\n\nlet story = String::from(&quot;Once upon a time...&quot;);\n\n// Prevent automatically dropping the String#$%s data\nlet mut story = mem::ManuallyDrop::new(story);\n\nlet ptr = story.as_mut_ptr();\nlet len = story.len();\nlet capacity = story.capacity();\n\n// story has nineteen bytes\nassert_eq!(19, len);\n\n// We can re-build a String out of ptr, len, and capacity. This is all\n// unsafe because we are responsible for making sure the components are\n// valid:\nlet s = unsafe { String::from_raw_parts(ptr, len, capacity) } ;\n\nassert_eq!(String::from(&quot;Once upon a time...&quot;), s);\n</code></pre>\n<p>If a <cide>String</code> has enough capacity, adding elements to it will not\nre-allocate. For example, consider this program:</p>\n<per><cide>let mut s = String::new();\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>This will output the following:</p>\n<per><cide class="language-text">0\n5\n10\n20\n20\n40\n</code></pre>\n<p>At first, we have no memory allocated at all, but as we append to the\nstring, it increases its capacity appropriately. If we instead use the\n<a href="String::with_capacity"><cide>with_capacity</code></a> method to allocate the correct capacity initially:</p>\n<per><cide>let mut s = String::with_capacity(25);\n\nprintln!(&quot;{}&quot;, s.capacity());\n\nfor _ in 0..5 {\n    s.push_str(&quot;hello&quot;);\n    println!(&quot;{}&quot;, s.capacity());\n}\n</code></pre>\n<p>We end up with a different output:</p>\n<per><cide class="language-text">25\n25\n25\n25\n25\n25\n</code></pre>\n<p>Here, there#$%s no need to allocate more memory inside the loop.</p>\n','<per><cide class="language-rust">core::slice\n</code></pre>\n<per><cide class="language-rust">pub fn iter(&amp;self) -&gt; Iter&lt;#$%_, T&gt;\n</code></pre>\n<hr />\n<p>Returns an iterator over the slice.</p>\n<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>\n<per><cide>let x = &amp;[1, 2, 4];\nlet mut iterator = x.iter();\n\nassert_eq!(iterator.next(), Some(&amp;1));\nassert_eq!(iterator.next(), Some(&amp;2));\nassert_eq!(iterator.next(), Some(&amp;4));\nassert_eq!(iterator.next(), None);\n</code></pre>\n','<per><cide class="language-rust">core::iter::traits::iterator::Iterator\n</code></pre>\n<per><cide class="language-rust">pub fn map&lt;B, F&gt;(self, f: F) -&gt; Map&lt;Self, F&gt;\nwhere\n    Self: Sized,\n    F: FnMut&lt;(Self::Item,), Output = B&gt;,\n</code></pre>\n<hr />\n<p>Takes a closure and creates an iterator which calls that closure on each\nelement.</p>\n<p><cide>map()</code> transforms one iterator into another, by means of its argument:\nsomething that implements <a href="https://docs.rs/core/*/core/ops/function/trait.FnMut.html"><cide>FnMut</code></a>. It produces a new iterator which\ncalls this closure on each element of the original iterator.</p>\n<p>If you are good at thinking in types, you can think of <cide>map()</code> like this:\nIf you have an iterator that gives you elements of some type <cide>A</code>, and\nyou want an iterator of some other type <cide>B</code>, you can use <cide>map()</code>,\npassing a closure that takes an <cide>A</code> and returns a <cide>B</code>.</p>\n<p><cide>map()</code> is conceptually similar to a <a href="https://docs.rs/core/*/core/iter/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> loop. However, as <cide>map()</code> is\nlazy, it is best used when you#$%re already working with other iterators.\nIf you#$%re doing some sort of looping for a side effect, it#$%s considered\nmore idiomatic to use <a href="https://docs.rs/core/*/core/iter/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> than <cide>map()</code>.</p>\n<h1 id="examples-4"><a class="header" href="#examples-4">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let a = [1, 2, 3];\n\nlet mut iter = a.iter().map(|x| 2 * x);\n\nassert_eq!(iter.next(), Some(2));\nassert_eq!(iter.next(), Some(4));\nassert_eq!(iter.next(), Some(6));\nassert_eq!(iter.next(), None);\n</code></pre>\n<p>If you#$%re doing some sort of side effect, prefer <a href="https://docs.rs/core/*/core/iter/book/ch03-05-control-flow.html#looping-through-a-collection-with-for"><cide>for</code></a> to <cide>map()</code>:</p>\n<per><cide># #![allow(unused_must_use)]\n// don#$%t do this:\n(0..5).map(|x| println!(&quot;{}&quot;, x));\n\n// it won#$%t even execute, as it is lazy. Rust will warn you about this.\n\n// Instead, use for:\nfor x in 0..5 {\n    println!(&quot;{}&quot;, x);\n}\n</code></pre>\n','<per><cide class="language-rust">i: &amp;i32\n</code></pre>\n','<per><cide class="language-rust">alloc::string::ToString\n</code></pre>\n<per><cide class="language-rust">pub fn to_string(&amp;self) -&gt; String\n</code></pre>\n<hr />\n<p>Converts the given value to a <cide>String</code>.</p>\n<h1 id="examples-5"><a class="header" href="#examples-5">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let i = 5;\nlet five = String::from(&quot;5&quot;);\n\nassert_eq!(five, i.to_string());\n</code></pre>\n','<per><cide class="language-rust">core::iter::traits::iterator::Iterator\n</code></pre>\n<per><cide class="language-rust">pub fn collect&lt;B&gt;(self) -&gt; B\nwhere\n    B: FromIterator&lt;Self::Item&gt;,\n    Self: Sized,\n</code></pre>\n<hr />\n<p>Transforms an iterator into a collection.</p>\n<p><cide>collect()</code> can take anything iterable, and turn it into a relevant\ncollection. This is one of the more powerful methods in the standard\nlibrary, used in a variety of contexts.</p>\n<p>The most basic pattern in which <cide>collect()</code> is used is to turn one\ncollection into another. You take a collection, call <a href="https://docs.rs/core/*/core/iter/traits/iterator/trait.Iterator.html#tymethod.next"><cide>iter</code></a> on it,\ndo a bunch of transformations, and then <cide>collect()</code> at the end.</p>\n<p><cide>collect()</code> can also create instances of types that are not typical\ncollections. For example, a <a href="https://docs.rs/core/*/core/iter/std/string/struct.String.html"><cide>String</code></a> can be built from <a href="type@char"><cide>char</code></a>s,\nand an iterator of <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a> items can be collected\ninto <cide>Result&lt;Collection&lt;T&gt;, E&gt;</code>. See the examples below for more.</p>\n<p>Because <cide>collect()</code> is so general, it can cause problems with type\ninference. As such, <cide>collect()</code> is one of the few times you#$%ll see\nthe syntax affectionately known as the #$%turbofish#$%: <cide>::&lt;&gt;</code>. This\nhelps the inference algorithm understand specifically which collection\nyou#$%re trying to collect into.</p>\n<h1 id="examples-6"><a class="header" href="#examples-6">Examples</a></h1>\n<p>Basic usage:</p>\n<per><cide>let a = [1, 2, 3];\n\nlet doubled: Vec&lt;i32&gt; = a.iter()\n                         .map(|&amp;x| x * 2)\n                         .collect();\n\nassert_eq!(vec![2, 4, 6], doubled);\n</code></pre>\n<p>Note that we needed the <cide>: Vec&lt;i32&gt;</code> on the left-hand side. This is because\nwe could collect into, for example, a <a href="https://docs.rs/core/*/core/iter/std/collections/struct.VecDeque.html"><cide>VecDeque&lt;T&gt;</code></a> instead:</p>\n<per><cide>use std::collections::VecDeque;\n\nlet a = [1, 2, 3];\n\nlet doubled: VecDeque&lt;i32&gt; = a.iter().map(|&amp;x| x * 2).collect();\n\nassert_eq!(2, doubled[0]);\nassert_eq!(4, doubled[1]);\nassert_eq!(6, doubled[2]);\n</code></pre>\n<p>Using the #$%turbofish#$% instead of annotating <cide>doubled</code>:</p>\n<per><cide>let a = [1, 2, 3];\n\nlet doubled = a.iter().map(|x| x * 2).collect::&lt;Vec&lt;i32&gt;&gt;();\n\nassert_eq!(vec![2, 4, 6], doubled);\n</code></pre>\n<p>Because <cide>collect()</code> only cares about what you#$%re collecting into, you can\nstill use a partial type hint, <cide>_</code>, with the turbofish:</p>\n<per><cide>let a = [1, 2, 3];\n\nlet doubled = a.iter().map(|x| x * 2).collect::&lt;Vec&lt;_&gt;&gt;();\n\nassert_eq!(vec![2, 4, 6], doubled);\n</code></pre>\n<p>Using <cide>collect()</code> to make a <a href="https://docs.rs/core/*/core/iter/std/string/struct.String.html"><cide>String</code></a>:</p>\n<per><cide>let chars = [#$%g#$%, #$%d#$%, #$%k#$%, #$%k#$%, #$%n#$%];\n\nlet hello: String = chars.iter()\n    .map(|&amp;x| x as u8)\n    .map(|x| (x + 1) as char)\n    .collect();\n\nassert_eq!(&quot;hello&quot;, hello);\n</code></pre>\n<p>If you have a list of <a href="https://docs.rs/core/*/core/result/enum.Result.html"><cide>Result&lt;T, E&gt;</code></a>s, you can use <cide>collect()</code> to\nsee if any of them failed:</p>\n<per><cide>let results = [Ok(1), Err(&quot;nope&quot;), Ok(3), Err(&quot;bad&quot;)];\n\nlet result: Result&lt;Vec&lt;_&gt;, &amp;str&gt; = results.iter().cloned().collect();\n\n// gives us the first error\nassert_eq!(Err(&quot;nope&quot;), result);\n\nlet results = [Ok(1), Ok(3)];\n\nlet result: Result&lt;Vec&lt;_&gt;, &amp;str&gt; = results.iter().cloned().collect();\n\n// gives us the list of answers\nassert_eq!(Ok(vec![1, 3]), result);\n</code></pre>\n','<per><cide class="language-rust">alloc::string\n</code></pre>\n<per><cide class="language-rust">pub trait ToString\n</code></pre>\n<hr />\n<p>A trait for converting a value to a <cide>String</code>.</p>\n<p>This trait is automatically implemented for any type which implements the\n<a href="https://docs.rs/core/*/core/fmt/trait.Display.html"><cide>Display</code></a> trait. As such, <cide>ToString</code> shouldn#$%t be implemented directly:\n<a href="https://docs.rs/core/*/core/fmt/trait.Display.html"><cide>Display</code></a> should be implemented instead, and you get the <cide>ToString</code>\nimplementation for free.</p>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">enum Status\n</code></pre>\n','<per><cide class="language-rust">playcrate::Status\n</code></pre>\n<per><cide class="language-rust">Value(u32)\n</code></pre>\n','<per><cide class="language-rust">u32\n</code></pre>\n<hr />\n<p>The 32-bit unsigned integer type.</p>\n','<per><cide class="language-rust">playcrate::Status\n</code></pre>\n<per><cide class="language-rust">Stop\n</code></pre>\n','<per><cide class="language-rust">let list_of_statuses: Vec&lt;Status, Global&gt;\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn returns_closure() -&gt; dyn Fn&lt;(i32,), Output = i32&gt;\n</code></pre>\n','<per><cide class="language-rust">core::ops::function\n</code></pre>\n<per><cide class="language-rust">pub trait Fn&lt;Args&gt;\nwhere\n    Self: FnMut&lt;Args&gt;,\n</code></pre>\n<hr />\n<p>The version of the call operator that takes an immutable receiver.</p>\n<p>Instances of <cide>Fn</code> can be called repeatedly without mutating state.</p>\n<p><em>This trait (<cide>Fn</code>) is not to be confused with <a href="fn">function pointers</a>\n(<cide>fn</code>).</em></p>\n<p><cide>Fn</code> is implemented automatically by closures which only take immutable\nreferences to captured variables or don#$%t capture anything at all, as well\nas (safe) <a href="fn">function pointers</a> (with some caveats, see their documentation\nfor more details). Additionally, for any type <cide>F</code> that implements <cide>Fn</code>, <cide>&amp;F</code>\nimplements <cide>Fn</code>, too.</p>\n<p>Since both <a href="https://docs.rs/core/*/core/ops/function/trait.FnMut.html"><cide>FnMut</code></a> and <a href="https://docs.rs/core/*/core/ops/function/trait.FnOnce.html"><cide>FnOnce</code></a> are supertraits of <cide>Fn</code>, any\ninstance of <cide>Fn</code> can be used as a parameter where a <a href="https://docs.rs/core/*/core/ops/function/trait.FnMut.html"><cide>FnMut</code></a> or <a href="https://docs.rs/core/*/core/ops/function/trait.FnOnce.html"><cide>FnOnce</code></a>\nis expected.</p>\n<p>Use <cide>Fn</code> as a bound when you want to accept a parameter of function-like\ntype and need to call it repeatedly and without mutating state (e.g., when\ncalling it concurrently). If you do not need such strict requirements, use\n<a href="https://docs.rs/core/*/core/ops/function/trait.FnMut.html"><cide>FnMut</code></a> or <a href="https://docs.rs/core/*/core/ops/function/trait.FnOnce.html"><cide>FnOnce</code></a> as bounds.</p>\n<p>See the <a href="https://docs.rs/core/*/core/book/ch13-01-closures.html">chapter on closures in <em>The Rust Programming Language</em></a> for\nsome more information on this topic.</p>\n<p>Also of note is the special syntax for <cide>Fn</code> traits (e.g.\n<cide>Fn(usize, bool) -&gt; usize</code>). Those interested in the technical details of\nthis can refer to <a href="https://docs.rs/core/*/core/nomicon/hrtb.html">the relevant section in the <em>Rustonomicon</em></a>.</p>\n<h1 id="examples-7"><a class="header" href="#examples-7">Examples</a></h1>\n<h2 id="calling-a-closure"><a class="header" href="#calling-a-closure">Calling a closure</a></h2>\n<per><cide>let square = |x| x * x;\nassert_eq!(square(5), 25);\n</code></pre>\n<h2 id="using-a-cidefn-parameter"><a class="header" href="#using-a-cidefn-parameter">Using a <cide>Fn</code> parameter</a></h2>\n<per><cide>fn call_with_one&lt;F&gt;(func: F) -&gt; usize\n    where F: Fn(usize) -&gt; usize {\n    func(1)\n}\n\nlet double = |x| x * 2;\nassert_eq!(call_with_one(double), 2);\n</code></pre>\n','<per><cide class="language-rust">playcrate\n</code></pre>\n<per><cide class="language-rust">fn returns_closure() -&gt; Box&lt;dyn Fn&lt;(i32,), Output = i32&gt;&gt;\n</code></pre>\n','<per><cide class="language-rust">alloc::boxed\n</code></pre>\n<per><cide class="language-rust">pub struct Box&lt;T, A = Global&gt;\nwhere\n    T: ?Sized,\n    A: Allocator,\n</code></pre>\n<hr />\n<p>A pointer type for heap allocation.</p>\n<p>See the <a href="https://docs.rs/alloc/*/std/boxed/index.html">module-level documentation</a> for more.</p>\n','<per><cide class="language-rust">alloc::boxed::Box\n</code></pre>\n<per><cide class="language-rust">pub fn new(x: T) -&gt; Self\n</code></pre>\n<hr />\n<p>Allocates memory on the heap and then places <cide>x</code> into it.</p>\n<p>This doesn#$%t actually allocate if <cide>T</code> is zero-sized.</p>\n<h1 id="examples-8"><a class="header" href="#examples-8">Examples</a></h1>\n<per><cide>let five = Box::new(5);\n</code></pre>\n',].map((x)=>x.replaceAll('#$%', "'").replaceAll('<per', '<pre').replaceAll('<cide', '<code'));
+    window.onload = () => {
+        console.log("hello");
+        tippy('.ra', {
+            content: (x) => {
+                const div = document.createElement('div');
+                div.innerHTML = hoverData[x.dataset.hover];
+                div.className = 'hover-holder';
+                div.querySelectorAll('code').forEach((y) => y.innerHTML = hljs.highlight('rust', y.innerText).value);
+                return div;
+            },
+            allowHTML: true,
+            delay: [200, 0],
+            interactive: true,
+            maxWidth: '80vw',
+            appendTo: document.querySelector('.content'),
+        });
+    };
+</script>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="ch19-04-advanced-types.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="ch19-06-macros.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="ch19-04-advanced-types.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="ch19-06-macros.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="ferris.js"></script>
+        
+        
+    </body>
+</html>
