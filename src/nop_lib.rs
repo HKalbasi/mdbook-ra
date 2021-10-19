@@ -19,28 +19,12 @@ impl Nop {
 const CODE_START: &str = "```rust";
 const CODE_END: &str = "```";
 
-fn run_on_codes<F: FnMut(&str) -> String>(text: &str, mut run_on_code: F) -> String {
+const DEFAULT_CSS: &str = include_str!("default.css");
+
+fn run_on_codes<F: FnMut(&str) -> String>(text: &str, mut run_on_code: F, css: &str) -> String {
     let mut result = String::new();
     let mut iter = text.split(CODE_START);
-    result += r#"
-
-
-<style>
-    .inlay-hint, .inlay-hint * {
-        background-color: #444;
-        color: #999;
-        border-radius: .4em;
-    }
-    .inlay-hint {
-        font-size: 0.8em;
-        user-select: none;
-    }
-    .hover-holder {
-        max-height: 40vh;
-        overflow: auto;
-    }
-</style>
-"#;
+    result += css;
     result += iter.next().unwrap();
     for x in iter {
         result += r#"<pre><code class="language-rust hljs">"#;
@@ -145,6 +129,7 @@ impl MyRA {
 struct MyConfig {
     disabled_by_default: bool,
     cargo_toml: Option<PathBuf>,
+    custom_css: Option<PathBuf>,
 }
 
 impl Preprocessor for Nop {
@@ -162,9 +147,20 @@ impl Preprocessor for Nop {
                 if let Some(Value::String(s)) = m.get("cargo_toml") {
                     c.cargo_toml = Some(PathBuf::from(s));
                 }
+                if let Some(Value::String(s)) = m.get("custom_css") {
+                    c.custom_css = Some(PathBuf::from(s));
+                }
             }
             c
         };
+
+        let css = format!(
+            "<style>\n{}</style>",
+            match config.custom_css {
+                Some(p) => fs::read_to_string(p).unwrap(),
+                None => DEFAULT_CSS.to_string(),
+            }
+        );
 
         let mut ra = MyRA::setup(config.cargo_toml)?;
         let disabled = config.disabled_by_default;
@@ -266,7 +262,7 @@ impl Preprocessor for Nop {
                     i += 1;
                 }
                 result
-            });
+            }, &css);
             let mut json = "".to_string();
             for x in &hover_store.to_vec() {
                 json += &format!("'{}',", markdown_to_html(x, &Default::default()).replace("'", "#$%").replace('\n', "\\n").replace("<pre", "<per").replace("<code", "<cide"));
