@@ -2,6 +2,7 @@ use std::{collections::HashMap, fs, path::PathBuf, process::Command, sync::Arc};
 
 use ide::{AnalysisHost, Change, FileId, InlayKind, TextSize};
 use rust_analyzer::cli::load_cargo::{load_workspace_at, LoadCargoConfig};
+use toml::Value;
 use vfs::VfsPath;
 
 use super::*;
@@ -104,7 +105,7 @@ struct MyRA {
 }
 
 impl MyRA {
-    fn setup() -> Result<Self, Error> {
+    fn setup(cargo_toml: Option<PathBuf>) -> Result<Self, Error> {
         let path_str = "/tmp/mdbook-ra/playcrate";
         let p = PathBuf::from(path_str);
         if p.exists() {
@@ -114,6 +115,9 @@ impl MyRA {
             .args(["init", "--bin", path_str])
             .spawn()?
             .wait()?;
+        if let Some(p) = cargo_toml {
+            fs::copy(p, "/tmp/mdbook-ra/playcrate/Cargo.toml").unwrap();
+        }
         let no_progress = &|_| ();
         let load_config = LoadCargoConfig {
             load_out_dirs_from_check: true,
@@ -140,6 +144,7 @@ impl MyRA {
 #[derive(Default)]
 struct MyConfig {
     disabled_by_default: bool,
+    cargo_toml: Option<PathBuf>,
 }
 
 impl Preprocessor for Nop {
@@ -154,11 +159,15 @@ impl Preprocessor for Nop {
                 if m.get("disabled_by_default") == Some(&true.into()) {
                     c.disabled_by_default = true;
                 }
+                if let Some(Value::String(s)) = m.get("cargo_toml") {
+                    c.cargo_toml = Some(PathBuf::from(s));
+                }
             }
             c
         };
 
-        let mut ra = MyRA::setup()?;
+        let mut ra = MyRA::setup(config.cargo_toml)?;
+        let disabled = config.disabled_by_default;
         book.for_each_mut(|book_item| {
             let chapter = if let mdbook::BookItem::Chapter(c) = book_item {
                 c
@@ -176,7 +185,7 @@ impl Preprocessor for Nop {
                     &main_added
                 };
                 eprintln!("{}", flags);
-                if flags.contains("ra_disabled") || config.disabled_by_default && !flags.contains("ra_enabled") {
+                if flags.contains("ra_disabled") || disabled && !flags.contains("ra_enabled") {
                     return original_code.to_string();
                 }
                 let mut result = String::new();
